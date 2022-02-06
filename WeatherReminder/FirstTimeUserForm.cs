@@ -46,8 +46,9 @@ namespace WeatherReminder
             string userName = NameTxtBox.Text;
             string userEmail = EmailTxtBox.Text;
 
+            // TODO :
             // send user input to base form
-            BaseForm baseForm = new BaseForm(userName,userEmail);
+            BaseForm baseForm = new BaseForm();
             baseForm.Show();
         }
 
