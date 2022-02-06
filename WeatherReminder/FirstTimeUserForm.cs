@@ -27,6 +27,7 @@ namespace WeatherReminder
 
         }
 
+        // Clears email and name txt boxes easily
         private void ClearBtn_Click(object sender, EventArgs e)
         {
             NameTxtBox.Clear();
