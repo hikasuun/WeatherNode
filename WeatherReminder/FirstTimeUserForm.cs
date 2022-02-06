@@ -13,9 +13,12 @@ namespace WeatherReminder
 {
     public partial class FirstTimeUserForm : Form
     {
-        public FirstTimeUserForm()
+        private BaseForm form;
+        
+        public FirstTimeUserForm(BaseForm frm)
         {
-            InitializeComponent(); 
+            InitializeComponent();
+            form = frm;
             // TODO:
             // check if first-time running
             // if first time, show FirstTimeUserForm
@@ -27,7 +30,7 @@ namespace WeatherReminder
 
         }
 
-        // Clears email and name txt boxes easily
+        // Clears email and name txt boxes easily 
         private void ClearBtn_Click(object sender, EventArgs e)
         {
             NameTxtBox.Clear();
@@ -36,21 +39,23 @@ namespace WeatherReminder
 
         private void EnterBtn_Click(object sender, EventArgs e)
         {
-            // check if txt boxes are empty or email is valid, loops if not
-            while (String.IsNullOrEmpty(NameTxtBox.Text) || 
-                String.IsNullOrEmpty(EmailTxtBox.Text) || 
+            // check if txt boxes are empty or email is valid
+            if (String.IsNullOrEmpty(NameTxtBox.Text) ||
+                String.IsNullOrEmpty(EmailTxtBox.Text) ||
                 !IsValidEmail(EmailTxtBox.Text))
             {
                 MessageBox.Show("Please enter valid email / username.");
             }
-            // save user input
-            string userName = NameTxtBox.Text;
-            string userEmail = EmailTxtBox.Text;
+            else
+            {
+                // save user input
+                string userName = NameTxtBox.Text;
+                MailAddress userEmail = new MailAddress(EmailTxtBox.Text.ToLower());
 
-            // TODO :
-            // send user input to base form
-            BaseForm baseForm = new BaseForm();
-            baseForm.Show();
+                form.setUserEmail(userEmail);
+                form.setUserName(userName);
+                this.Close();
+            }
         }
 
         private void NameTxtBox_TextChanged(object sender, EventArgs e)
@@ -72,5 +77,12 @@ namespace WeatherReminder
                 return false;
             }
         }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        
     }
 }

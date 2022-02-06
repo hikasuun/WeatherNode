@@ -16,7 +16,7 @@ namespace WeatherReminder
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FirstTimeUserForm());
+            Application.Run(new BaseForm());
         }
     }
 }
