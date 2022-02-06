@@ -143,7 +143,7 @@
             this.MainMenuStrip = this.BaseFormMenuStrip;
             this.Name = "BaseForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Weather Reminder";
+            this.Text = "Weather Node";
             this.Load += new System.EventHandler(this.BaseForm_Load);
             this.BaseFormMenuStrip.ResumeLayout(false);
             this.BaseFormMenuStrip.PerformLayout();
