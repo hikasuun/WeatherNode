@@ -19,10 +19,6 @@ namespace WeatherReminder
         {
             InitializeComponent();
             form = frm;
-            // TODO:
-            // check if first-time running
-            // if first time, show FirstTimeUserForm
-            // else show BaseForm
         }
 
         private void EmailTxtBox_TextChanged(object sender, EventArgs e)
@@ -52,8 +48,8 @@ namespace WeatherReminder
                 string userName = NameTxtBox.Text;
                 MailAddress userEmail = new MailAddress(EmailTxtBox.Text.ToLower());
 
-                form.setUserEmail(userEmail);
                 form.setUserName(userName);
+                form.setUserEmail(userEmail);
                 this.Close();
             }
         }
