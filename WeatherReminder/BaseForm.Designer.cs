@@ -103,6 +103,7 @@
             this.WelcomeUserLabel.Size = new System.Drawing.Size(93, 18);
             this.WelcomeUserLabel.TabIndex = 0;
             this.WelcomeUserLabel.Text = "Hello, User";
+            this.WelcomeUserLabel.Click += new System.EventHandler(this.WelcomeUserLabel_Click);
             // 
             // splitContainer1
             // 
