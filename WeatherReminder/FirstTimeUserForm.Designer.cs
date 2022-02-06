@@ -40,24 +40,27 @@
             // UserNameLabel
             // 
             this.UserNameLabel.AutoSize = true;
-            this.UserNameLabel.Location = new System.Drawing.Point(12, 38);
+            this.UserNameLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.UserNameLabel.Location = new System.Drawing.Point(7, 35);
             this.UserNameLabel.Name = "UserNameLabel";
-            this.UserNameLabel.Size = new System.Drawing.Size(63, 13);
+            this.UserNameLabel.Size = new System.Drawing.Size(68, 15);
             this.UserNameLabel.TabIndex = 0;
             this.UserNameLabel.Text = "User Name:";
             // 
             // UserEmailLabel
             // 
             this.UserEmailLabel.AutoSize = true;
-            this.UserEmailLabel.Location = new System.Drawing.Point(15, 76);
+            this.UserEmailLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.UserEmailLabel.Location = new System.Drawing.Point(10, 72);
             this.UserEmailLabel.Name = "UserEmailLabel";
-            this.UserEmailLabel.Size = new System.Drawing.Size(60, 13);
+            this.UserEmailLabel.Size = new System.Drawing.Size(65, 15);
             this.UserEmailLabel.TabIndex = 1;
             this.UserEmailLabel.Text = "User Email:";
             // 
             // ClearBtn
             // 
-            this.ClearBtn.Location = new System.Drawing.Point(274, 111);
+            this.ClearBtn.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ClearBtn.Location = new System.Drawing.Point(355, 107);
             this.ClearBtn.Name = "ClearBtn";
             this.ClearBtn.Size = new System.Drawing.Size(75, 23);
             this.ClearBtn.TabIndex = 2;
@@ -67,7 +70,8 @@
             // 
             // EnterBtn
             // 
-            this.EnterBtn.Location = new System.Drawing.Point(355, 111);
+            this.EnterBtn.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.EnterBtn.Location = new System.Drawing.Point(274, 107);
             this.EnterBtn.Name = "EnterBtn";
             this.EnterBtn.Size = new System.Drawing.Size(75, 23);
             this.EnterBtn.TabIndex = 3;
@@ -77,36 +81,37 @@
             // 
             // NameTxtBox
             // 
-            this.NameTxtBox.Location = new System.Drawing.Point(81, 35);
+            this.NameTxtBox.Location = new System.Drawing.Point(81, 33);
             this.NameTxtBox.Name = "NameTxtBox";
-            this.NameTxtBox.Size = new System.Drawing.Size(349, 20);
+            this.NameTxtBox.Size = new System.Drawing.Size(349, 22);
             this.NameTxtBox.TabIndex = 4;
             this.NameTxtBox.TextChanged += new System.EventHandler(this.NameTxtBox_TextChanged);
             // 
             // EmailTxtBox
             // 
-            this.EmailTxtBox.Location = new System.Drawing.Point(81, 73);
+            this.EmailTxtBox.Location = new System.Drawing.Point(81, 70);
             this.EmailTxtBox.Name = "EmailTxtBox";
-            this.EmailTxtBox.Size = new System.Drawing.Size(349, 20);
+            this.EmailTxtBox.Size = new System.Drawing.Size(349, 22);
             this.EmailTxtBox.TabIndex = 5;
             this.EmailTxtBox.TextChanged += new System.EventHandler(this.EmailTxtBox_TextChanged);
             // 
             // InstructionLabel
             // 
             this.InstructionLabel.AutoSize = true;
-            this.InstructionLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.InstructionLabel.Location = new System.Drawing.Point(12, 9);
+            this.InstructionLabel.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.InstructionLabel.Location = new System.Drawing.Point(7, 9);
             this.InstructionLabel.Name = "InstructionLabel";
-            this.InstructionLabel.Size = new System.Drawing.Size(209, 15);
+            this.InstructionLabel.Size = new System.Drawing.Size(226, 17);
             this.InstructionLabel.TabIndex = 6;
             this.InstructionLabel.Text = "Please enter your information below :";
             this.InstructionLabel.Click += new System.EventHandler(this.label1_Click);
             // 
             // FirstTimeUserForm
             // 
+            this.AcceptButton = this.EnterBtn;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(442, 162);
+            this.ClientSize = new System.Drawing.Size(442, 152);
             this.ControlBox = false;
             this.Controls.Add(this.InstructionLabel);
             this.Controls.Add(this.EmailTxtBox);
@@ -115,8 +120,10 @@
             this.Controls.Add(this.ClearBtn);
             this.Controls.Add(this.UserEmailLabel);
             this.Controls.Add(this.UserNameLabel);
+            this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "FirstTimeUserForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Welcome";
             this.ResumeLayout(false);
             this.PerformLayout();

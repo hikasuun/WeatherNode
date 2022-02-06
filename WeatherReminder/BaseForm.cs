@@ -30,18 +30,21 @@ namespace WeatherReminder
             WelcomeUserLabel.Text = "Welcome, " + userName;
         }
 
-        private void label2_Click(object sender, EventArgs e)
+        private void emailToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            EmailChangeForm frm = new EmailChangeForm(this);
+            frm.TopMost = true;
+            frm.ShowDialog();
         }
-        
+
         // GETTERS AND SETTERS 
         public void setUserName(string userN)
         {
             this.userName = userN;
         }
 
-        public void setUserEmail(MailAddress userE) {
+        public void setUserEmail(MailAddress userE)
+        {
             this.userEmail = userE;
         }
 
@@ -53,6 +56,16 @@ namespace WeatherReminder
         public MailAddress getUserEmail()
         {
             return this.userEmail;
+        }
+
+        private void BaseFormMenuStrip_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
         }
 
         private void WelcomeUserLabel_Click(object sender, EventArgs e)

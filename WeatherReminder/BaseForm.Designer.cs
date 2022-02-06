@@ -28,7 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BaseForm));
+            this.BaseFormMenuStrip = new System.Windows.Forms.MenuStrip();
             this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.emailToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.quitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -36,23 +37,26 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.WelcomeUserLabel = new System.Windows.Forms.Label();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.menuStrip1.SuspendLayout();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.BaseFormMenuStrip.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
+            this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // menuStrip1
+            // BaseFormMenuStrip
             // 
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.BaseFormMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.settingsToolStripMenuItem,
             this.emailToolStripMenuItem,
             this.quitToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(565, 24);
-            this.menuStrip1.TabIndex = 0;
-            this.menuStrip1.Text = "menuStrip1";
+            this.BaseFormMenuStrip.Location = new System.Drawing.Point(0, 0);
+            this.BaseFormMenuStrip.Name = "BaseFormMenuStrip";
+            this.BaseFormMenuStrip.Size = new System.Drawing.Size(565, 24);
+            this.BaseFormMenuStrip.TabIndex = 0;
+            this.BaseFormMenuStrip.Text = "menuStrip1";
+            this.BaseFormMenuStrip.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.BaseFormMenuStrip_ItemClicked);
             // 
             // settingsToolStripMenuItem
             // 
@@ -65,6 +69,7 @@
             this.emailToolStripMenuItem.Name = "emailToolStripMenuItem";
             this.emailToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
             this.emailToolStripMenuItem.Text = "Email";
+            this.emailToolStripMenuItem.Click += new System.EventHandler(this.emailToolStripMenuItem_Click);
             // 
             // quitToolStripMenuItem
             // 
@@ -97,10 +102,10 @@
             // WelcomeUserLabel
             // 
             this.WelcomeUserLabel.AutoSize = true;
-            this.WelcomeUserLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.WelcomeUserLabel.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.WelcomeUserLabel.Location = new System.Drawing.Point(3, 0);
             this.WelcomeUserLabel.Name = "WelcomeUserLabel";
-            this.WelcomeUserLabel.Size = new System.Drawing.Size(93, 18);
+            this.WelcomeUserLabel.Size = new System.Drawing.Size(85, 20);
             this.WelcomeUserLabel.TabIndex = 0;
             this.WelcomeUserLabel.Text = "Hello, User";
             this.WelcomeUserLabel.Click += new System.EventHandler(this.WelcomeUserLabel_Click);
@@ -110,9 +115,20 @@
             this.splitContainer1.Location = new System.Drawing.Point(3, 32);
             this.splitContainer1.Name = "splitContainer1";
             this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainer1.Panel1
+            // 
+            this.splitContainer1.Panel1.Controls.Add(this.flowLayoutPanel1);
             this.splitContainer1.Size = new System.Drawing.Size(531, 452);
             this.splitContainer1.SplitterDistance = 226;
             this.splitContainer1.TabIndex = 1;
+            // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(4, 4);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(527, 219);
+            this.flowLayoutPanel1.TabIndex = 0;
             // 
             // BaseForm
             // 
@@ -121,15 +137,19 @@
             this.ClientSize = new System.Drawing.Size(565, 527);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.menuStrip1);
-            this.MainMenuStrip = this.menuStrip1;
+            this.Controls.Add(this.BaseFormMenuStrip);
+            this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MainMenuStrip = this.BaseFormMenuStrip;
             this.Name = "BaseForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Weather Reminder";
             this.Load += new System.EventHandler(this.BaseForm_Load);
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
+            this.BaseFormMenuStrip.ResumeLayout(false);
+            this.BaseFormMenuStrip.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
+            this.splitContainer1.Panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -139,7 +159,7 @@
 
         #endregion
 
-        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.MenuStrip BaseFormMenuStrip;
         private System.Windows.Forms.ToolStripMenuItem settingsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem emailToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem quitToolStripMenuItem;
@@ -147,5 +167,6 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Label WelcomeUserLabel;
         private System.Windows.Forms.SplitContainer splitContainer1;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
     }
 }

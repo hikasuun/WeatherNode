@@ -52,6 +52,12 @@
     <Compile Include="BaseForm.Designer.cs">
       <DependentUpon>BaseForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="EmailChangeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EmailChangeForm.Designer.cs">
+      <DependentUpon>EmailChangeForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="FirstTimeUserForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -62,6 +68,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="BaseForm.resx">
       <DependentUpon>BaseForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EmailChangeForm.resx">
+      <DependentUpon>EmailChangeForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FirstTimeUserForm.resx">
       <DependentUpon>FirstTimeUserForm.cs</DependentUpon>
