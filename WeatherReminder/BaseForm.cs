@@ -32,9 +32,7 @@ namespace WeatherReminder
 
         private void emailToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            EmailChangeForm frm = new EmailChangeForm(this);
-            frm.TopMost = true;
-            frm.ShowDialog();
+            toolStripEmailTextBox.Text = getUserEmail().ToString();
         }
 
         // GETTERS AND SETTERS 
@@ -71,6 +69,40 @@ namespace WeatherReminder
         private void WelcomeUserLabel_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void DeleteButton_Click(object sender, EventArgs e)
+        {
+            // confirm user deletion
+            var confirmResult = MessageBox.Show("Do you wish to delete this entry?",
+                "Confirm Deletion", MessageBoxButtons.YesNo);
+
+            if (confirmResult == DialogResult.Yes)
+            {
+                // Delete Entry in combo box
+                MessageBox.Show("Notification deleted.");
+            } 
+            else
+            {
+                // do nothing
+            }
+        }
+
+        private void toolStripTextBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void changeEmailToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            EmailChangeForm frm = new EmailChangeForm(this);
+            frm.TopMost = true;
+            frm.ShowDialog();
+        }
+
+        private void quitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
