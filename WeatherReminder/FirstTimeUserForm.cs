@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Net.Mail;
 
-namespace WeatherReminder
+namespace WeatherNode
 {
     public partial class FirstTimeUserForm : Form
     {
@@ -79,6 +79,9 @@ namespace WeatherReminder
 
         }
 
-        
+        private void FirstTimeUserForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

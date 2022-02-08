@@ -1,4 +1,4 @@
-﻿namespace WeatherReminder
+﻿namespace WeatherNode
 {
     partial class EmailChangeForm
     {
@@ -78,8 +78,7 @@
             this.AcceptButton = this.EnterButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.CancelButton = this.CancelButton;
-            this.ClientSize = new System.Drawing.Size(398, 118);
+            this.ClientSize = new System.Drawing.Size(394, 114);
             this.ControlBox = false;
             this.Controls.Add(this.CancelButton);
             this.Controls.Add(this.EnterButton);
@@ -92,6 +91,7 @@
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Email Update";
+            this.Load += new System.EventHandler(this.EmailChangeForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -1,4 +1,4 @@
-﻿namespace WeatherReminder
+﻿namespace WeatherNode
 {
     partial class BaseForm
     {
@@ -32,6 +32,8 @@
             this.BaseFormMenuStrip = new System.Windows.Forms.MenuStrip();
             this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.emailToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripEmailTextBox = new System.Windows.Forms.ToolStripTextBox();
+            this.changeEmailToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.quitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label1 = new System.Windows.Forms.Label();
             this.BaseFormSplitLayout = new System.Windows.Forms.TableLayoutPanel();
@@ -39,16 +41,14 @@
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.WeatherFlowLayout = new System.Windows.Forms.FlowLayoutPanel();
             this.NotificationFlowLayout = new System.Windows.Forms.FlowLayoutPanel();
-            this.NotificationLabel = new System.Windows.Forms.Label();
-            this.NotificationComboBox = new System.Windows.Forms.ComboBox();
             this.NotificationGroupBox = new System.Windows.Forms.GroupBox();
+            this.NotificationComboBox = new System.Windows.Forms.ComboBox();
+            this.NotificationLabel = new System.Windows.Forms.Label();
             this.NotificationInfoGroupBox = new System.Windows.Forms.GroupBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.AddNotificationButton = new System.Windows.Forms.Button();
-            this.DeleteNotificationButton = new System.Windows.Forms.Button();
             this.EditNotificationButton = new System.Windows.Forms.Button();
-            this.toolStripEmailTextBox = new System.Windows.Forms.ToolStripTextBox();
-            this.changeEmailToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.DeleteNotificationButton = new System.Windows.Forms.Button();
+            this.AddNotificationButton = new System.Windows.Forms.Button();
             this.BaseFormMenuStrip.SuspendLayout();
             this.BaseFormSplitLayout.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -78,6 +78,7 @@
             this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
             this.settingsToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
             this.settingsToolStripMenuItem.Text = "Settings";
+            this.settingsToolStripMenuItem.Click += new System.EventHandler(this.settingsToolStripMenuItem_Click);
             // 
             // emailToolStripMenuItem
             // 
@@ -88,6 +89,23 @@
             this.emailToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
             this.emailToolStripMenuItem.Text = "Email";
             this.emailToolStripMenuItem.Click += new System.EventHandler(this.emailToolStripMenuItem_Click);
+            // 
+            // toolStripEmailTextBox
+            // 
+            this.toolStripEmailTextBox.AutoSize = false;
+            this.toolStripEmailTextBox.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.toolStripEmailTextBox.Name = "toolStripEmailTextBox";
+            this.toolStripEmailTextBox.Overflow = System.Windows.Forms.ToolStripItemOverflow.Always;
+            this.toolStripEmailTextBox.ReadOnly = true;
+            this.toolStripEmailTextBox.Size = new System.Drawing.Size(275, 23);
+            this.toolStripEmailTextBox.Click += new System.EventHandler(this.toolStripTextBox1_Click);
+            // 
+            // changeEmailToolStripMenuItem
+            // 
+            this.changeEmailToolStripMenuItem.Name = "changeEmailToolStripMenuItem";
+            this.changeEmailToolStripMenuItem.Size = new System.Drawing.Size(335, 22);
+            this.changeEmailToolStripMenuItem.Text = "Change Email";
+            this.changeEmailToolStripMenuItem.Click += new System.EventHandler(this.changeEmailToolStripMenuItem_Click);
             // 
             // quitToolStripMenuItem
             // 
@@ -163,24 +181,6 @@
             this.NotificationFlowLayout.Size = new System.Drawing.Size(531, 223);
             this.NotificationFlowLayout.TabIndex = 0;
             // 
-            // NotificationLabel
-            // 
-            this.NotificationLabel.AutoSize = true;
-            this.NotificationLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.NotificationLabel.Location = new System.Drawing.Point(6, 20);
-            this.NotificationLabel.Name = "NotificationLabel";
-            this.NotificationLabel.Size = new System.Drawing.Size(110, 15);
-            this.NotificationLabel.TabIndex = 0;
-            this.NotificationLabel.Text = "User Notifications : ";
-            // 
-            // NotificationComboBox
-            // 
-            this.NotificationComboBox.FormattingEnabled = true;
-            this.NotificationComboBox.Location = new System.Drawing.Point(122, 17);
-            this.NotificationComboBox.Name = "NotificationComboBox";
-            this.NotificationComboBox.Size = new System.Drawing.Size(371, 23);
-            this.NotificationComboBox.TabIndex = 1;
-            // 
             // NotificationGroupBox
             // 
             this.NotificationGroupBox.Controls.Add(this.NotificationComboBox);
@@ -192,6 +192,24 @@
             this.NotificationGroupBox.TabIndex = 2;
             this.NotificationGroupBox.TabStop = false;
             this.NotificationGroupBox.Text = "Notifications";
+            // 
+            // NotificationComboBox
+            // 
+            this.NotificationComboBox.FormattingEnabled = true;
+            this.NotificationComboBox.Location = new System.Drawing.Point(122, 17);
+            this.NotificationComboBox.Name = "NotificationComboBox";
+            this.NotificationComboBox.Size = new System.Drawing.Size(371, 23);
+            this.NotificationComboBox.TabIndex = 1;
+            // 
+            // NotificationLabel
+            // 
+            this.NotificationLabel.AutoSize = true;
+            this.NotificationLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.NotificationLabel.Location = new System.Drawing.Point(6, 20);
+            this.NotificationLabel.Name = "NotificationLabel";
+            this.NotificationLabel.Size = new System.Drawing.Size(110, 15);
+            this.NotificationLabel.TabIndex = 0;
+            this.NotificationLabel.Text = "User Notifications : ";
             // 
             // NotificationInfoGroupBox
             // 
@@ -212,15 +230,15 @@
             this.panel1.Size = new System.Drawing.Size(525, 31);
             this.panel1.TabIndex = 4;
             // 
-            // AddNotificationButton
+            // EditNotificationButton
             // 
-            this.AddNotificationButton.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AddNotificationButton.Location = new System.Drawing.Point(447, 5);
-            this.AddNotificationButton.Name = "AddNotificationButton";
-            this.AddNotificationButton.Size = new System.Drawing.Size(75, 23);
-            this.AddNotificationButton.TabIndex = 0;
-            this.AddNotificationButton.Text = "ADD";
-            this.AddNotificationButton.UseVisualStyleBackColor = true;
+            this.EditNotificationButton.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.EditNotificationButton.Location = new System.Drawing.Point(354, 5);
+            this.EditNotificationButton.Name = "EditNotificationButton";
+            this.EditNotificationButton.Size = new System.Drawing.Size(75, 23);
+            this.EditNotificationButton.TabIndex = 2;
+            this.EditNotificationButton.Text = "EDIT";
+            this.EditNotificationButton.UseVisualStyleBackColor = true;
             // 
             // DeleteNotificationButton
             // 
@@ -233,32 +251,15 @@
             this.DeleteNotificationButton.UseVisualStyleBackColor = true;
             this.DeleteNotificationButton.Click += new System.EventHandler(this.DeleteButton_Click);
             // 
-            // EditNotificationButton
+            // AddNotificationButton
             // 
-            this.EditNotificationButton.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.EditNotificationButton.Location = new System.Drawing.Point(354, 5);
-            this.EditNotificationButton.Name = "EditNotificationButton";
-            this.EditNotificationButton.Size = new System.Drawing.Size(75, 23);
-            this.EditNotificationButton.TabIndex = 2;
-            this.EditNotificationButton.Text = "EDIT";
-            this.EditNotificationButton.UseVisualStyleBackColor = true;
-            // 
-            // toolStripEmailTextBox
-            // 
-            this.toolStripEmailTextBox.AutoSize = false;
-            this.toolStripEmailTextBox.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.toolStripEmailTextBox.Name = "toolStripEmailTextBox";
-            this.toolStripEmailTextBox.Overflow = System.Windows.Forms.ToolStripItemOverflow.Always;
-            this.toolStripEmailTextBox.ReadOnly = true;
-            this.toolStripEmailTextBox.Size = new System.Drawing.Size(275, 23);
-            this.toolStripEmailTextBox.Click += new System.EventHandler(this.toolStripTextBox1_Click);
-            // 
-            // changeEmailToolStripMenuItem
-            // 
-            this.changeEmailToolStripMenuItem.Name = "changeEmailToolStripMenuItem";
-            this.changeEmailToolStripMenuItem.Size = new System.Drawing.Size(335, 22);
-            this.changeEmailToolStripMenuItem.Text = "Change Email";
-            this.changeEmailToolStripMenuItem.Click += new System.EventHandler(this.changeEmailToolStripMenuItem_Click);
+            this.AddNotificationButton.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AddNotificationButton.Location = new System.Drawing.Point(447, 5);
+            this.AddNotificationButton.Name = "AddNotificationButton";
+            this.AddNotificationButton.Size = new System.Drawing.Size(75, 23);
+            this.AddNotificationButton.TabIndex = 0;
+            this.AddNotificationButton.Text = "ADD";
+            this.AddNotificationButton.UseVisualStyleBackColor = true;
             // 
             // BaseForm
             // 
