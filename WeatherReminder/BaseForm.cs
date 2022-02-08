@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Net.Mail;
 
-namespace WeatherReminder
+namespace WeatherNode
 {
     public partial class BaseForm : Form
     {
@@ -100,9 +100,18 @@ namespace WeatherReminder
             frm.ShowDialog();
         }
 
+        private void settingsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            UserSettingsForm frm = new UserSettingsForm(this);
+            frm.TopMost = true;
+            frm.ShowDialog();
+        }
+
         private void quitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Close();
         }
+
+        
     }
 }

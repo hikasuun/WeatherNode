@@ -1,4 +1,4 @@
-﻿namespace WeatherReminder
+﻿namespace WeatherNode
 {
     partial class FirstTimeUserForm
     {
@@ -125,6 +125,7 @@
             this.Name = "FirstTimeUserForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Welcome";
+            this.Load += new System.EventHandler(this.FirstTimeUserForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Net.Mail;
 
-namespace WeatherReminder
+namespace WeatherNode
 {
     public partial class EmailChangeForm : Form
     {
@@ -55,6 +55,11 @@ namespace WeatherReminder
             {
                 return false;
             }
+        }
+
+        private void EmailChangeForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
