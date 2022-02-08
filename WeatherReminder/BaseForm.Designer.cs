@@ -63,8 +63,8 @@
             // BaseFormMenuStrip
             // 
             this.BaseFormMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.settingsToolStripMenuItem,
             this.emailToolStripMenuItem,
+            this.settingsToolStripMenuItem,
             this.quitToolStripMenuItem});
             this.BaseFormMenuStrip.Location = new System.Drawing.Point(0, 0);
             this.BaseFormMenuStrip.Name = "BaseFormMenuStrip";
