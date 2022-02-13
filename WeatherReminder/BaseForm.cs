@@ -74,6 +74,7 @@ namespace WeatherNode
         private void DeleteButton_Click(object sender, EventArgs e)
         {
             // confirm user deletion
+            //
             var confirmResult = MessageBox.Show("Do you wish to delete this entry?",
                 "Confirm Deletion", MessageBoxButtons.YesNo);
 
