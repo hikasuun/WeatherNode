@@ -1,4 +1,10 @@
-﻿using System;
+﻿/*
+ * EmailChangeForm.cs
+ * Language : C#
+ * Form for changing user email address
+ * January 2022 - 
+ */
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -19,14 +25,20 @@ namespace WeatherNode
             InitializeComponent();
             form = frm;
         }
+        private void EmailChangeForm_Load(object sender, EventArgs e)
+        {
 
+        }
+
+        // Change user email function
         private void EnterButton_Click(object sender, EventArgs e)
         {
-            // checks for valid input
+            // checks for valid email input
             if (String.IsNullOrEmpty(EmailTxtBox.Text) || 
                 !IsValidEmail(EmailTxtBox.Text)) {
                 MessageBox.Show("Please enter valid email.");
             }
+            // if valid, change email
             else
             {
                 MailAddress userEmail = new MailAddress(EmailTxtBox.Text.ToLower());
@@ -36,6 +48,7 @@ namespace WeatherNode
             }
         }
 
+        // Cancels email change
         private void CancelButton_Click(object sender, EventArgs e)
         {
             EmailTxtBox.Clear();
@@ -43,6 +56,7 @@ namespace WeatherNode
         }
 
         // uses MailAddress class to validate if inputted email is valid
+        // Simply checks for char@char
         private bool IsValidEmail(string emailaddress)
         {
             try
@@ -55,11 +69,6 @@ namespace WeatherNode
             {
                 return false;
             }
-        }
-
-        private void EmailChangeForm_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }
