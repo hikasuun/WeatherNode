@@ -1,4 +1,11 @@
-﻿using System;
+﻿/*
+ * BaseForm.cs
+ * Language: C# 
+ * Base form for the WeatherNode application
+ * Form contains main GUI that user interacts with
+ * Janurary 2022 - 
+ */
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,12 +23,12 @@ namespace WeatherNode
         private string userName;
         private MailAddress userEmail;
 
-        public BaseForm()
+        public BaseForm() 
         {
             InitializeComponent();
         }
 
-        private void BaseForm_Load(object sender, EventArgs e)
+        private void BaseForm_Load(object sender, EventArgs e) 
         {
             // TODO: Add first time check
             FirstTimeUserForm frm = new FirstTimeUserForm(this);
@@ -33,27 +40,6 @@ namespace WeatherNode
         private void emailToolStripMenuItem_Click(object sender, EventArgs e)
         {
             toolStripEmailTextBox.Text = getUserEmail().ToString();
-        }
-
-        // GETTERS AND SETTERS 
-        public void setUserName(string userN)
-        {
-            this.userName = userN;
-        }
-
-        public void setUserEmail(MailAddress userE)
-        {
-            this.userEmail = userE;
-        }
-
-        public string getUserName()
-        {
-            return this.userName;
-        }
-
-        public MailAddress getUserEmail()
-        {
-            return this.userEmail;
         }
 
         private void BaseFormMenuStrip_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
@@ -71,6 +57,7 @@ namespace WeatherNode
 
         }
 
+        // Deletion of selected notification
         private void DeleteButton_Click(object sender, EventArgs e)
         {
             // confirm user deletion
@@ -113,6 +100,28 @@ namespace WeatherNode
             this.Close();
         }
 
-        
+        //
+        // GETTERS AND SETTERS 
+        public void setUserName(string userN)
+        {
+            this.userName = userN;
+        }
+
+        public void setUserEmail(MailAddress userE)
+        {
+            this.userEmail = userE;
+        }
+
+        public string getUserName()
+        {
+            return this.userName;
+        }
+
+        public MailAddress getUserEmail()
+        {
+            return this.userEmail;
+        }
+        //
+        //
     }
 }

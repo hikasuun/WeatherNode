@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿# WebScrapper.py
+# Language: Python 3.0
+# This script runs a web scrapper that scraps the 
+# information from weather website and returns it
+# January 2022 - 
+#
 
-namespace WeatherReminder
-{
-    class WebScrapper
-    {
-    }
-}

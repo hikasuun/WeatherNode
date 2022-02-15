@@ -1,4 +1,11 @@
-﻿using System;
+﻿/*
+ * FirstTimeUserForm.cs
+ * Language: C#
+ * Form that appears when user is running application 
+ * for the first time
+ * January 2022 - 
+ */
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -21,18 +28,24 @@ namespace WeatherNode
             form = frm;
         }
 
+        private void FirstTimeUserForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
         private void EmailTxtBox_TextChanged(object sender, EventArgs e)
         {
 
         }
 
-        // Clears email and name txt boxes easily 
+        // Clears email and name txt boxes
         private void ClearBtn_Click(object sender, EventArgs e)
         {
             NameTxtBox.Clear();
             EmailTxtBox.Clear();
         }
 
+        // Enter user's name and email into application
         private void EnterBtn_Click(object sender, EventArgs e)
         {
             // check if txt boxes are empty or email is valid
@@ -60,6 +73,7 @@ namespace WeatherNode
         }
 
         // uses MailAddress class to validate if inputted email is valid
+        // Simply checks for char@char
         private bool IsValidEmail(string emailaddress)
         {
             try
@@ -75,11 +89,6 @@ namespace WeatherNode
         }
 
         private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void FirstTimeUserForm_Load(object sender, EventArgs e)
         {
 
         }
