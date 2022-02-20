@@ -31,7 +31,7 @@
             this.InstructionLabel = new System.Windows.Forms.Label();
             this.EmailTxtBox = new System.Windows.Forms.TextBox();
             this.EnterButton = new System.Windows.Forms.Button();
-            this.CancelButton = new System.Windows.Forms.Button();
+            this.EmailCancelButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // InstructionLabel
@@ -62,25 +62,25 @@
             this.EnterButton.UseVisualStyleBackColor = true;
             this.EnterButton.Click += new System.EventHandler(this.EnterButton_Click);
             // 
-            // CancelButton
+            // EmailCancelButton
             // 
-            this.CancelButton.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CancelButton.Location = new System.Drawing.Point(311, 74);
-            this.CancelButton.Name = "CancelButton";
-            this.CancelButton.Size = new System.Drawing.Size(75, 23);
-            this.CancelButton.TabIndex = 3;
-            this.CancelButton.Text = "CANCEL";
-            this.CancelButton.UseVisualStyleBackColor = true;
-            this.CancelButton.Click += new System.EventHandler(this.CancelButton_Click);
+            this.EmailCancelButton.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.EmailCancelButton.Location = new System.Drawing.Point(311, 74);
+            this.EmailCancelButton.Name = "EmailCancelButton";
+            this.EmailCancelButton.Size = new System.Drawing.Size(75, 23);
+            this.EmailCancelButton.TabIndex = 3;
+            this.EmailCancelButton.Text = "CANCEL";
+            this.EmailCancelButton.UseVisualStyleBackColor = true;
+            this.EmailCancelButton.Click += new System.EventHandler(this.CancelButton_Click);
             // 
             // EmailChangeForm
             // 
             this.AcceptButton = this.EnterButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(394, 114);
+            this.ClientSize = new System.Drawing.Size(390, 110);
             this.ControlBox = false;
-            this.Controls.Add(this.CancelButton);
+            this.Controls.Add(this.EmailCancelButton);
             this.Controls.Add(this.EnterButton);
             this.Controls.Add(this.EmailTxtBox);
             this.Controls.Add(this.InstructionLabel);
@@ -102,6 +102,6 @@
         private System.Windows.Forms.Label InstructionLabel;
         private System.Windows.Forms.TextBox EmailTxtBox;
         private System.Windows.Forms.Button EnterButton;
-        private System.Windows.Forms.Button CancelButton;
+        private System.Windows.Forms.Button EmailCancelButton;
     }
 }
