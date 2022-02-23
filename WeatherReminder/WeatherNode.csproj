@@ -79,6 +79,7 @@
     <Compile Include="FirstTimeUserForm.Designer.cs">
       <DependentUpon>FirstTimeUserForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Location.cs" />
     <Compile Include="UserSettingsForm.cs">
       <SubType>Form</SubType>
     </Compile>
