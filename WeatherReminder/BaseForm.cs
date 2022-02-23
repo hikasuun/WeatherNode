@@ -3,7 +3,7 @@
  * Language: C# 
  * Base form for the WeatherNode application
  * Form contains main GUI that user interacts with
- * Janurary 2022 - 
+ * January 2022 - 
  */
 using System;
 using System.Collections.Generic;
