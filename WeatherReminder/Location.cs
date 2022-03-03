@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace WeatherNode
 {
-    [Serializable]
+    [Serializable] 
     internal class Location
     {
         private string LocationName;
