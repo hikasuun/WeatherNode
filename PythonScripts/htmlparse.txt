@@ -1,11 +1,11 @@
-Weather for El Paso, TX
-Currently:Mostly Clear
-Temp:54°F
-Humidity:21%
+Weather for San Antonio, TX
+Currently:Mostly Cloudy
+Temp:60°F
+Humidity:87%
 Wind Speed:CALM
-Barometer:30.14 in.
-Dewpoint:15°F
-Heat Index:54°F
-Wind Chill:54°F
+Barometer:30.2 in.
+Dewpoint:57°F
+Heat Index:60°F
+Wind Chill:60°F
 Visibility:10 mile(s)
-URL:https://www.freeweather.com/cgi-bin/weather/weather.cgi?place=EL+PASO&state=tx
+URL:https://www.freeweather.com/cgi-bin/weather/weather.cgi?place=SAN+ANTONIO&state=tx

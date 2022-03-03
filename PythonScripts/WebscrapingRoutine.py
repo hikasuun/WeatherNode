@@ -3,15 +3,18 @@
 # This script runs a web scrapper returns
 # current weather information from requested URL
 # January 2022 - 
-
 from bs4 import BeautifulSoup
 import requests
 
 # TODO : CHANGE TO USER INPUTTED URL RATHER THAN PREDEFINED
-# url to scrape from
-URL = 'https://www.freeweather.com/cgi-bin/weather/weather.cgi?place=EL+PASO&state=tx'
+# url to scrape weather data from
+url_beg = 'https://www.freeweather.com/cgi-bin/weather/weather.cgi?place='
+url_city = 'SAN+ANTONIO'
+url_state = '&state=tx'
+url = url_beg + url_city + url_state
+
 # employ beautifulsoup to scrape data
-page = requests.get(URL)
+page = requests.get(url)
 soup = BeautifulSoup(page.content, "html.parser")
 
 # get current weather container
@@ -32,5 +35,6 @@ with open('PythonScripts/htmlparse.txt', 'w') as file:
             file.write('\n')
             x = 0
     # save URL to file
-    file.write('URL:'+ URL + '\n')
+    file.write('URL:'+ url + '\n')
     file.close()
+    
