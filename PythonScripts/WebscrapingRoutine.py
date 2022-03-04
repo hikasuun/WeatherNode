@@ -5,13 +5,23 @@
 # January 2022 - 
 from bs4 import BeautifulSoup
 import requests
+import sys
 
-# TODO : CHANGE TO USER INPUTTED URL RATHER THAN PREDEFINED
+# currently, freeweather.com only works with united states
 # url to scrape weather data from
-url_beg = 'https://www.freeweather.com/cgi-bin/weather/weather.cgi?place='
-url_city = 'SAN+ANTONIO'
-url_state = '&state=tx'
-url = url_beg + url_city + url_state
+with open('PythonScripts/location.txt', 'r') as file:
+    # build url from locations.txt
+    try:
+        # all weather locations have this beginning url
+        url_beg = 'https://www.freeweather.com/cgi-bin/weather/weather.cgi?place='
+        # city has format ex: NEW+YORK+CITY
+        url_city = file.readline().upper().replace(' ','+').rstrip('\n')
+        # state has format ex: &state=ny
+        url_state = '&state=' + file.readline().lower()
+        url = url_beg + url_city + url_state
+    # if locations.txt cannot be read, then exit
+    except Exception:
+        sys.exit("ERROR:Could not open locations.txt, stopping website scrape.")
 
 # employ beautifulsoup to scrape data
 page = requests.get(url)
@@ -36,5 +46,3 @@ with open('PythonScripts/htmlparse.txt', 'w') as file:
             x = 0
     # save URL to file
     file.write('URL:'+ url + '\n')
-    file.close()
-    

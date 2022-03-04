@@ -1,11 +1,11 @@
 Weather for San Antonio, TX
-Currently:Mostly Cloudy
-Temp:60°F
-Humidity:87%
-Wind Speed:CALM
-Barometer:30.2 in.
-Dewpoint:57°F
-Heat Index:60°F
-Wind Chill:60°F
+Currently:Mostly Clear
+Temp:74°F
+Humidity:47%
+Wind Speed:SE 10 MPH
+Barometer:30.05 in.
+Dewpoint:53°F
+Heat Index:77°F
+Wind Chill:74°F
 Visibility:10 mile(s)
 URL:https://www.freeweather.com/cgi-bin/weather/weather.cgi?place=SAN+ANTONIO&state=tx
