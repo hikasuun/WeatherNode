@@ -11,7 +11,7 @@ import sys
 # url to scrape weather data from
 try:
     # build url from locations.txt
-    with open('PythonScripts/location.txt', 'r') as file:
+    with open('..\PythonScripts\location.txt', 'r') as file:
         # all weather locations have this beginning url
         url_beg = 'https://www.freeweather.com/cgi-bin/weather/weather.cgi?place='
         # city has format ex: NEW+YORK+CITY
@@ -32,7 +32,7 @@ weather = soup.find('div', class_='shadetabs3')
 # find all the weather fields within the container
 weather_elements = weather.find_all("div", class_="bottomline")
 
-with open('PythonScripts/htmlparse.txt', 'w') as file:
+with open('..\PythonScripts\htmlparse.txt', 'w') as file:
     x = 0
     # write container that has location name
     file.write(weather.find('div', class_='fptitle2').text.strip()+'\n')
