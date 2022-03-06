@@ -16,16 +16,16 @@ namespace WeatherNode
     internal class Location
     {
         private string LocationName;
-        private int LocationTemperature;
-        private int LocationHumidity;
-        private int LocationWindChill;
+        private string LocationTemperature;
+        private string LocationHumidity;
+        private string LocationWindChill;
         private string LocationURL;
 
         // Constructor
         // Takes in: Location Name, Temperature, Humidity, Wind Chill,
         //           and Locations URL
-        public Location(string name, int temp, int humidity,
-                        int windChill, string url)
+        public Location(string name, string temp, string humidity,
+                        string windChill, string url)
         {
             SetLocation(name);
             SetTemp(temp);
@@ -37,14 +37,14 @@ namespace WeatherNode
 
         // Getter and Setter utility functions
         public string GetLocation() { return LocationName; }
-        public int GetTemp() { return LocationTemperature; }
-        public int GetHumidity() { return LocationHumidity; }
-        public int GetWindChill() { return LocationWindChill; }
+        public string GetTemp() { return LocationTemperature; }
+        public string GetHumidity() { return LocationHumidity; }
+        public string GetWindChill() { return LocationWindChill; }
         public string GetUrl() { return LocationURL; }
         public void SetLocation(string location) { LocationName = location; }
-        public void SetTemp(int temp) { LocationTemperature = temp; }
-        public void SetHumidity(int humidity) { LocationHumidity = humidity; }
-        public void SetWindChill(int windChill) { LocationWindChill = windChill; }
+        public void SetTemp(string temp) { LocationTemperature = temp; }
+        public void SetHumidity(string humidity) { LocationHumidity = humidity; }
+        public void SetWindChill(string windChill) { LocationWindChill = windChill; }
         public void SetURL(string url) { LocationURL = url; }
     }
 }

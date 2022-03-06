@@ -15,6 +15,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Net.Mail;
+using System.Diagnostics;
 
 namespace WeatherNode
 {
@@ -35,6 +36,16 @@ namespace WeatherNode
             frm.TopMost = true;
             frm.ShowDialog();
             WelcomeUserLabel.Text = "Welcome, " + userName;
+
+            // REMOVE THIS FOR A BUTTON, TESTING ONLY
+            string[] lines = System.IO.File.ReadAllLines(@"..\..\..\PythonScripts\htmlparse.txt");
+            // Add index checking for 3 digit temps
+            Location location1 = new Location(lines[0].Substring(12), lines[2].Substring(5,lines[2].Length-7)+ "°F",
+                                    lines[3].Substring(9), lines[8].Substring(11,lines[8].Length-13) + "°F", lines[10].Substring(4));
+            LocationLabel.Text = location1.GetLocation();
+            TemperatureTxtBox.Text = location1.GetTemp();
+            HumidityTxtBox.Text = location1.GetHumidity();
+            WindChillTxtBox.Text = location1.GetWindChill();
         }
 
         private void emailToolStripMenuItem_Click(object sender, EventArgs e)
@@ -121,7 +132,10 @@ namespace WeatherNode
         {
             return this.userEmail;
         }
-        //
-        //
+
+        private void AddNotificationButton_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
