@@ -33,11 +33,6 @@ namespace WeatherNode
 
         }
 
-        private void EmailTxtBox_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         // Clears email and name txt boxes
         private void ClearBtn_Click(object sender, EventArgs e)
         {
@@ -67,11 +62,6 @@ namespace WeatherNode
             }
         }
 
-        private void NameTxtBox_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         // uses MailAddress class to validate if inputted email is valid
         // Simply checks for char@char
         private bool IsValidEmail(string emailaddress)
@@ -86,11 +76,6 @@ namespace WeatherNode
             {
                 return false;
             }
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

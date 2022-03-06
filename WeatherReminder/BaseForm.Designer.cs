@@ -40,6 +40,16 @@
             this.WelcomeUserLabel = new System.Windows.Forms.Label();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.WeatherFlowLayout = new System.Windows.Forms.FlowLayoutPanel();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.WindChillTxtBox = new System.Windows.Forms.RichTextBox();
+            this.HumidityTxtBox = new System.Windows.Forms.RichTextBox();
+            this.TemperatureTxtBox = new System.Windows.Forms.RichTextBox();
+            this.WindChillLabel = new System.Windows.Forms.Label();
+            this.HumidityLabel = new System.Windows.Forms.Label();
+            this.TemperatureLabel = new System.Windows.Forms.Label();
+            this.LocationLabel = new System.Windows.Forms.Label();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.NotificationFlowLayout = new System.Windows.Forms.FlowLayoutPanel();
             this.NotificationGroupBox = new System.Windows.Forms.GroupBox();
             this.NotificationComboBox = new System.Windows.Forms.ComboBox();
@@ -49,16 +59,7 @@
             this.EditNotificationButton = new System.Windows.Forms.Button();
             this.DeleteNotificationButton = new System.Windows.Forms.Button();
             this.AddNotificationButton = new System.Windows.Forms.Button();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.WindChillLabel = new System.Windows.Forms.Label();
-            this.HumidityLabel = new System.Windows.Forms.Label();
-            this.TemperatureLabel = new System.Windows.Forms.Label();
-            this.LocationLabel = new System.Windows.Forms.Label();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.TemperatureTxtBox = new System.Windows.Forms.RichTextBox();
-            this.HumidityTxtBox = new System.Windows.Forms.RichTextBox();
-            this.WindChillTxtBox = new System.Windows.Forms.RichTextBox();
+            this.AddLocationButton = new System.Windows.Forms.Button();
             this.BaseFormMenuStrip.SuspendLayout();
             this.BaseFormSplitLayout.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -66,11 +67,12 @@
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.WeatherFlowLayout.SuspendLayout();
+            this.flowLayoutPanel1.SuspendLayout();
+            this.panel2.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.NotificationFlowLayout.SuspendLayout();
             this.NotificationGroupBox.SuspendLayout();
             this.panel1.SuspendLayout();
-            this.flowLayoutPanel1.SuspendLayout();
-            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // BaseFormMenuStrip
@@ -84,7 +86,6 @@
             this.BaseFormMenuStrip.Size = new System.Drawing.Size(565, 24);
             this.BaseFormMenuStrip.TabIndex = 0;
             this.BaseFormMenuStrip.Text = "menuStrip1";
-            this.BaseFormMenuStrip.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.BaseFormMenuStrip_ItemClicked);
             // 
             // emailToolStripMenuItem
             // 
@@ -94,7 +95,6 @@
             this.emailToolStripMenuItem.Name = "emailToolStripMenuItem";
             this.emailToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
             this.emailToolStripMenuItem.Text = "Email";
-            this.emailToolStripMenuItem.Click += new System.EventHandler(this.emailToolStripMenuItem_Click);
             // 
             // toolStripEmailTextBox
             // 
@@ -104,7 +104,6 @@
             this.toolStripEmailTextBox.Overflow = System.Windows.Forms.ToolStripItemOverflow.Always;
             this.toolStripEmailTextBox.ReadOnly = true;
             this.toolStripEmailTextBox.Size = new System.Drawing.Size(275, 23);
-            this.toolStripEmailTextBox.Click += new System.EventHandler(this.toolStripTextBox1_Click);
             // 
             // changeEmailToolStripMenuItem
             // 
@@ -158,7 +157,6 @@
             this.WelcomeUserLabel.Size = new System.Drawing.Size(85, 20);
             this.WelcomeUserLabel.TabIndex = 0;
             this.WelcomeUserLabel.Text = "Hello, User";
-            this.WelcomeUserLabel.Click += new System.EventHandler(this.WelcomeUserLabel_Click);
             // 
             // splitContainer1
             // 
@@ -185,6 +183,98 @@
             this.WeatherFlowLayout.Name = "WeatherFlowLayout";
             this.WeatherFlowLayout.Size = new System.Drawing.Size(531, 226);
             this.WeatherFlowLayout.TabIndex = 0;
+            // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.Controls.Add(this.panel2);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 3);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(528, 182);
+            this.flowLayoutPanel1.TabIndex = 1;
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.WindChillTxtBox);
+            this.panel2.Controls.Add(this.HumidityTxtBox);
+            this.panel2.Controls.Add(this.TemperatureTxtBox);
+            this.panel2.Controls.Add(this.WindChillLabel);
+            this.panel2.Controls.Add(this.HumidityLabel);
+            this.panel2.Controls.Add(this.TemperatureLabel);
+            this.panel2.Controls.Add(this.LocationLabel);
+            this.panel2.Location = new System.Drawing.Point(3, 3);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(235, 149);
+            this.panel2.TabIndex = 1;
+            // 
+            // WindChillTxtBox
+            // 
+            this.WindChillTxtBox.Location = new System.Drawing.Point(86, 112);
+            this.WindChillTxtBox.Name = "WindChillTxtBox";
+            this.WindChillTxtBox.Size = new System.Drawing.Size(136, 25);
+            this.WindChillTxtBox.TabIndex = 6;
+            this.WindChillTxtBox.Text = "";
+            // 
+            // HumidityTxtBox
+            // 
+            this.HumidityTxtBox.Location = new System.Drawing.Point(86, 78);
+            this.HumidityTxtBox.Name = "HumidityTxtBox";
+            this.HumidityTxtBox.Size = new System.Drawing.Size(136, 25);
+            this.HumidityTxtBox.TabIndex = 5;
+            this.HumidityTxtBox.Text = "";
+            // 
+            // TemperatureTxtBox
+            // 
+            this.TemperatureTxtBox.Location = new System.Drawing.Point(86, 40);
+            this.TemperatureTxtBox.Name = "TemperatureTxtBox";
+            this.TemperatureTxtBox.Size = new System.Drawing.Size(136, 25);
+            this.TemperatureTxtBox.TabIndex = 4;
+            this.TemperatureTxtBox.Text = "";
+            // 
+            // WindChillLabel
+            // 
+            this.WindChillLabel.AutoSize = true;
+            this.WindChillLabel.Location = new System.Drawing.Point(6, 115);
+            this.WindChillLabel.Name = "WindChillLabel";
+            this.WindChillLabel.Size = new System.Drawing.Size(64, 13);
+            this.WindChillLabel.TabIndex = 3;
+            this.WindChillLabel.Text = "Wind Chill:";
+            // 
+            // HumidityLabel
+            // 
+            this.HumidityLabel.AutoSize = true;
+            this.HumidityLabel.Location = new System.Drawing.Point(6, 81);
+            this.HumidityLabel.Name = "HumidityLabel";
+            this.HumidityLabel.Size = new System.Drawing.Size(56, 13);
+            this.HumidityLabel.TabIndex = 2;
+            this.HumidityLabel.Text = "Humidity:";
+            // 
+            // TemperatureLabel
+            // 
+            this.TemperatureLabel.AutoSize = true;
+            this.TemperatureLabel.Location = new System.Drawing.Point(6, 43);
+            this.TemperatureLabel.Name = "TemperatureLabel";
+            this.TemperatureLabel.Size = new System.Drawing.Size(74, 13);
+            this.TemperatureLabel.TabIndex = 1;
+            this.TemperatureLabel.Text = "Temperature:";
+            // 
+            // LocationLabel
+            // 
+            this.LocationLabel.AutoSize = true;
+            this.LocationLabel.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LocationLabel.Location = new System.Drawing.Point(119, 10);
+            this.LocationLabel.Name = "LocationLabel";
+            this.LocationLabel.Size = new System.Drawing.Size(103, 17);
+            this.LocationLabel.TabIndex = 0;
+            this.LocationLabel.Text = "LocationHolder";
+            this.LocationLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.AddLocationButton);
+            this.panel3.Location = new System.Drawing.Point(3, 191);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(528, 32);
+            this.panel3.TabIndex = 2;
             // 
             // NotificationFlowLayout
             // 
@@ -275,97 +365,16 @@
             this.AddNotificationButton.TabIndex = 0;
             this.AddNotificationButton.Text = "ADD";
             this.AddNotificationButton.UseVisualStyleBackColor = true;
-            this.AddNotificationButton.Click += new System.EventHandler(this.AddNotificationButton_Click);
             // 
-            // flowLayoutPanel1
+            // AddLocationButton
             // 
-            this.flowLayoutPanel1.Controls.Add(this.panel2);
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 3);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(528, 182);
-            this.flowLayoutPanel1.TabIndex = 1;
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.WindChillTxtBox);
-            this.panel2.Controls.Add(this.HumidityTxtBox);
-            this.panel2.Controls.Add(this.TemperatureTxtBox);
-            this.panel2.Controls.Add(this.WindChillLabel);
-            this.panel2.Controls.Add(this.HumidityLabel);
-            this.panel2.Controls.Add(this.TemperatureLabel);
-            this.panel2.Controls.Add(this.LocationLabel);
-            this.panel2.Location = new System.Drawing.Point(3, 3);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(235, 149);
-            this.panel2.TabIndex = 1;
-            // 
-            // WindChillLabel
-            // 
-            this.WindChillLabel.AutoSize = true;
-            this.WindChillLabel.Location = new System.Drawing.Point(6, 115);
-            this.WindChillLabel.Name = "WindChillLabel";
-            this.WindChillLabel.Size = new System.Drawing.Size(64, 13);
-            this.WindChillLabel.TabIndex = 3;
-            this.WindChillLabel.Text = "Wind Chill:";
-            // 
-            // HumidityLabel
-            // 
-            this.HumidityLabel.AutoSize = true;
-            this.HumidityLabel.Location = new System.Drawing.Point(6, 81);
-            this.HumidityLabel.Name = "HumidityLabel";
-            this.HumidityLabel.Size = new System.Drawing.Size(56, 13);
-            this.HumidityLabel.TabIndex = 2;
-            this.HumidityLabel.Text = "Humidity:";
-            // 
-            // TemperatureLabel
-            // 
-            this.TemperatureLabel.AutoSize = true;
-            this.TemperatureLabel.Location = new System.Drawing.Point(6, 43);
-            this.TemperatureLabel.Name = "TemperatureLabel";
-            this.TemperatureLabel.Size = new System.Drawing.Size(74, 13);
-            this.TemperatureLabel.TabIndex = 1;
-            this.TemperatureLabel.Text = "Temperature:";
-            // 
-            // LocationLabel
-            // 
-            this.LocationLabel.AutoSize = true;
-            this.LocationLabel.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LocationLabel.Location = new System.Drawing.Point(119, 10);
-            this.LocationLabel.Name = "LocationLabel";
-            this.LocationLabel.Size = new System.Drawing.Size(103, 17);
-            this.LocationLabel.TabIndex = 0;
-            this.LocationLabel.Text = "LocationHolder";
-            // 
-            // panel3
-            // 
-            this.panel3.Location = new System.Drawing.Point(3, 191);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(528, 32);
-            this.panel3.TabIndex = 2;
-            // 
-            // TemperatureTxtBox
-            // 
-            this.TemperatureTxtBox.Location = new System.Drawing.Point(86, 40);
-            this.TemperatureTxtBox.Name = "TemperatureTxtBox";
-            this.TemperatureTxtBox.Size = new System.Drawing.Size(136, 25);
-            this.TemperatureTxtBox.TabIndex = 4;
-            this.TemperatureTxtBox.Text = "";
-            // 
-            // HumidityTxtBox
-            // 
-            this.HumidityTxtBox.Location = new System.Drawing.Point(86, 78);
-            this.HumidityTxtBox.Name = "HumidityTxtBox";
-            this.HumidityTxtBox.Size = new System.Drawing.Size(136, 25);
-            this.HumidityTxtBox.TabIndex = 5;
-            this.HumidityTxtBox.Text = "";
-            // 
-            // WindChillTxtBox
-            // 
-            this.WindChillTxtBox.Location = new System.Drawing.Point(86, 112);
-            this.WindChillTxtBox.Name = "WindChillTxtBox";
-            this.WindChillTxtBox.Size = new System.Drawing.Size(136, 25);
-            this.WindChillTxtBox.TabIndex = 6;
-            this.WindChillTxtBox.Text = "";
+            this.AddLocationButton.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AddLocationButton.Location = new System.Drawing.Point(418, 6);
+            this.AddLocationButton.Name = "AddLocationButton";
+            this.AddLocationButton.Size = new System.Drawing.Size(104, 23);
+            this.AddLocationButton.TabIndex = 0;
+            this.AddLocationButton.Text = "ADD LOCATION";
+            this.AddLocationButton.UseVisualStyleBackColor = true;
             // 
             // BaseForm
             // 
@@ -391,13 +400,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             this.WeatherFlowLayout.ResumeLayout(false);
+            this.flowLayoutPanel1.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
+            this.panel3.ResumeLayout(false);
             this.NotificationFlowLayout.ResumeLayout(false);
             this.NotificationGroupBox.ResumeLayout(false);
             this.NotificationGroupBox.PerformLayout();
             this.panel1.ResumeLayout(false);
-            this.flowLayoutPanel1.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -435,5 +445,6 @@
         private System.Windows.Forms.RichTextBox WindChillTxtBox;
         private System.Windows.Forms.RichTextBox HumidityTxtBox;
         private System.Windows.Forms.RichTextBox TemperatureTxtBox;
+        private System.Windows.Forms.Button AddLocationButton;
     }
 }
