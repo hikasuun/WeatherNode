@@ -16,7 +16,6 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Net.Mail;
 using System.Diagnostics;
-using Microsoft.Scripting.Hosting;
 using System.IO;
 
 namespace WeatherNode
@@ -38,17 +37,11 @@ namespace WeatherNode
             frm.TopMost = true;
             frm.ShowDialog();
             WelcomeUserLabel.Text = "Welcome, " + userName;
+            toolStripEmailTextBox.Text = userEmail.ToString();
 
             // REMOVE THIS FOR A BUTTON, TESTING ONLY
             RunPythonScript();
-            string[] lines = System.IO.File.ReadAllLines(@"..\..\..\PythonScripts\htmlparse.txt");
-            // Add index checking for 3 digit temps
-            Location location1 = new Location(lines[0].Substring(12), lines[2].Substring(5,lines[2].Length-7)+ "°F",
-                                    lines[3].Substring(9), lines[8].Substring(11,lines[8].Length-13) + "°F", lines[10].Substring(4));
-            LocationLabel.Text = location1.GetLocation();
-            TemperatureTxtBox.Text = location1.GetTemp();
-            HumidityTxtBox.Text = location1.GetHumidity();
-            WindChillTxtBox.Text = location1.GetWindChill();
+            ReadFile();
         }
 
         private void RunPythonScript()
@@ -67,27 +60,20 @@ namespace WeatherNode
             }
             catch (Exception ex)
             { 
+                Console.WriteLine(ex.Message);
             }
         }
 
-        private void emailToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ReadFile()
         {
-            toolStripEmailTextBox.Text = getUserEmail().ToString();
-        }
-
-        private void BaseFormMenuStrip_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void WelcomeUserLabel_Click(object sender, EventArgs e)
-        {
-
+            string[] lines = System.IO.File.ReadAllLines(@"..\..\..\PythonScripts\htmlparse.txt"); // read the file
+            // Add index checking for 3 digit temps
+            Location location1 = new Location(lines[0].Substring(12), lines[2].Substring(5, lines[2].Length - 7) + "°F",
+                                    lines[3].Substring(9), lines[8].Substring(11, lines[8].Length - 13) + "°F", lines[10].Substring(4));
+            LocationLabel.Text = location1.GetLocation();
+            TemperatureTxtBox.Text = location1.GetTemp();
+            HumidityTxtBox.Text = location1.GetHumidity();
+            WindChillTxtBox.Text = location1.GetWindChill();
         }
 
         // Deletion of selected notification
@@ -109,16 +95,12 @@ namespace WeatherNode
             }
         }
 
-        private void toolStripTextBox1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void changeEmailToolStripMenuItem_Click(object sender, EventArgs e)
         {
             EmailChangeForm frm = new EmailChangeForm(this);
             frm.TopMost = true;
             frm.ShowDialog();
+            toolStripEmailTextBox.Text = userEmail.ToString();
         }
 
         private void settingsToolStripMenuItem_Click(object sender, EventArgs e)
@@ -133,7 +115,6 @@ namespace WeatherNode
             this.Close();
         }
 
-        //
         // GETTERS AND SETTERS 
         public void setUserName(string userN)
         {
@@ -155,9 +136,6 @@ namespace WeatherNode
             return this.userEmail;
         }
 
-        private void AddNotificationButton_Click(object sender, EventArgs e)
-        {
-
-        }
+        
     }
 }

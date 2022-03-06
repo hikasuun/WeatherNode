@@ -85,7 +85,6 @@
             this.NameTxtBox.Name = "NameTxtBox";
             this.NameTxtBox.Size = new System.Drawing.Size(349, 22);
             this.NameTxtBox.TabIndex = 4;
-            this.NameTxtBox.TextChanged += new System.EventHandler(this.NameTxtBox_TextChanged);
             // 
             // EmailTxtBox
             // 
@@ -93,7 +92,6 @@
             this.EmailTxtBox.Name = "EmailTxtBox";
             this.EmailTxtBox.Size = new System.Drawing.Size(349, 22);
             this.EmailTxtBox.TabIndex = 5;
-            this.EmailTxtBox.TextChanged += new System.EventHandler(this.EmailTxtBox_TextChanged);
             // 
             // InstructionLabel
             // 
@@ -104,7 +102,6 @@
             this.InstructionLabel.Size = new System.Drawing.Size(226, 17);
             this.InstructionLabel.TabIndex = 6;
             this.InstructionLabel.Text = "Please enter your information below :";
-            this.InstructionLabel.Click += new System.EventHandler(this.label1_Click);
             // 
             // FirstTimeUserForm
             // 
