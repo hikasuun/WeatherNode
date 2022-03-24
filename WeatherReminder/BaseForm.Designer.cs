@@ -50,6 +50,7 @@
             this.TemperatureLabel = new System.Windows.Forms.Label();
             this.LocationLabel = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.AddLocationButton = new System.Windows.Forms.Button();
             this.NotificationFlowLayout = new System.Windows.Forms.FlowLayoutPanel();
             this.NotificationGroupBox = new System.Windows.Forms.GroupBox();
             this.NotificationComboBox = new System.Windows.Forms.ComboBox();
@@ -59,7 +60,6 @@
             this.EditNotificationButton = new System.Windows.Forms.Button();
             this.DeleteNotificationButton = new System.Windows.Forms.Button();
             this.AddNotificationButton = new System.Windows.Forms.Button();
-            this.AddLocationButton = new System.Windows.Forms.Button();
             this.BaseFormMenuStrip.SuspendLayout();
             this.BaseFormSplitLayout.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -276,6 +276,17 @@
             this.panel3.Size = new System.Drawing.Size(528, 32);
             this.panel3.TabIndex = 2;
             // 
+            // AddLocationButton
+            // 
+            this.AddLocationButton.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AddLocationButton.Location = new System.Drawing.Point(418, 6);
+            this.AddLocationButton.Name = "AddLocationButton";
+            this.AddLocationButton.Size = new System.Drawing.Size(104, 23);
+            this.AddLocationButton.TabIndex = 0;
+            this.AddLocationButton.Text = "ADD LOCATION";
+            this.AddLocationButton.UseVisualStyleBackColor = true;
+            this.AddLocationButton.Click += new System.EventHandler(this.AddLocationButton_Click);
+            // 
             // NotificationFlowLayout
             // 
             this.NotificationFlowLayout.Controls.Add(this.NotificationGroupBox);
@@ -365,16 +376,6 @@
             this.AddNotificationButton.TabIndex = 0;
             this.AddNotificationButton.Text = "ADD";
             this.AddNotificationButton.UseVisualStyleBackColor = true;
-            // 
-            // AddLocationButton
-            // 
-            this.AddLocationButton.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AddLocationButton.Location = new System.Drawing.Point(418, 6);
-            this.AddLocationButton.Name = "AddLocationButton";
-            this.AddLocationButton.Size = new System.Drawing.Size(104, 23);
-            this.AddLocationButton.TabIndex = 0;
-            this.AddLocationButton.Text = "ADD LOCATION";
-            this.AddLocationButton.UseVisualStyleBackColor = true;
             // 
             // BaseForm
             // 

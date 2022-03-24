@@ -22,8 +22,9 @@ namespace WeatherNode
 {
     public partial class BaseForm : Form
     {
-        private string userName;
-        private MailAddress userEmail;
+        private string userName; // holds user's name
+        private MailAddress userEmail; // holds user's email address
+        private List<Location> locations = new List<Location>(); // vector list holding user's locations
 
         public BaseForm() 
         {
@@ -38,10 +39,6 @@ namespace WeatherNode
             frm.ShowDialog();
             WelcomeUserLabel.Text = "Welcome, " + userName;
             toolStripEmailTextBox.Text = userEmail.ToString();
-
-            // REMOVE THIS FOR A BUTTON, TESTING ONLY
-            RunPythonScript();
-            ReadFile();
         }
 
         private void RunPythonScript()
@@ -64,16 +61,13 @@ namespace WeatherNode
             }
         }
 
-        private void ReadFile()
+
+        private void ReadVector()
         {
-            string[] lines = System.IO.File.ReadAllLines(@"..\..\..\PythonScripts\htmlparse.txt"); // read the file
-            // Add index checking for 3 digit temps
-            Location location1 = new Location(lines[0].Substring(12), lines[2].Substring(5, lines[2].Length - 7) + "°F",
-                                    lines[3].Substring(9), lines[8].Substring(11, lines[8].Length - 13) + "°F", lines[10].Substring(4));
-            LocationLabel.Text = location1.GetLocation();
-            TemperatureTxtBox.Text = location1.GetTemp();
-            HumidityTxtBox.Text = location1.GetHumidity();
-            WindChillTxtBox.Text = location1.GetWindChill();
+            LocationLabel.Text = locations[0].GetLocation();
+            TemperatureTxtBox.Text = locations[0].GetTemp();
+            HumidityTxtBox.Text = locations[0].GetHumidity();
+            WindChillTxtBox.Text = locations[0].GetWindChill();
         }
 
         // Deletion of selected notification
@@ -136,6 +130,16 @@ namespace WeatherNode
             return this.userEmail;
         }
 
-        
+        // testing purposes: add location button should have pop up with location fields and add new box to app.
+        private void AddLocationButton_Click(object sender, EventArgs e)
+        {
+            RunPythonScript();
+            string[] lines = System.IO.File.ReadAllLines(@"..\..\..\PythonScripts\htmlparse.txt"); // read the file
+
+            // Add index checking for 3 digit temps
+            locations.Add(new Location(lines[0].Substring(12), lines[2].Substring(5, lines[2].Length - 7) + "°F",
+                lines[3].Substring(9), lines[8].Substring(11, lines[8].Length - 13) + "°F", lines[10].Substring(4)));
+            ReadVector();
+        }
     }
 }
