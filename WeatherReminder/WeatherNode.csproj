@@ -79,6 +79,12 @@
     <Compile Include="FirstTimeUserForm.Designer.cs">
       <DependentUpon>FirstTimeUserForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="NewLocationForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NewLocationForm.Designer.cs">
+      <DependentUpon>NewLocationForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Location.cs" />
     <Compile Include="UserSettingsForm.cs">
       <SubType>Form</SubType>
@@ -96,6 +102,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FirstTimeUserForm.resx">
       <DependentUpon>FirstTimeUserForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NewLocationForm.resx">
+      <DependentUpon>NewLocationForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
