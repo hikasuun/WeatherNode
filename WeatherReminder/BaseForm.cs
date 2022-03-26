@@ -133,6 +133,9 @@ namespace WeatherNode
         // testing purposes: add location button should have pop up with location fields and add new box to app.
         private void AddLocationButton_Click(object sender, EventArgs e)
         {
+            NewLocationForm frm = new NewLocationForm(this);
+            frm.TopMost = true;
+            frm.ShowDialog();
             RunPythonScript();
             string[] lines = System.IO.File.ReadAllLines(@"..\..\..\PythonScripts\htmlparse.txt"); // read the file
 
