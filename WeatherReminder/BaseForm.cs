@@ -39,6 +39,8 @@ namespace WeatherNode
             frm.ShowDialog();
             WelcomeUserLabel.Text = "Welcome, " + userName;
             toolStripEmailTextBox.Text = userEmail.ToString();
+            WeatherBox.Enabled = false;
+            LocationLabel.Visible = false;
         }
 
         private void RunPythonScript()
@@ -143,6 +145,13 @@ namespace WeatherNode
             locations.Add(new Location(lines[0].Substring(12), lines[2].Substring(5, lines[2].Length - 7) + "°F",
                 lines[3].Substring(9), lines[8].Substring(11, lines[8].Length - 13) + "°F", lines[10].Substring(4)));
             ReadVector();
+            WeatherBox.Enabled = true;
+            LocationLabel.Visible = true;
+        }
+
+        private void NotificationGroupBox_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }
