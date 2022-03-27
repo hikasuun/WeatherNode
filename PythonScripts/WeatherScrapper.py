@@ -10,8 +10,8 @@ import sys
 # currently, freeweather.com only works with the united states
 # url to scrape weather data from
 try:
-    # build url from locations.txt
-    with open('..\PythonScripts\location.txt', 'r') as file:
+    # build url from location.txt
+    with open('..\..\WeatherNode\PythonScripts\location.txt', 'r') as file:
         # all weather locations have this beginning url
         url_beg = 'https://www.freeweather.com/cgi-bin/weather/weather.cgi?place='
         # city has format ex: NEW+YORK+CITY
@@ -21,7 +21,7 @@ try:
         url = url_beg + url_city + url_state
 # if locations.txt cannot be read, then exit
 except Exception:
-    sys.exit("ERROR: Could not open locations.txt\n")
+    sys.exit("ERROR: Could not open location.txt\n")
 
 # employ beautifulsoup to scrape data
 page = requests.get(url)
@@ -31,6 +31,11 @@ soup = BeautifulSoup(page.content, "html.parser")
 weather = soup.find('div', class_='shadetabs3')
 # find all the weather fields within the container
 weather_elements = weather.find_all("div", class_="bottomline")
+
+# get forecasted weather container
+weather_forecast = soup.find_all('div', class_= 'shadetabs3', limit=2)
+# get forecasted weather fields within the container
+weather_forecast_elements = weather_forecast[1]
 
 with open('..\PythonScripts\htmlparse.txt', 'w') as file:
     x = 0
@@ -45,4 +50,12 @@ with open('..\PythonScripts\htmlparse.txt', 'w') as file:
             file.write('\n')
             x = 0
     # save URL to file
-    file.write('URL:'+ url + '\n')
+    file.write('URL:'+ url+ '\n')
+    x = 0
+    # writes forecasted weather (partly cloudy, rainy, etc.)
+    for weather_forecast_elements in weather_forecast_elements:
+        if (x == 3): # only interested in whats is in the 3rd element
+            file.write(weather_forecast_elements.text.strip() + '\n')
+        else:
+            pass
+        x += 1
