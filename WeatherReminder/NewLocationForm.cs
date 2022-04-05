@@ -34,15 +34,22 @@ namespace WeatherNode
         {
             try
             {
-                string cityLine = CityTxtBox.Text.ToLower();
-                string stateLine = GetFormatedState(StateComboBox.SelectedItem.ToString()).ToLower();
-
-                string[] lines =
+                if (String.IsNullOrEmpty(CityTxtBox.Text) || String.IsNullOrEmpty(StateComboBox.SelectedItem.ToString()))
                 {
+                    MessageBox.Show("CANNOT LEAVE OPTIONS EMPTY");
+                }
+                else
+                {
+                    string cityLine = CityTxtBox.Text.ToLower();
+                    string stateLine = GetFormatedState(StateComboBox.SelectedItem.ToString()).ToLower();
+
+                    string[] lines =
+                    {
                     cityLine, stateLine
                 };
-                File.WriteAllLines(@"..\..\..\PythonScripts\location.txt", lines);
-                this.Close();
+                    File.WriteAllLines(@"..\..\..\PythonScripts\location.txt", lines);
+                    this.Close();
+                }
             } catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
