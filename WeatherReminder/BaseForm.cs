@@ -149,6 +149,18 @@ namespace WeatherNode
             LocationLabel.Visible = true;
         }
 
+        private void BaseForm_Closing(object sender, FormClosingEventArgs e)
+        {
+            if(File.Exists(@"..\..\..\PythonScripts\htmlparse.txt"))
+            {
+                File.Delete(@"..\..\..\PythonScripts\htmlparse.txt");
+            }
+            if(File.Exists(@"..\..\..\PythonScripts\location.txt"))
+            {
+                File.Delete(@"..\..\..\PythonScripts\location.txt");
+            }
+        }
+
         private void NotificationGroupBox_Enter(object sender, EventArgs e)
         {
 

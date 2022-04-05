@@ -15,15 +15,13 @@ namespace WeatherNode
     [Serializable] 
     internal class Location
     {
-        private string LocationName;
-        private string LocationTemperature;
-        private string LocationHumidity;
-        private string LocationWindChill;
-        private string LocationURL;
+        private string LocationName; // hold location name
+        private string LocationTemperature; // hold location temperature
+        private string LocationHumidity; // hold location humidity
+        private string LocationWindChill; // hold location's wind chill
+        private string LocationURL; // hold location's URL
 
         // Constructor
-        // Takes in: Location Name, Temperature, Humidity, Wind Chill,
-        //           and Locations URL
         public Location(string name, string temp, string humidity,
                         string windChill, string url)
         {

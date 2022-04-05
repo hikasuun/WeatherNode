@@ -86,6 +86,7 @@
       <DependentUpon>NewLocationForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Location.cs" />
+    <Compile Include="Notification.cs" />
     <Compile Include="UserSettingsForm.cs">
       <SubType>Form</SubType>
     </Compile>

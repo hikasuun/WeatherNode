@@ -166,6 +166,7 @@
             // 
             // CancelButton
             // 
+            this.CancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.CancelButton.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CancelButton.Location = new System.Drawing.Point(236, 141);
             this.CancelButton.Name = "CancelButton";
@@ -177,8 +178,10 @@
             // 
             // NewLocationForm
             // 
+            this.AcceptButton = this.AddLocationBtn;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.CancelButton;
             this.ClientSize = new System.Drawing.Size(448, 178);
             this.ControlBox = false;
             this.Controls.Add(this.CancelButton);
