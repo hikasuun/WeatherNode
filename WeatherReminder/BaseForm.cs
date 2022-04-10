@@ -17,6 +17,7 @@ using System.Windows.Forms;
 using System.Net.Mail;
 using System.Diagnostics;
 using System.IO;
+using System.Globalization;
 
 namespace WeatherNode
 {
@@ -24,7 +25,8 @@ namespace WeatherNode
     {
         private string userName; // holds user's name
         private MailAddress userEmail; // holds user's email address
-        private List<Location> locations = new List<Location>(); // vector list holding user's locations
+        //private List<Location> locations = new List<Location>(); // vector list holding user's locations
+        private Location location;
 
         public BaseForm() 
         {
@@ -64,12 +66,13 @@ namespace WeatherNode
         }
 
 
-        private void ReadVector()
+        private void ReadList()
         {
-            LocationLabel.Text = locations[0].GetLocation();
-            TemperatureTxtBox.Text = locations[0].GetTemp();
-            HumidityTxtBox.Text = locations[0].GetHumidity();
-            WindChillTxtBox.Text = locations[0].GetWindChill();
+            LocationLabel.Text = location.GetLocation();
+            TemperatureTxtBox.Text = location.GetTemp();
+            HumidityTxtBox.Text = location.GetHumidity();
+            WindChillTxtBox.Text = location.GetWindChill();
+            ForecastTxtBox.Text = location.GetForecast();
         }
 
         // Deletion of selected notification
@@ -138,13 +141,19 @@ namespace WeatherNode
             NewLocationForm frm = new NewLocationForm(this);
             frm.TopMost = true;
             frm.ShowDialog();
+            LoadingForm loadfrm = new LoadingForm(this);
+            loadfrm.StartPosition = FormStartPosition.CenterParent;
+            loadfrm.TopMost = true;
+            loadfrm.Show(this);
             RunPythonScript();
+            loadfrm.Close();
+
             string[] lines = System.IO.File.ReadAllLines(@"..\..\..\PythonScripts\htmlparse.txt"); // read the file
 
             // Add index checking for 3 digit temps
-            locations.Add(new Location(lines[0].Substring(12), lines[2].Substring(5, lines[2].Length - 7) + "°F",
-                lines[3].Substring(9), lines[8].Substring(11, lines[8].Length - 13) + "°F", lines[10].Substring(4)));
-            ReadVector();
+            location = new Location(lines[0].Substring(12), lines[2].Substring(5, lines[2].Length - 7) + "°F",
+                lines[3].Substring(9), lines[8].Substring(11, lines[8].Length - 13) + "°F", ExtractForecast(lines[11]), lines[10].Substring(4));
+            ReadList();
             WeatherBox.Enabled = true;
             LocationLabel.Visible = true;
         }
@@ -159,6 +168,23 @@ namespace WeatherNode
             {
                 File.Delete(@"..\..\..\PythonScripts\location.txt");
             }
+        }
+
+        // extracts location's weather forecast from the final line in htmlparse.txt
+        private string ExtractForecast(string str)
+        {
+            string[] forecastList = 
+                { "sunny", "mostly sunny", "partly sunny","clear", "partly clear", "mostly clear", "clearing",
+                "partly cloudy", "mostly cloudy", "chance of rain", "chance of showers", "chance of t-storm",
+                "rain/snow showers",  "fog", "patchy fog","windy"}; // may need to add more weather forecasts as need arises
+            for (int i = 0; i < forecastList.Length; i++)
+            {
+                if (str.ToLower().Contains(forecastList[i]))
+                {
+                    return CultureInfo.CurrentCulture.TextInfo.ToTitleCase(forecastList[i]);
+                }
+            }
+            return "ERROR";
         }
 
         private void NotificationGroupBox_Enter(object sender, EventArgs e)
