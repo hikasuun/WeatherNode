@@ -1,4 +1,11 @@
-﻿using System;
+﻿/*
+ * NewLocationForm.cs
+ * Language: C#
+ * User selects location and the file writes it out formatted
+ * to the location.txt file
+ * February 2022 - April 2022
+ */
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;

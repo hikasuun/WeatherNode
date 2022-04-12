@@ -3,7 +3,7 @@
  * Language: C#
  * Form that appears when user is running application 
  * for the first time
- * January 2022 - 
+ * January 2022 - April 2022
  */
 using System;
 using System.Collections.Generic;
