@@ -27,7 +27,6 @@ namespace WeatherNode
         }
         private void EmailChangeForm_Load(object sender, EventArgs e)
         {
-
         }
 
         // Change user email function

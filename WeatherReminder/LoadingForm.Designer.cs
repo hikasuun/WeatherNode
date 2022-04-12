@@ -35,22 +35,23 @@
             // 
             this.loadingLabel.AutoSize = true;
             this.loadingLabel.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.loadingLabel.Location = new System.Drawing.Point(54, 56);
+            this.loadingLabel.Location = new System.Drawing.Point(76, 63);
             this.loadingLabel.Name = "loadingLabel";
-            this.loadingLabel.Size = new System.Drawing.Size(184, 17);
+            this.loadingLabel.Size = new System.Drawing.Size(107, 17);
             this.loadingLabel.TabIndex = 0;
-            this.loadingLabel.Text = "Loading new location data...";
+            this.loadingLabel.Text = "Loading Data....";
+            this.loadingLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // LoadingForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(307, 149);
+            this.ClientSize = new System.Drawing.Size(269, 146);
             this.ControlBox = false;
             this.Controls.Add(this.loadingLabel);
             this.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "LoadingForm";
