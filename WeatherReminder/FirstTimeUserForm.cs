@@ -30,7 +30,6 @@ namespace WeatherNode
 
         private void FirstTimeUserForm_Load(object sender, EventArgs e)
         {
-
         }
 
         // Clears email and name txt boxes

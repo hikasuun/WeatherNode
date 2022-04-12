@@ -25,8 +25,7 @@ namespace WeatherNode
     {
         private string userName; // holds user's name
         private MailAddress userEmail; // holds user's email address
-        //private List<Location> locations = new List<Location>(); // vector list holding user's locations
-        private Location location;
+        private Location location; // user's location
 
         public BaseForm() 
         {
@@ -45,6 +44,7 @@ namespace WeatherNode
             LocationLabel.Visible = false;
         }
 
+        // deploys the webscrapping routine
         private void RunPythonScript()
         {
             ProcessStartInfo startInfo = new ProcessStartInfo();
@@ -65,8 +65,8 @@ namespace WeatherNode
             }
         }
 
-
-        private void ReadList() // populates text boxes with location info
+        // populates text boxes with location info
+        private void ReadList() 
         {
             LocationLabel.Text = location.GetLocation();
             TemperatureTxtBox.Text = location.GetTemp();
@@ -93,7 +93,8 @@ namespace WeatherNode
                 // do nothing
             }
         }
-
+        
+        // changes user's email
         private void changeEmailToolStripMenuItem_Click(object sender, EventArgs e)
         {
             EmailChangeForm frm = new EmailChangeForm(this);
@@ -102,6 +103,7 @@ namespace WeatherNode
             toolStripEmailTextBox.Text = userEmail.ToString();
         }
 
+        // opens user settings
         private void settingsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             UserSettingsForm frm = new UserSettingsForm(this);
@@ -114,6 +116,7 @@ namespace WeatherNode
             this.Close();
         }
 
+        // changes location
         private void AddLocationButton_Click(object sender, EventArgs e)
         {
             // window to cahnge to new location
@@ -127,13 +130,14 @@ namespace WeatherNode
             loadfrm.TopMost = true;
             loadfrm.Show(this);
             RunPythonScript();
-            loadfrm.Close(); // once finished, the window closes
+            loadfrm.Close(); // once finished, loading window closes
 
             string[] lines = System.IO.File.ReadAllLines(@"..\..\..\PythonScripts\htmlparse.txt"); // read the file
 
             // Add index checking for 3 digit temps
             location = new Location(lines[0].Substring(12),lines[1].Substring(10), lines[2].Substring(5, lines[2].Length - 7) + "°F",
                 lines[3].Substring(9), lines[8].Substring(11, lines[8].Length - 13) + "°F", ExtractForecast(lines[11]), lines[10].Substring(4));
+
             ReadList();
             ChangeWeatherImage();
             weatherPictureBox.Visible = true;
@@ -141,7 +145,8 @@ namespace WeatherNode
             LocationLabel.Visible = true;
         }
 
-        private void BaseForm_Closing(object sender, FormClosingEventArgs e)
+        // clean up after the application closes
+        private void BaseForm_Closing(object sender, FormClosingEventArgs e) 
         {
             if(File.Exists(@"..\..\..\PythonScripts\htmlparse.txt"))
             {
@@ -156,10 +161,13 @@ namespace WeatherNode
         // extracts location's weather forecast from the final line in htmlparse.txt
         private string ExtractForecast(string str)
         {
+            // list of different forecasts that FreeWeather.com has
+            // may need to add more weather forecasts as need arises
             string[] forecastList = 
                 { "sunny", "mostly sunny", "partly sunny","clear", "partly clear", "mostly clear", "clearing",
                 "partly cloudy", "mostly cloudy", "chance of rain", "chance of showers", "chance of t-storm",
-                "rain/snow showers",  "fog", "patchy fog","windy", "overcast"}; // may need to add more weather forecasts as need arises
+                "rain/snow showers",  "fog", "patchy fog","windy", "overcast", "hazy", "blowing widespread dust",
+                "rain and snow"};
             for (int i = 0; i < forecastList.Length; i++)
             {
                 if (str.ToLower().Contains(forecastList[i]))
@@ -180,6 +188,7 @@ namespace WeatherNode
                 weatherPictureBox.Image.Dispose();
             }
             
+            // select image depending on weather
             switch (location.GetWeather().ToLower())
             {
                 case "sunny":
@@ -201,6 +210,7 @@ namespace WeatherNode
                 case "chance of rain":
                 case "change of showers":
                 case "rain/snow showers":
+                case "rain and snow":
                     image = new Bitmap(@"..\..\..\Icons\showers.bmp");
                     break;
                 case "chance of t-storm":
@@ -208,19 +218,21 @@ namespace WeatherNode
                     break;
                 case "fog":
                 case "patchy fog":
+                case "hazy":
                     image = new Bitmap(@"..\..\..\Icons\fog.bmp");
                     break;
                 case "windy":
+                case "blowing widespread dust":
                     image = new Bitmap(@"..\..\..\Icons\windy.bmp");
                     break;
                 default:
                     weatherPictureBox = null;
                     break;
             }
-            weatherPictureBox.Image = image;
+            weatherPictureBox.Image = image; // display image
         }
 
-        // GETTERS AND SETTERS 
+        // UTILITY FUNCTIONS
         public void setUserName(string userN)
         {
             this.userName = userN;

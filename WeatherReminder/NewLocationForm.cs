@@ -20,11 +20,6 @@ namespace WeatherNode
             form = frm;
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void CancelButton_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -34,7 +29,8 @@ namespace WeatherNode
         {
             try
             {
-                if (String.IsNullOrEmpty(CityTxtBox.Text) || String.IsNullOrEmpty(StateComboBox.SelectedItem.ToString()))
+                // check if either city txt box or the state is empty / not selected
+                if (String.IsNullOrEmpty(CityTxtBox.Text) || StateComboBox.SelectedItem == null)
                 {
                     MessageBox.Show("CANNOT LEAVE OPTIONS EMPTY");
                 }
@@ -43,11 +39,11 @@ namespace WeatherNode
                     string cityLine = CityTxtBox.Text.ToLower();
                     string stateLine = GetFormatedState(StateComboBox.SelectedItem.ToString()).ToLower();
 
-                    string[] lines =
-                    {
-                    cityLine, stateLine
-                };
-                    File.WriteAllLines(@"..\..\..\PythonScripts\location.txt", lines);
+                    string[] lines = {cityLine, stateLine};
+                    // FORMATTING
+                    //   CityName: san antonio
+                    //      State: tx
+                    File.WriteAllLines(@"..\..\..\PythonScripts\location.txt", lines); // write out location to location.txt
                     this.Close();
                 }
             } catch (Exception ex)
@@ -55,7 +51,9 @@ namespace WeatherNode
                 MessageBox.Show(ex.Message);
             }
         }
-        private string GetFormatedState(string state)
+
+        // converts state full name to abberivation
+        private string GetFormatedState(string state) 
         {
             switch (state.ToUpper())
             {

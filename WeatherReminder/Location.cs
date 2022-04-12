@@ -37,7 +37,7 @@ namespace WeatherNode
         }
 
 
-        // Getter and Setter utility functions
+        // UTILITY FUNCTIONS
         public string GetLocation() { return LocationName; }
         public string GetWeather() { return LocationWeather; }
         public string GetTemp() { return LocationTemperature; }
