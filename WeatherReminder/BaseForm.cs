@@ -66,7 +66,7 @@ namespace WeatherNode
         }
 
 
-        private void ReadList()
+        private void ReadList() // populates text boxes with location info
         {
             LocationLabel.Text = location.GetLocation();
             TemperatureTxtBox.Text = location.GetTemp();
@@ -114,46 +114,29 @@ namespace WeatherNode
             this.Close();
         }
 
-        // GETTERS AND SETTERS 
-        public void setUserName(string userN)
-        {
-            this.userName = userN;
-        }
-
-        public void setUserEmail(MailAddress userE)
-        {
-            this.userEmail = userE;
-        }
-
-        public string getUserName()
-        {
-            return this.userName;
-        }
-
-        public MailAddress getUserEmail()
-        {
-            return this.userEmail;
-        }
-
-        // testing purposes: add location button should have pop up with location fields and add new box to app.
         private void AddLocationButton_Click(object sender, EventArgs e)
         {
+            // window to cahnge to new location
             NewLocationForm frm = new NewLocationForm(this);
             frm.TopMost = true;
             frm.ShowDialog();
+
+            // window to indicate to user that program is loading location info
             LoadingForm loadfrm = new LoadingForm(this);
             loadfrm.StartPosition = FormStartPosition.CenterParent;
             loadfrm.TopMost = true;
             loadfrm.Show(this);
             RunPythonScript();
-            loadfrm.Close();
+            loadfrm.Close(); // once finished, the window closes
 
             string[] lines = System.IO.File.ReadAllLines(@"..\..\..\PythonScripts\htmlparse.txt"); // read the file
 
             // Add index checking for 3 digit temps
-            location = new Location(lines[0].Substring(12), lines[2].Substring(5, lines[2].Length - 7) + "°F",
+            location = new Location(lines[0].Substring(12),lines[1].Substring(10), lines[2].Substring(5, lines[2].Length - 7) + "°F",
                 lines[3].Substring(9), lines[8].Substring(11, lines[8].Length - 13) + "°F", ExtractForecast(lines[11]), lines[10].Substring(4));
             ReadList();
+            ChangeWeatherImage();
+            weatherPictureBox.Visible = true;
             WeatherBox.Enabled = true;
             LocationLabel.Visible = true;
         }
@@ -176,7 +159,7 @@ namespace WeatherNode
             string[] forecastList = 
                 { "sunny", "mostly sunny", "partly sunny","clear", "partly clear", "mostly clear", "clearing",
                 "partly cloudy", "mostly cloudy", "chance of rain", "chance of showers", "chance of t-storm",
-                "rain/snow showers",  "fog", "patchy fog","windy"}; // may need to add more weather forecasts as need arises
+                "rain/snow showers",  "fog", "patchy fog","windy", "overcast"}; // may need to add more weather forecasts as need arises
             for (int i = 0; i < forecastList.Length; i++)
             {
                 if (str.ToLower().Contains(forecastList[i]))
@@ -187,9 +170,75 @@ namespace WeatherNode
             return "ERROR";
         }
 
-        private void NotificationGroupBox_Enter(object sender, EventArgs e)
+        // Changes the picture next to location to reflect current weather
+        private void ChangeWeatherImage()
         {
+            Bitmap image = null;
+            // check if PictureBox is populated, needs to be cleared before new image is loaded
+            if (weatherPictureBox.Image != null) 
+            {
+                weatherPictureBox.Image.Dispose();
+            }
+            
+            switch (location.GetWeather().ToLower())
+            {
+                case "sunny":
+                case "clear":
+                    image = new Bitmap(@"..\..\..\Icons\sunny.bmp");
+                    break;
+                case "mostly sunny":
+                case "partly sunny":
+                case "partly clear":
+                case "mostly clear":
+                case "clearing":
+                    image = new Bitmap(@"..\..\..\Icons\day-cloudy.bmp");
+                    break;
+                case "partly cloudy":
+                case "mostly cloudy":
+                case "overcast":
+                    image = new Bitmap(@"..\..\..\Icons\cloudy.bmp");
+                    break;
+                case "chance of rain":
+                case "change of showers":
+                case "rain/snow showers":
+                    image = new Bitmap(@"..\..\..\Icons\showers.bmp");
+                    break;
+                case "chance of t-storm":
+                    image = new Bitmap(@"..\..\..\Icons\storm-showers.bmp");
+                    break;
+                case "fog":
+                case "patchy fog":
+                    image = new Bitmap(@"..\..\..\Icons\fog.bmp");
+                    break;
+                case "windy":
+                    image = new Bitmap(@"..\..\..\Icons\windy.bmp");
+                    break;
+                default:
+                    weatherPictureBox = null;
+                    break;
+            }
+            weatherPictureBox.Image = image;
+        }
 
+        // GETTERS AND SETTERS 
+        public void setUserName(string userN)
+        {
+            this.userName = userN;
+        }
+
+        public void setUserEmail(MailAddress userE)
+        {
+            this.userEmail = userE;
+        }
+
+        public string getUserName()
+        {
+            return this.userName;
+        }
+
+        public MailAddress getUserEmail()
+        {
+            return this.userEmail;
         }
     }
 }

@@ -40,7 +40,7 @@
             this.WeatherFlowLayout = new System.Windows.Forms.FlowLayoutPanel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.WeatherBox = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.weatherPictureBox = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
             this.HumidityTxtBox = new System.Windows.Forms.RichTextBox();
             this.ForecastTxtBox = new System.Windows.Forms.RichTextBox();
@@ -71,7 +71,7 @@
             this.WeatherFlowLayout.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.WeatherBox.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.weatherPictureBox)).BeginInit();
             this.panel3.SuspendLayout();
             this.NotificationFlowLayout.SuspendLayout();
             this.NotificationGroupBox.SuspendLayout();
@@ -174,7 +174,7 @@
             // 
             // WeatherBox
             // 
-            this.WeatherBox.Controls.Add(this.pictureBox1);
+            this.WeatherBox.Controls.Add(this.weatherPictureBox);
             this.WeatherBox.Controls.Add(this.label2);
             this.WeatherBox.Controls.Add(this.HumidityTxtBox);
             this.WeatherBox.Controls.Add(this.ForecastTxtBox);
@@ -186,16 +186,21 @@
             this.WeatherBox.Controls.Add(this.LocationLabel);
             this.WeatherBox.Location = new System.Drawing.Point(3, 3);
             this.WeatherBox.Name = "WeatherBox";
-            this.WeatherBox.Size = new System.Drawing.Size(309, 188);
+            this.WeatherBox.Size = new System.Drawing.Size(269, 188);
             this.WeatherBox.TabIndex = 1;
             // 
-            // pictureBox1
+            // weatherPictureBox
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(9, 4);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(70, 48);
-            this.pictureBox1.TabIndex = 9;
-            this.pictureBox1.TabStop = false;
+            this.weatherPictureBox.BackColor = System.Drawing.SystemColors.Control;
+            this.weatherPictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.weatherPictureBox.InitialImage = null;
+            this.weatherPictureBox.Location = new System.Drawing.Point(9, 4);
+            this.weatherPictureBox.Name = "weatherPictureBox";
+            this.weatherPictureBox.Size = new System.Drawing.Size(70, 48);
+            this.weatherPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.weatherPictureBox.TabIndex = 9;
+            this.weatherPictureBox.TabStop = false;
+            this.weatherPictureBox.Visible = false;
             // 
             // label2
             // 
@@ -320,7 +325,6 @@
             this.NotificationGroupBox.TabIndex = 2;
             this.NotificationGroupBox.TabStop = false;
             this.NotificationGroupBox.Text = "Notifications";
-            this.NotificationGroupBox.Enter += new System.EventHandler(this.NotificationGroupBox_Enter);
             // 
             // NotificationComboBox
             // 
@@ -423,6 +427,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.BaseFormMenuStrip);
             this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.BaseFormMenuStrip;
             this.Name = "BaseForm";
@@ -439,7 +444,7 @@
             this.flowLayoutPanel1.ResumeLayout(false);
             this.WeatherBox.ResumeLayout(false);
             this.WeatherBox.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.weatherPictureBox)).EndInit();
             this.panel3.ResumeLayout(false);
             this.NotificationFlowLayout.ResumeLayout(false);
             this.NotificationGroupBox.ResumeLayout(false);
@@ -487,6 +492,6 @@
         private System.Windows.Forms.TableLayoutPanel BaseFormSplitLayout;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.RichTextBox ForecastTxtBox;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox weatherPictureBox;
     }
 }
