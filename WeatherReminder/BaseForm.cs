@@ -26,6 +26,8 @@ namespace WeatherNode
         private string userName; // holds user's name
         private MailAddress userEmail; // holds user's email address
         private Location location; // user's location
+        private List<Notification> notificationList; // user's notification
+        private int EXITCODE = 0; // EXITCODE used to facilitate form flow
 
         public BaseForm() 
         {
@@ -103,14 +105,6 @@ namespace WeatherNode
             toolStripEmailTextBox.Text = userEmail.ToString();
         }
 
-        // opens user settings
-        private void settingsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            UserSettingsForm frm = new UserSettingsForm(this);
-            frm.TopMost = true;
-            frm.ShowDialog();
-        }
-
         private void quitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -123,26 +117,28 @@ namespace WeatherNode
             NewLocationForm frm = new NewLocationForm(this);
             frm.TopMost = true;
             frm.ShowDialog();
+            if (EXITCODE == 0) // if Change Loc. btn pressed, change location
+            {
+                // window to indicate to user that program is loading location info
+                LoadingForm loadfrm = new LoadingForm(this);
+                loadfrm.StartPosition = FormStartPosition.CenterParent;
+                loadfrm.TopMost = true;
+                loadfrm.Show(this);
+                RunPythonScript();
+                loadfrm.Close(); // once finished, loading window closes
 
-            // window to indicate to user that program is loading location info
-            LoadingForm loadfrm = new LoadingForm(this);
-            loadfrm.StartPosition = FormStartPosition.CenterParent;
-            loadfrm.TopMost = true;
-            loadfrm.Show(this);
-            RunPythonScript();
-            loadfrm.Close(); // once finished, loading window closes
+                string[] lines = System.IO.File.ReadAllLines(@"..\..\..\PythonScripts\htmlparse.txt"); // read the file
 
-            string[] lines = System.IO.File.ReadAllLines(@"..\..\..\PythonScripts\htmlparse.txt"); // read the file
+                // Add index checking for 3 digit temps
+                location = new Location(lines[0].Substring(12), lines[1].Substring(10), lines[2].Substring(5, lines[2].Length - 7) + "°F",
+                    lines[3].Substring(9), lines[8].Substring(11, lines[8].Length - 13) + "°F", ExtractForecast(lines[11]), lines[10].Substring(4));
 
-            // Add index checking for 3 digit temps
-            location = new Location(lines[0].Substring(12),lines[1].Substring(10), lines[2].Substring(5, lines[2].Length - 7) + "°F",
-                lines[3].Substring(9), lines[8].Substring(11, lines[8].Length - 13) + "°F", ExtractForecast(lines[11]), lines[10].Substring(4));
-
-            ReadList();
-            ChangeWeatherImage();
-            weatherPictureBox.Visible = true;
-            WeatherBox.Enabled = true;
-            LocationLabel.Visible = true;
+                ReadList();
+                ChangeWeatherImage();
+                weatherPictureBox.Visible = true;
+                WeatherBox.Enabled = true;
+                LocationLabel.Visible = true;
+            }
         }
 
         // clean up after the application closes
@@ -237,20 +233,26 @@ namespace WeatherNode
         {
             this.userName = userN;
         }
-
         public void setUserEmail(MailAddress userE)
         {
             this.userEmail = userE;
         }
-
+        public void setEXITCODE(int code) { EXITCODE = code; }
         public string getUserName()
         {
             return this.userName;
         }
-
         public MailAddress getUserEmail()
         {
             return this.userEmail;
+        }
+        public int getEXITCODE() { return EXITCODE; }
+
+        private void AddNotificationButton_Click(object sender, EventArgs e)
+        {
+            UserNotificationsForm frm = new UserNotificationsForm(this);
+            frm.TopMost = true;
+            frm.ShowDialog();
         }
     }
 }

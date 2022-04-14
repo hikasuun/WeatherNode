@@ -60,7 +60,7 @@
             // ClearBtn
             // 
             this.ClearBtn.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ClearBtn.Location = new System.Drawing.Point(355, 107);
+            this.ClearBtn.Location = new System.Drawing.Point(274, 107);
             this.ClearBtn.Name = "ClearBtn";
             this.ClearBtn.Size = new System.Drawing.Size(75, 23);
             this.ClearBtn.TabIndex = 2;
@@ -71,7 +71,7 @@
             // EnterBtn
             // 
             this.EnterBtn.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.EnterBtn.Location = new System.Drawing.Point(274, 107);
+            this.EnterBtn.Location = new System.Drawing.Point(355, 107);
             this.EnterBtn.Name = "EnterBtn";
             this.EnterBtn.Size = new System.Drawing.Size(75, 23);
             this.EnterBtn.TabIndex = 3;
