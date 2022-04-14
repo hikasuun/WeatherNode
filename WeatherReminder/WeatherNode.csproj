@@ -93,11 +93,11 @@
     </Compile>
     <Compile Include="Location.cs" />
     <Compile Include="Notification.cs" />
-    <Compile Include="UserSettingsForm.cs">
+    <Compile Include="UserNotificationForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UserSettingsForm.Designer.cs">
-      <DependentUpon>UserSettingsForm.cs</DependentUpon>
+    <Compile Include="UserNotificationForm.Designer.cs">
+      <DependentUpon>UserNotificationForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -126,8 +126,8 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="UserSettingsForm.resx">
-      <DependentUpon>UserSettingsForm.cs</DependentUpon>
+    <EmbeddedResource Include="UserNotificationForm.resx">
+      <DependentUpon>UserNotificationForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

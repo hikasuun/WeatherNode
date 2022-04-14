@@ -55,7 +55,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "LoadingForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Loading...";
             this.ResumeLayout(false);
             this.PerformLayout();

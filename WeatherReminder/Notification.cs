@@ -18,11 +18,13 @@ namespace WeatherNode
     {
         private string notificationName; // store the name of the notification
         private DateTime notificationDate; // store time the notification should be sent
-        // WARNING: MAY NOT USE notificationOptions, depends on intent of notification tab
-        private bool[] notificationOptions; // store notifications as array of boolean val.
+        private bool[] notificationOptions = new bool[4]; // store notifications as array of boolean val.
         /*
          * ARRAY SPACE      NOTIFICATION
-         *           0      
+         *           0      RAIN
+         *           1      WIND
+         *           2      FOG
+         *           3      HUMIDITY
          */
 
         // Constructor

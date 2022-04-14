@@ -29,6 +29,7 @@ namespace WeatherNode
 
         private void CancelButton_Click(object sender, EventArgs e)
         {
+            form.setEXITCODE(1);
             this.Close();
         }
 
@@ -51,6 +52,7 @@ namespace WeatherNode
                     //   CityName: san antonio
                     //      State: tx
                     File.WriteAllLines(@"..\..\..\PythonScripts\location.txt", lines); // write out location to location.txt
+                    form.setEXITCODE(0);
                     this.Close();
                 }
             } catch (Exception ex)

@@ -33,7 +33,6 @@
             this.emailToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripEmailTextBox = new System.Windows.Forms.ToolStripTextBox();
             this.changeEmailToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.quitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label1 = new System.Windows.Forms.Label();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
@@ -58,7 +57,6 @@
             this.NotificationLabel = new System.Windows.Forms.Label();
             this.NotificationInfoGroupBox = new System.Windows.Forms.GroupBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.EditNotificationButton = new System.Windows.Forms.Button();
             this.DeleteNotificationButton = new System.Windows.Forms.Button();
             this.AddNotificationButton = new System.Windows.Forms.Button();
             this.WelcomeUserLabel = new System.Windows.Forms.Label();
@@ -83,11 +81,10 @@
             // 
             this.BaseFormMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.emailToolStripMenuItem,
-            this.settingsToolStripMenuItem,
             this.quitToolStripMenuItem});
             this.BaseFormMenuStrip.Location = new System.Drawing.Point(0, 0);
             this.BaseFormMenuStrip.Name = "BaseFormMenuStrip";
-            this.BaseFormMenuStrip.Size = new System.Drawing.Size(470, 24);
+            this.BaseFormMenuStrip.Size = new System.Drawing.Size(397, 24);
             this.BaseFormMenuStrip.TabIndex = 0;
             this.BaseFormMenuStrip.Text = "menuStrip1";
             // 
@@ -115,13 +112,6 @@
             this.changeEmailToolStripMenuItem.Size = new System.Drawing.Size(335, 22);
             this.changeEmailToolStripMenuItem.Text = "Change Email";
             this.changeEmailToolStripMenuItem.Click += new System.EventHandler(this.changeEmailToolStripMenuItem_Click);
-            // 
-            // settingsToolStripMenuItem
-            // 
-            this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
-            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
-            this.settingsToolStripMenuItem.Text = "Settings";
-            this.settingsToolStripMenuItem.Click += new System.EventHandler(this.settingsToolStripMenuItem_Click);
             // 
             // quitToolStripMenuItem
             // 
@@ -151,7 +141,7 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.NotificationFlowLayout);
-            this.splitContainer1.Size = new System.Drawing.Size(429, 548);
+            this.splitContainer1.Size = new System.Drawing.Size(359, 548);
             this.splitContainer1.SplitterDistance = 233;
             this.splitContainer1.TabIndex = 1;
             // 
@@ -161,7 +151,7 @@
             this.WeatherFlowLayout.Controls.Add(this.panel3);
             this.WeatherFlowLayout.Location = new System.Drawing.Point(0, 0);
             this.WeatherFlowLayout.Name = "WeatherFlowLayout";
-            this.WeatherFlowLayout.Size = new System.Drawing.Size(423, 246);
+            this.WeatherFlowLayout.Size = new System.Drawing.Size(357, 246);
             this.WeatherFlowLayout.TabIndex = 0;
             // 
             // flowLayoutPanel1
@@ -169,7 +159,7 @@
             this.flowLayoutPanel1.Controls.Add(this.WeatherBox);
             this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 3);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(420, 193);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(354, 193);
             this.flowLayoutPanel1.TabIndex = 1;
             // 
             // WeatherBox
@@ -290,13 +280,13 @@
             this.panel3.Controls.Add(this.AddLocationButton);
             this.panel3.Location = new System.Drawing.Point(3, 202);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(420, 31);
+            this.panel3.Size = new System.Drawing.Size(353, 31);
             this.panel3.TabIndex = 2;
             // 
             // AddLocationButton
             // 
             this.AddLocationButton.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AddLocationButton.Location = new System.Drawing.Point(303, 5);
+            this.AddLocationButton.Location = new System.Drawing.Point(234, 5);
             this.AddLocationButton.Name = "AddLocationButton";
             this.AddLocationButton.Size = new System.Drawing.Size(104, 23);
             this.AddLocationButton.TabIndex = 0;
@@ -311,7 +301,7 @@
             this.NotificationFlowLayout.Controls.Add(this.panel1);
             this.NotificationFlowLayout.Location = new System.Drawing.Point(0, -1);
             this.NotificationFlowLayout.Name = "NotificationFlowLayout";
-            this.NotificationFlowLayout.Size = new System.Drawing.Size(531, 309);
+            this.NotificationFlowLayout.Size = new System.Drawing.Size(357, 309);
             this.NotificationFlowLayout.TabIndex = 0;
             // 
             // NotificationGroupBox
@@ -321,7 +311,7 @@
             this.NotificationGroupBox.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.NotificationGroupBox.Location = new System.Drawing.Point(3, 3);
             this.NotificationGroupBox.Name = "NotificationGroupBox";
-            this.NotificationGroupBox.Size = new System.Drawing.Size(420, 55);
+            this.NotificationGroupBox.Size = new System.Drawing.Size(354, 55);
             this.NotificationGroupBox.TabIndex = 2;
             this.NotificationGroupBox.TabStop = false;
             this.NotificationGroupBox.Text = "Notifications";
@@ -331,7 +321,7 @@
             this.NotificationComboBox.FormattingEnabled = true;
             this.NotificationComboBox.Location = new System.Drawing.Point(122, 17);
             this.NotificationComboBox.Name = "NotificationComboBox";
-            this.NotificationComboBox.Size = new System.Drawing.Size(285, 23);
+            this.NotificationComboBox.Size = new System.Drawing.Size(216, 23);
             this.NotificationComboBox.TabIndex = 1;
             // 
             // NotificationLabel
@@ -348,35 +338,24 @@
             // 
             this.NotificationInfoGroupBox.Location = new System.Drawing.Point(3, 64);
             this.NotificationInfoGroupBox.Name = "NotificationInfoGroupBox";
-            this.NotificationInfoGroupBox.Size = new System.Drawing.Size(420, 202);
+            this.NotificationInfoGroupBox.Size = new System.Drawing.Size(354, 202);
             this.NotificationInfoGroupBox.TabIndex = 3;
             this.NotificationInfoGroupBox.TabStop = false;
             this.NotificationInfoGroupBox.Text = "Information";
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.EditNotificationButton);
             this.panel1.Controls.Add(this.DeleteNotificationButton);
             this.panel1.Controls.Add(this.AddNotificationButton);
             this.panel1.Location = new System.Drawing.Point(3, 272);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(420, 30);
+            this.panel1.Size = new System.Drawing.Size(354, 30);
             this.panel1.TabIndex = 4;
-            // 
-            // EditNotificationButton
-            // 
-            this.EditNotificationButton.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.EditNotificationButton.Location = new System.Drawing.Point(237, 5);
-            this.EditNotificationButton.Name = "EditNotificationButton";
-            this.EditNotificationButton.Size = new System.Drawing.Size(75, 23);
-            this.EditNotificationButton.TabIndex = 2;
-            this.EditNotificationButton.Text = "EDIT";
-            this.EditNotificationButton.UseVisualStyleBackColor = true;
             // 
             // DeleteNotificationButton
             // 
             this.DeleteNotificationButton.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DeleteNotificationButton.Location = new System.Drawing.Point(9, 5);
+            this.DeleteNotificationButton.Location = new System.Drawing.Point(182, 3);
             this.DeleteNotificationButton.Name = "DeleteNotificationButton";
             this.DeleteNotificationButton.Size = new System.Drawing.Size(75, 23);
             this.DeleteNotificationButton.TabIndex = 1;
@@ -387,12 +366,13 @@
             // AddNotificationButton
             // 
             this.AddNotificationButton.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AddNotificationButton.Location = new System.Drawing.Point(332, 5);
+            this.AddNotificationButton.Location = new System.Drawing.Point(263, 3);
             this.AddNotificationButton.Name = "AddNotificationButton";
             this.AddNotificationButton.Size = new System.Drawing.Size(75, 23);
             this.AddNotificationButton.TabIndex = 0;
             this.AddNotificationButton.Text = "ADD";
             this.AddNotificationButton.UseVisualStyleBackColor = true;
+            this.AddNotificationButton.Click += new System.EventHandler(this.AddNotificationButton_Click);
             // 
             // WelcomeUserLabel
             // 
@@ -415,24 +395,25 @@
             this.BaseFormSplitLayout.RowCount = 2;
             this.BaseFormSplitLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.956113F));
             this.BaseFormSplitLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 94.04388F));
-            this.BaseFormSplitLayout.Size = new System.Drawing.Size(435, 589);
+            this.BaseFormSplitLayout.Size = new System.Drawing.Size(365, 589);
             this.BaseFormSplitLayout.TabIndex = 2;
             // 
             // BaseForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(470, 625);
+            this.ClientSize = new System.Drawing.Size(397, 625);
             this.Controls.Add(this.BaseFormSplitLayout);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.BaseFormMenuStrip);
             this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.BaseFormMenuStrip;
             this.Name = "BaseForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Weather Node";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.BaseForm_Closing);
             this.Load += new System.EventHandler(this.BaseForm_Load);
             this.BaseFormMenuStrip.ResumeLayout(false);
             this.BaseFormMenuStrip.PerformLayout();
@@ -460,7 +441,6 @@
         #endregion
 
         private System.Windows.Forms.MenuStrip BaseFormMenuStrip;
-        private System.Windows.Forms.ToolStripMenuItem settingsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem emailToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem quitToolStripMenuItem;
         private System.Windows.Forms.Label label1;
@@ -485,7 +465,6 @@
         private System.Windows.Forms.Label NotificationLabel;
         private System.Windows.Forms.GroupBox NotificationInfoGroupBox;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button EditNotificationButton;
         private System.Windows.Forms.Button DeleteNotificationButton;
         private System.Windows.Forms.Button AddNotificationButton;
         private System.Windows.Forms.Label WelcomeUserLabel;
