@@ -32,7 +32,22 @@ namespace WeatherNode
 
         private void SaveButton_Click(object sender, EventArgs e)
         {
+            /*
+            * ARRAY SPACE      NOTIFICATION
+            *           0      RAIN
+            *           1      WIND
+            *           2      FOG
+            *           3      HUMIDITY
+            */
+            bool[] notificationOptions =
+                {rainCheck.Checked, windCheck.Checked, fogCheck.Checked, humidityCheck.Checked};
+            int hot = Convert.ToInt32(Math.Round(hotNumeric.Value, 0));
+            int cold = Convert.ToInt32(Math.Round(coldNumeric.Value, 0));
+            DateTime myTime = timePicker.Value.Date + timePicker.Value.TimeOfDay;
 
+            Notification newNotification = new Notification(myTime,hot,cold,notificationOptions);
+            form.AddUserNotification(newNotification);
+            this.Close();
         }
 
         private void CancelButton_Click(object sender, EventArgs e)
