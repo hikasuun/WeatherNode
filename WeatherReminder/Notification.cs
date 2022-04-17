@@ -14,10 +14,11 @@ using System.Threading.Tasks;
 namespace WeatherNode
 {
     [Serializable]
-    internal class Notification
+    public class Notification
     {
-        private string notificationName; // store the name of the notification
         private DateTime notificationDate; // store time the notification should be sent
+        private int notificationHeat; // store notification hot temp
+        private int notificationCold; // store notification cold temp
         private bool[] notificationOptions = new bool[4]; // store notifications as array of boolean val.
         /*
          * ARRAY SPACE      NOTIFICATION
@@ -28,17 +29,22 @@ namespace WeatherNode
          */
 
         // Constructor
-        public Notification(string notiName, DateTime notiTime, bool[] notiOption)
+        public Notification( DateTime notiTime, int notiHeat, int notiCold, bool[] notiOption)
         {
-            setNotificationName(notiName);
             setNotificationDate(notiTime);
+            setNotificationHeat(notiHeat);
+            setNotificationCold(notiCold);
             setNotificationOptions(notiOption);
         }
         
         // Getter and Setter utility functions
-        public string getNotificationName()
+        public int getNotificationHeat()
         {
-            return notificationName;
+            return notificationHeat;
+        }
+        public int getNotificationCold()
+        {
+            return notificationCold;
         }
         public DateTime getNotificationDate()
         {
@@ -46,18 +52,15 @@ namespace WeatherNode
         }
         public bool[] getNotificationOptions()
         {
-            if (notificationOptions == null)
-            {
-                return null;
-            }
-            else
-            {
-                return notificationOptions;
-            }
+            return notificationOptions;
         }
-        public void setNotificationName(string notiName)
+        public void setNotificationHeat(int notiHeat)
         {
-            this.notificationName = notiName;
+            this.notificationHeat = notiHeat;
+        }
+        public void setNotificationCold(int notiCold)
+        {
+            this.notificationCold = notiCold;
         }
         public void setNotificationDate(DateTime notiTime)
         {
@@ -65,14 +68,7 @@ namespace WeatherNode
         }
         public void setNotificationOptions (bool[] notiOptions)
         {
-            if (notiOptions == null)
-            {
-                notificationOptions = null;
-            }
-            else
-            {
-                this.notificationOptions = notiOptions;
-            }
+            this.notificationOptions = notiOptions;
         }
     }
 }

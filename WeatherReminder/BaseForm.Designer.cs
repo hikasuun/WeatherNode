@@ -56,6 +56,16 @@
             this.NotificationComboBox = new System.Windows.Forms.ComboBox();
             this.NotificationLabel = new System.Windows.Forms.Label();
             this.NotificationInfoGroupBox = new System.Windows.Forms.GroupBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.timePicker = new System.Windows.Forms.DateTimePicker();
+            this.coldNumeric = new System.Windows.Forms.NumericUpDown();
+            this.label3 = new System.Windows.Forms.Label();
+            this.hotNumeric = new System.Windows.Forms.NumericUpDown();
+            this.label5 = new System.Windows.Forms.Label();
+            this.humidityCheck = new System.Windows.Forms.CheckBox();
+            this.fogCheck = new System.Windows.Forms.CheckBox();
+            this.windCheck = new System.Windows.Forms.CheckBox();
+            this.rainCheck = new System.Windows.Forms.CheckBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.DeleteNotificationButton = new System.Windows.Forms.Button();
             this.AddNotificationButton = new System.Windows.Forms.Button();
@@ -73,6 +83,9 @@
             this.panel3.SuspendLayout();
             this.NotificationFlowLayout.SuspendLayout();
             this.NotificationGroupBox.SuspendLayout();
+            this.NotificationInfoGroupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.coldNumeric)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.hotNumeric)).BeginInit();
             this.panel1.SuspendLayout();
             this.BaseFormSplitLayout.SuspendLayout();
             this.SuspendLayout();
@@ -130,7 +143,7 @@
             // 
             // splitContainer1
             // 
-            this.splitContainer1.Location = new System.Drawing.Point(3, 38);
+            this.splitContainer1.Location = new System.Drawing.Point(3, 34);
             this.splitContainer1.Name = "splitContainer1";
             this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
@@ -141,8 +154,8 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.NotificationFlowLayout);
-            this.splitContainer1.Size = new System.Drawing.Size(359, 548);
-            this.splitContainer1.SplitterDistance = 233;
+            this.splitContainer1.Size = new System.Drawing.Size(359, 489);
+            this.splitContainer1.SplitterDistance = 232;
             this.splitContainer1.TabIndex = 1;
             // 
             // WeatherFlowLayout
@@ -301,7 +314,7 @@
             this.NotificationFlowLayout.Controls.Add(this.panel1);
             this.NotificationFlowLayout.Location = new System.Drawing.Point(0, -1);
             this.NotificationFlowLayout.Name = "NotificationFlowLayout";
-            this.NotificationFlowLayout.Size = new System.Drawing.Size(357, 309);
+            this.NotificationFlowLayout.Size = new System.Drawing.Size(357, 241);
             this.NotificationFlowLayout.TabIndex = 0;
             // 
             // NotificationGroupBox
@@ -336,18 +349,152 @@
             // 
             // NotificationInfoGroupBox
             // 
+            this.NotificationInfoGroupBox.Controls.Add(this.label4);
+            this.NotificationInfoGroupBox.Controls.Add(this.timePicker);
+            this.NotificationInfoGroupBox.Controls.Add(this.coldNumeric);
+            this.NotificationInfoGroupBox.Controls.Add(this.label3);
+            this.NotificationInfoGroupBox.Controls.Add(this.hotNumeric);
+            this.NotificationInfoGroupBox.Controls.Add(this.label5);
+            this.NotificationInfoGroupBox.Controls.Add(this.humidityCheck);
+            this.NotificationInfoGroupBox.Controls.Add(this.fogCheck);
+            this.NotificationInfoGroupBox.Controls.Add(this.windCheck);
+            this.NotificationInfoGroupBox.Controls.Add(this.rainCheck);
             this.NotificationInfoGroupBox.Location = new System.Drawing.Point(3, 64);
             this.NotificationInfoGroupBox.Name = "NotificationInfoGroupBox";
-            this.NotificationInfoGroupBox.Size = new System.Drawing.Size(354, 202);
+            this.NotificationInfoGroupBox.Size = new System.Drawing.Size(354, 134);
             this.NotificationInfoGroupBox.TabIndex = 3;
             this.NotificationInfoGroupBox.TabStop = false;
             this.NotificationInfoGroupBox.Text = "Information";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Enabled = false;
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(111, 107);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(131, 15);
+            this.label4.TabIndex = 36;
+            this.label4.Text = "TIME TO BE NOTIFIED:";
+            // 
+            // timePicker
+            // 
+            this.timePicker.CustomFormat = "";
+            this.timePicker.Enabled = false;
+            this.timePicker.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.timePicker.Location = new System.Drawing.Point(248, 102);
+            this.timePicker.Name = "timePicker";
+            this.timePicker.ShowUpDown = true;
+            this.timePicker.Size = new System.Drawing.Size(95, 22);
+            this.timePicker.TabIndex = 35;
+            // 
+            // coldNumeric
+            // 
+            this.coldNumeric.BackColor = System.Drawing.SystemColors.Control;
+            this.coldNumeric.Enabled = false;
+            this.coldNumeric.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.coldNumeric.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.coldNumeric.Location = new System.Drawing.Point(263, 70);
+            this.coldNumeric.Minimum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            -2147483648});
+            this.coldNumeric.Name = "coldNumeric";
+            this.coldNumeric.Size = new System.Drawing.Size(80, 22);
+            this.coldNumeric.TabIndex = 34;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Enabled = false;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(133, 71);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(122, 15);
+            this.label3.TabIndex = 33;
+            this.label3.Text = "COLD NOTIFCATION:";
+            // 
+            // hotNumeric
+            // 
+            this.hotNumeric.BackColor = System.Drawing.SystemColors.Control;
+            this.hotNumeric.Enabled = false;
+            this.hotNumeric.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.hotNumeric.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.hotNumeric.Location = new System.Drawing.Point(263, 37);
+            this.hotNumeric.Minimum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            -2147483648});
+            this.hotNumeric.Name = "hotNumeric";
+            this.hotNumeric.Size = new System.Drawing.Size(80, 22);
+            this.hotNumeric.TabIndex = 32;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Enabled = false;
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(133, 38);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(124, 15);
+            this.label5.TabIndex = 31;
+            this.label5.Text = "HEAT NOTIFICATION:";
+            // 
+            // humidityCheck
+            // 
+            this.humidityCheck.AutoSize = true;
+            this.humidityCheck.Enabled = false;
+            this.humidityCheck.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.humidityCheck.Location = new System.Drawing.Point(12, 105);
+            this.humidityCheck.Name = "humidityCheck";
+            this.humidityCheck.Size = new System.Drawing.Size(72, 17);
+            this.humidityCheck.TabIndex = 27;
+            this.humidityCheck.Text = "Humidity";
+            this.humidityCheck.UseVisualStyleBackColor = true;
+            // 
+            // fogCheck
+            // 
+            this.fogCheck.AutoSize = true;
+            this.fogCheck.Enabled = false;
+            this.fogCheck.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.fogCheck.Location = new System.Drawing.Point(12, 82);
+            this.fogCheck.Name = "fogCheck";
+            this.fogCheck.Size = new System.Drawing.Size(46, 17);
+            this.fogCheck.TabIndex = 26;
+            this.fogCheck.Text = "Fog";
+            this.fogCheck.UseVisualStyleBackColor = true;
+            // 
+            // windCheck
+            // 
+            this.windCheck.AutoSize = true;
+            this.windCheck.Enabled = false;
+            this.windCheck.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.windCheck.Location = new System.Drawing.Point(12, 59);
+            this.windCheck.Name = "windCheck";
+            this.windCheck.Size = new System.Drawing.Size(54, 17);
+            this.windCheck.TabIndex = 25;
+            this.windCheck.Text = "Wind";
+            this.windCheck.UseVisualStyleBackColor = true;
+            // 
+            // rainCheck
+            // 
+            this.rainCheck.AutoSize = true;
+            this.rainCheck.Enabled = false;
+            this.rainCheck.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rainCheck.Location = new System.Drawing.Point(12, 36);
+            this.rainCheck.Name = "rainCheck";
+            this.rainCheck.Size = new System.Drawing.Size(88, 17);
+            this.rainCheck.TabIndex = 24;
+            this.rainCheck.Text = "Rain / Snow";
+            this.rainCheck.UseVisualStyleBackColor = true;
             // 
             // panel1
             // 
             this.panel1.Controls.Add(this.DeleteNotificationButton);
             this.panel1.Controls.Add(this.AddNotificationButton);
-            this.panel1.Location = new System.Drawing.Point(3, 272);
+            this.panel1.Location = new System.Drawing.Point(3, 204);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(354, 30);
             this.panel1.TabIndex = 4;
@@ -370,7 +517,7 @@
             this.AddNotificationButton.Name = "AddNotificationButton";
             this.AddNotificationButton.Size = new System.Drawing.Size(75, 23);
             this.AddNotificationButton.TabIndex = 0;
-            this.AddNotificationButton.Text = "ADD";
+            this.AddNotificationButton.Text = "NEW NOTIFICATION";
             this.AddNotificationButton.UseVisualStyleBackColor = true;
             this.AddNotificationButton.Click += new System.EventHandler(this.AddNotificationButton_Click);
             // 
@@ -395,14 +542,14 @@
             this.BaseFormSplitLayout.RowCount = 2;
             this.BaseFormSplitLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.956113F));
             this.BaseFormSplitLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 94.04388F));
-            this.BaseFormSplitLayout.Size = new System.Drawing.Size(365, 589);
+            this.BaseFormSplitLayout.Size = new System.Drawing.Size(365, 526);
             this.BaseFormSplitLayout.TabIndex = 2;
             // 
             // BaseForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(397, 625);
+            this.ClientSize = new System.Drawing.Size(397, 561);
             this.Controls.Add(this.BaseFormSplitLayout);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.BaseFormMenuStrip);
@@ -430,6 +577,10 @@
             this.NotificationFlowLayout.ResumeLayout(false);
             this.NotificationGroupBox.ResumeLayout(false);
             this.NotificationGroupBox.PerformLayout();
+            this.NotificationInfoGroupBox.ResumeLayout(false);
+            this.NotificationInfoGroupBox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.coldNumeric)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.hotNumeric)).EndInit();
             this.panel1.ResumeLayout(false);
             this.BaseFormSplitLayout.ResumeLayout(false);
             this.BaseFormSplitLayout.PerformLayout();
@@ -472,5 +623,15 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.RichTextBox ForecastTxtBox;
         private System.Windows.Forms.PictureBox weatherPictureBox;
+        private System.Windows.Forms.CheckBox windCheck;
+        private System.Windows.Forms.CheckBox rainCheck;
+        private System.Windows.Forms.CheckBox humidityCheck;
+        private System.Windows.Forms.CheckBox fogCheck;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.DateTimePicker timePicker;
+        private System.Windows.Forms.NumericUpDown coldNumeric;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.NumericUpDown hotNumeric;
+        private System.Windows.Forms.Label label5;
     }
 }

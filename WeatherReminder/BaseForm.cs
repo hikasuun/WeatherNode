@@ -26,8 +26,9 @@ namespace WeatherNode
         private string userName; // holds user's name
         private MailAddress userEmail; // holds user's email address
         private Location location; // user's location
-        private List<Notification> notificationList; // user's notification
+        private List<Notification> notificationList = new List<Notification>(); // user's notification
         private int EXITCODE = 0; // EXITCODE used to facilitate form flow
+        private int notificationListNumbering = 0; // holds numbering for notification list, used for display purposes
 
         public BaseForm() 
         {
@@ -88,6 +89,7 @@ namespace WeatherNode
             if (confirmResult == DialogResult.Yes)
             {
                 // Delete Entry in combo box
+
                 MessageBox.Show("Notification deleted.");
             } 
             else
@@ -253,6 +255,28 @@ namespace WeatherNode
             UserNotificationsForm frm = new UserNotificationsForm(this);
             frm.TopMost = true;
             frm.ShowDialog();
+            NotificationLoading();
+        }
+
+        private void NotificationLoading()
+        {
+            // TODO: INDEX SELECTED NOTIFICATION
+            rainCheck.Checked = notificationList[0].getNotificationOptions()[0];
+            windCheck.Checked = notificationList[0].getNotificationOptions()[1];
+            fogCheck.Checked = notificationList[0].getNotificationOptions()[2];
+            humidityCheck.Checked = notificationList[0].getNotificationOptions()[3];
+            hotNumeric.Value = notificationList[0].getNotificationHeat();
+            coldNumeric.Value = notificationList[0].getNotificationCold();
+            timePicker.Value = (notificationList[0].getNotificationDate().Date + notificationList[0].getNotificationDate().TimeOfDay);
+        }
+        public void AddUserNotification(Notification notif)
+        {
+            notificationList.Add(notif);
+            NotificationComboBox.Items.Add(notif);
+        }
+        public void DeleteUserNotification(int index)
+        {
+            notificationList.RemoveAt(index);
         }
     }
 }

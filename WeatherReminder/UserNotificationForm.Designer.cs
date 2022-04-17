@@ -179,10 +179,10 @@
             // 
             this.timePicker.CustomFormat = "";
             this.timePicker.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.timePicker.Location = new System.Drawing.Point(303, 105);
+            this.timePicker.Location = new System.Drawing.Point(318, 105);
             this.timePicker.Name = "timePicker";
             this.timePicker.ShowUpDown = true;
-            this.timePicker.Size = new System.Drawing.Size(110, 22);
+            this.timePicker.Size = new System.Drawing.Size(95, 22);
             this.timePicker.TabIndex = 29;
             this.timePicker.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
             // 
@@ -190,7 +190,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(166, 110);
+            this.label4.Location = new System.Drawing.Point(181, 110);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(131, 15);
             this.label4.TabIndex = 30;
