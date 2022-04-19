@@ -16,6 +16,7 @@ namespace WeatherNode
     [Serializable]
     public class Notification
     {
+        private int id; // notification ID
         private DateTime notificationDate; // store time the notification should be sent
         private int notificationHeat; // store notification hot temp
         private int notificationCold; // store notification cold temp
@@ -29,8 +30,9 @@ namespace WeatherNode
          */
 
         // Constructor
-        public Notification( DateTime notiTime, int notiHeat, int notiCold, bool[] notiOption)
+        public Notification(int notiID, DateTime notiTime, int notiHeat, int notiCold, bool[] notiOption)
         {
+            setNotificationID(notiID);
             setNotificationDate(notiTime);
             setNotificationHeat(notiHeat);
             setNotificationCold(notiCold);
@@ -38,6 +40,10 @@ namespace WeatherNode
         }
         
         // Getter and Setter utility functions
+        public int getNotificationID()
+        {
+            return id;
+        }
         public int getNotificationHeat()
         {
             return notificationHeat;
@@ -53,6 +59,10 @@ namespace WeatherNode
         public bool[] getNotificationOptions()
         {
             return notificationOptions;
+        }
+        public void setNotificationID(int notiID)
+        {
+            this.id = notiID;
         }
         public void setNotificationHeat(int notiHeat)
         {
