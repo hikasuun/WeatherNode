@@ -336,6 +336,7 @@
             this.NotificationComboBox.Name = "NotificationComboBox";
             this.NotificationComboBox.Size = new System.Drawing.Size(216, 23);
             this.NotificationComboBox.TabIndex = 1;
+            this.NotificationComboBox.SelectedIndexChanged += new System.EventHandler(this.NotificationComboBox_SelectedIndexChanged);
             // 
             // NotificationLabel
             // 

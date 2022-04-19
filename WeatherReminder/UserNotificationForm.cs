@@ -45,7 +45,7 @@ namespace WeatherNode
             int cold = Convert.ToInt32(Math.Round(coldNumeric.Value, 0));
             DateTime myTime = timePicker.Value.Date + timePicker.Value.TimeOfDay;
 
-            Notification newNotification = new Notification(myTime,hot,cold,notificationOptions);
+            Notification newNotification = new Notification(form.notificationListNumber,myTime,hot,cold,notificationOptions);
             form.AddUserNotification(newNotification);
             this.Close();
         }

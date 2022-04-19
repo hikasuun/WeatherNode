@@ -28,7 +28,7 @@ namespace WeatherNode
         private Location location; // user's location
         private List<Notification> notificationList = new List<Notification>(); // user's notification
         private int EXITCODE = 0; // EXITCODE used to facilitate form flow
-        private int notificationListNumbering = 0; // holds numbering for notification list, used for display purposes
+        public int notificationListNumber = 0; // holds numbering for notification list, used for display purposes
 
         public BaseForm() 
         {
@@ -89,7 +89,7 @@ namespace WeatherNode
             if (confirmResult == DialogResult.Yes)
             {
                 // Delete Entry in combo box
-
+                DeleteUserNotification(NotificationComboBox.SelectedIndex);
                 MessageBox.Show("Notification deleted.");
             } 
             else
@@ -255,28 +255,36 @@ namespace WeatherNode
             UserNotificationsForm frm = new UserNotificationsForm(this);
             frm.TopMost = true;
             frm.ShowDialog();
-            NotificationLoading();
+            //NotificationLoading();
         }
 
         private void NotificationLoading()
         {
             // TODO: INDEX SELECTED NOTIFICATION
-            rainCheck.Checked = notificationList[0].getNotificationOptions()[0];
-            windCheck.Checked = notificationList[0].getNotificationOptions()[1];
-            fogCheck.Checked = notificationList[0].getNotificationOptions()[2];
-            humidityCheck.Checked = notificationList[0].getNotificationOptions()[3];
-            hotNumeric.Value = notificationList[0].getNotificationHeat();
-            coldNumeric.Value = notificationList[0].getNotificationCold();
-            timePicker.Value = (notificationList[0].getNotificationDate().Date + notificationList[0].getNotificationDate().TimeOfDay);
+            int i = NotificationComboBox.SelectedIndex;
+            rainCheck.Checked = notificationList[i].getNotificationOptions()[0];
+            windCheck.Checked = notificationList[i].getNotificationOptions()[1];
+            fogCheck.Checked = notificationList[i].getNotificationOptions()[2];
+            humidityCheck.Checked = notificationList[i].getNotificationOptions()[3];
+            hotNumeric.Value = notificationList[i].getNotificationHeat();
+            coldNumeric.Value = notificationList[i].getNotificationCold();
+            timePicker.Value = (notificationList[i].getNotificationDate().Date + notificationList[i].getNotificationDate().TimeOfDay);
         }
         public void AddUserNotification(Notification notif)
         {
             notificationList.Add(notif);
-            NotificationComboBox.Items.Add(notif);
+            NotificationComboBox.Items.Add("Notification " + notif.getNotificationID());
+            notificationListNumber++;
         }
         public void DeleteUserNotification(int index)
         {
             notificationList.RemoveAt(index);
+            NotificationComboBox.Items.RemoveAt(index);
+        }
+
+        private void NotificationComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            NotificationLoading();
         }
     }
 }
