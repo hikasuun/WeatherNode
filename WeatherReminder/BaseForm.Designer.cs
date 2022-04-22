@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BaseForm));
             this.BaseFormMenuStrip = new System.Windows.Forms.MenuStrip();
             this.emailToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -72,7 +71,6 @@
             this.AddNotificationButton = new System.Windows.Forms.Button();
             this.WelcomeUserLabel = new System.Windows.Forms.Label();
             this.BaseFormSplitLayout = new System.Windows.Forms.TableLayoutPanel();
-            this.trayNotifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
             this.BaseFormMenuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -102,7 +100,6 @@
             this.BaseFormMenuStrip.Size = new System.Drawing.Size(397, 24);
             this.BaseFormMenuStrip.TabIndex = 0;
             this.BaseFormMenuStrip.Text = "menuStrip1";
-            this.BaseFormMenuStrip.Resize += new System.EventHandler(this.sendTrayIcon);
             // 
             // emailToolStripMenuItem
             // 
@@ -549,13 +546,6 @@
             this.BaseFormSplitLayout.Size = new System.Drawing.Size(365, 526);
             this.BaseFormSplitLayout.TabIndex = 2;
             // 
-            // trayNotifyIcon
-            // 
-            this.trayNotifyIcon.BalloonTipTitle = "Hello";
-            this.trayNotifyIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("trayNotifyIcon.Icon")));
-            this.trayNotifyIcon.Text = "Weather Node";
-            this.trayNotifyIcon.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.trayNotifyIcon_MouseDoubleClick);
-            // 
             // BaseForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -644,6 +634,5 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.NumericUpDown hotNumeric;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.NotifyIcon trayNotifyIcon;
     }
 }

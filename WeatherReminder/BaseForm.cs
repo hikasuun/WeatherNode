@@ -286,21 +286,5 @@ namespace WeatherNode
         {
             NotificationLoading();
         }
-
-        private void sendTrayIcon(object sender, EventArgs e)
-        {
-            if (this.WindowState == FormWindowState.Minimized)
-            {
-                Hide();
-                trayNotifyIcon.Visible = true;
-            }
-        }
-
-        private void trayNotifyIcon_MouseDoubleClick(object sender, MouseEventArgs e)
-        {
-            Show();
-            this.WindowState = FormWindowState.Normal;
-            trayNotifyIcon.Visible = false;
-        }
     }
 }
