@@ -121,7 +121,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "FirstTimeUserForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Welcome";
+            this.Text = "Welcome to Weather Node Notification Application!";
             this.Load += new System.EventHandler(this.FirstTimeUserForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
