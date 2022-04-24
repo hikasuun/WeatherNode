@@ -18,6 +18,7 @@ using System.Net.Mail;
 using System.Diagnostics;
 using System.IO;
 using System.Globalization;
+using System.Runtime.Serialization.Formatters.Soap;
 
 namespace WeatherNode
 {
