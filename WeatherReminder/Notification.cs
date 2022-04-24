@@ -11,6 +11,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
+
 namespace WeatherNode
 {
     [Serializable]
@@ -38,6 +40,13 @@ namespace WeatherNode
             setNotificationCold(notiCold);
             setNotificationOptions(notiOption);
         }
+
+        public Notification() 
+        {
+            setNotificationID(11);
+            setNotificationHeat((int)10);
+        }
+
         
         // Getter and Setter utility functions
         public int getNotificationID()
