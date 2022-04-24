@@ -169,7 +169,7 @@ namespace WeatherNode
                 { "sunny", "mostly sunny", "partly sunny","clear", "partly clear", "mostly clear", "clearing",
                 "partly cloudy", "mostly cloudy", "chance of rain", "chance of showers", "chance of t-storm",
                 "rain/snow showers",  "fog", "patchy fog","windy", "overcast", "hazy", "blowing widespread dust",
-                "rain and snow"};
+                "rain and snow", "mist"};
             for (int i = 0; i < forecastList.Length; i++)
             {
                 if (str.ToLower().Contains(forecastList[i]))
@@ -213,6 +213,7 @@ namespace WeatherNode
                 case "change of showers":
                 case "rain/snow showers":
                 case "rain and snow":
+                case "mist":
                     image = new Bitmap(@"..\..\..\Icons\showers.bmp");
                     break;
                 case "chance of t-storm":
