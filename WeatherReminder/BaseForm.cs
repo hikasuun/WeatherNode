@@ -18,6 +18,7 @@ using System.Net.Mail;
 using System.Diagnostics;
 using System.IO;
 using System.Globalization;
+using System.Runtime.Serialization.Formatters.Soap;
 
 namespace WeatherNode
 {
@@ -149,7 +150,9 @@ namespace WeatherNode
         {
             UserSaveStateHelper currentSaveState = new UserSaveStateHelper(this);
             currentSaveState.writeUserState("saveState.xml");
-
+            currentSaveState.readUserState("saveState.xml");
+            currentSaveState.writeUserState("saveState.xml");
+            currentSaveState.arrayToNotificationList();
             if (File.Exists(@"..\..\..\PythonScripts\htmlparse.txt"))
             {
                 File.Delete(@"..\..\..\PythonScripts\htmlparse.txt");
