@@ -30,12 +30,13 @@ namespace WeatherNode
         private int EXITCODE = 0; // EXITCODE used to facilitate form flow
         public int notificationListNumber = 0; // holds numbering for notification list, used for display purposes
 
-        public BaseForm() 
+
+        public BaseForm()
         {
             InitializeComponent();
         }
 
-        private void BaseForm_Load(object sender, EventArgs e) 
+        private void BaseForm_Load(object sender, EventArgs e)
         {
             // TODO: Add first time check
             FirstTimeUserForm frm = new FirstTimeUserForm(this);
@@ -63,13 +64,13 @@ namespace WeatherNode
                 }
             }
             catch (Exception ex)
-            { 
+            {
                 Console.WriteLine(ex.Message);
             }
         }
 
         // populates text boxes with location info
-        private void ReadList() 
+        private void ReadList()
         {
             LocationLabel.Text = location.GetLocation();
             TemperatureTxtBox.Text = location.GetTemp();
@@ -91,13 +92,13 @@ namespace WeatherNode
                 // Delete Entry in combo box
                 DeleteUserNotification(NotificationComboBox.SelectedIndex);
                 MessageBox.Show("Notification deleted.");
-            } 
+            }
             else
             {
                 // do nothing
             }
         }
-        
+
         // changes user's email
         private void changeEmailToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -144,13 +145,16 @@ namespace WeatherNode
         }
 
         // clean up after the application closes
-        private void BaseForm_Closing(object sender, FormClosingEventArgs e) 
+        private void BaseForm_Closing(object sender, FormClosingEventArgs e)
         {
-            if(File.Exists(@"..\..\..\PythonScripts\htmlparse.txt"))
+            UserSaveStateHelper currentSaveState = new UserSaveStateHelper(this);
+            currentSaveState.writeUserState("saveState.xml");
+
+            if (File.Exists(@"..\..\..\PythonScripts\htmlparse.txt"))
             {
                 File.Delete(@"..\..\..\PythonScripts\htmlparse.txt");
             }
-            if(File.Exists(@"..\..\..\PythonScripts\location.txt"))
+            if (File.Exists(@"..\..\..\PythonScripts\location.txt"))
             {
                 File.Delete(@"..\..\..\PythonScripts\location.txt");
             }
@@ -161,7 +165,7 @@ namespace WeatherNode
         {
             // list of different forecasts that FreeWeather.com has
             // may need to add more weather forecasts as need arises
-            string[] forecastList = 
+            string[] forecastList =
                 { "sunny", "mostly sunny", "partly sunny","clear", "partly clear", "mostly clear", "clearing",
                 "partly cloudy", "mostly cloudy", "chance of rain", "chance of showers", "chance of t-storm",
                 "rain/snow showers",  "fog", "patchy fog","windy", "overcast", "hazy", "blowing widespread dust",
@@ -181,11 +185,11 @@ namespace WeatherNode
         {
             Bitmap image = null;
             // check if PictureBox is populated, needs to be cleared before new image is loaded
-            if (weatherPictureBox.Image != null) 
+            if (weatherPictureBox.Image != null)
             {
                 weatherPictureBox.Image.Dispose();
             }
-            
+
             // select image depending on weather
             switch (location.GetWeather().ToLower())
             {
@@ -248,6 +252,18 @@ namespace WeatherNode
         {
             return this.userEmail;
         }
+
+        public string[] getBasicLocationData()
+        {
+            String[] basicLocationData = new String[2] { location.GetLocation(), location.GetUrl() };
+            return basicLocationData;
+        }
+
+        public List<Notification> getNotificationList()
+        {
+            return this.notificationList;
+        }
+
         public int getEXITCODE() { return EXITCODE; }
 
         private void AddNotificationButton_Click(object sender, EventArgs e)
