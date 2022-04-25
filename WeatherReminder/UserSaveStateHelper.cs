@@ -25,33 +25,29 @@ namespace WeatherNode
     {
         private string userName; // holds user's name
         private String userEmail; // holds user's email address
-        private string locationName, locationURL; //holds minimum data about current location, required to have same loc on load
+        //private string locationName, locationURL; no longer needed
         private ArrayList notificationArrayList = new ArrayList(); //to hold converted notification list, generic lists are not able to be used in soap (so notif list doesn't work)
 
         //utility fxns
         public string UserName { get => userName; set => userName = value; }
         public String UserEmail { get => userEmail; set => userEmail = value; }
         public ArrayList NotificationArrayList { get => notificationArrayList; set => notificationArrayList = value; }
-        public string LocationName { get => locationName; set => locationName = value; }
-        public string LocationURL { get => locationURL; set => locationURL = value; }
     }
 
     public class UserSaveStateHelper
     {
-        userSaveState currentSaveState = new userSaveState();
-        List<Notification> deserializedNotifications = new List<Notification>(); //will be used to deserialize and reassemble the serialized notificationlist
-
+        public userSaveState currentSaveState = new userSaveState();
+        // Lists and Mailaddresses are unserializable when using SOAP, convert back into originally used form after deserialization
+        public List<Notification> deserializedNotifications = new List<Notification>(); //will be used to deserialize and reassemble the serialized notificationlist
+        public MailAddress deserializedEmail;//TODO: add email type to convert after deserializing
         public UserSaveStateHelper(BaseForm currentForm)
         {
             currentSaveState.UserName = currentForm.getUserName();
             currentSaveState.UserEmail = currentForm.getUserEmail().ToString();
-            {
-                String[] tempLocationArray = currentForm.getBasicLocationData();
-                currentSaveState.LocationName = tempLocationArray[0];
-                currentSaveState.LocationURL = tempLocationArray[1];
-            }
             currentSaveState.NotificationArrayList.AddRange(currentForm.getNotificationList());
         }
+
+        public UserSaveStateHelper() { } //test to see if this creates a conflict
 
         public void writeUserState(String filePath)
         {
@@ -67,6 +63,9 @@ namespace WeatherNode
             IFormatter localFormatter = new SoapFormatter();
             Stream localStream = new FileStream(filePath, FileMode.Open, FileAccess.Read, FileShare.None);
             currentSaveState = (userSaveState)localFormatter.Deserialize(localStream);
+            // conversion back to original types
+            arrayToNotificationList();
+            deserializedEmail = new MailAddress(currentSaveState.UserEmail);
             localStream.Close();
         }
 

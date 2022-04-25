@@ -34,6 +34,7 @@ namespace WeatherNode
         private Location location; // user's location
         private List<Notification> notificationList = new List<Notification>(); // user's notification
         private int EXITCODE = 0; // EXITCODE used to facilitate form flow
+        private UserSaveStateHelper saveStateHelper = null;
         public int notificationListNumber = 0; // holds numbering for notification list, used for display purposes
 
 
@@ -44,21 +45,25 @@ namespace WeatherNode
 
         private void BaseForm_Load(object sender, EventArgs e)
         {
-            // TODO: Add first time check
-            if (!File.Exists(@"..\..\..\WeatherReminder\saveState.xml"))
+            //first time check
+            if (File.Exists(@"..\..\..\WeatherReminder\saveState.xml"))
             {
-                FirstTimeUserForm frm = new FirstTimeUserForm(this);
-                frm.TopMost = true;
-                frm.ShowDialog();
-                SetEmailPort();
+                saveStateHelper = new UserSaveStateHelper();
+                saveStateHelper.readUserState(@"..\..\..\WeatherReminder\saveState.xml");
+                //load vars from save
+                userName = saveStateHelper.currentSaveState.UserName;
+                userEmail = saveStateHelper.deserializedEmail;
+                notificationList = saveStateHelper.deserializedNotifications;
                 WelcomeUserLabel.Text = "Welcome, " + userName;
                 toolStripEmailTextBox.Text = userEmail.ToString();
                 WeatherBox.Enabled = false;
                 LocationLabel.Visible = false;
             }
             else
-            {
-                
+            {//end first time check
+                FirstTimeUserForm frm = new FirstTimeUserForm(this);
+                frm.TopMost = true;
+                frm.ShowDialog();
                 WelcomeUserLabel.Text = "Welcome, " + userName;
                 toolStripEmailTextBox.Text = userEmail.ToString();
                 WeatherBox.Enabled = false;
@@ -166,11 +171,8 @@ namespace WeatherNode
         // clean up after the application closes
         private void BaseForm_Closing(object sender, FormClosingEventArgs e)
         {
-            UserSaveStateHelper currentSaveState = new UserSaveStateHelper(this);
-            currentSaveState.writeUserState(@"..\..\..\WeatherReminder\saveState.xml");
-            currentSaveState.readUserState(@"..\..\..\WeatherReminder\saveState.xml");
-            currentSaveState.writeUserState(@"..\..\..\WeatherReminder\saveState.xml");
-            currentSaveState.arrayToNotificationList();
+            saveStateHelper = new UserSaveStateHelper(this);
+            saveStateHelper.writeUserState(@"..\..\..\WeatherReminder\saveState.xml");
             if (File.Exists(@"..\..\..\PythonScripts\htmlparse.txt"))
             {
                 File.Delete(@"..\..\..\PythonScripts\htmlparse.txt");
