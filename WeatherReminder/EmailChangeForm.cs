@@ -34,7 +34,7 @@ namespace WeatherNode
         {
             // checks for valid email input
             if (String.IsNullOrEmpty(EmailTxtBox.Text) || 
-                !IsValidEmail(EmailTxtBox.Text)) {
+                !IsValidEmail(EmailTxtBox.Text) || smtpCombo.SelectedItem == null) {
                 MessageBox.Show("Please enter valid email.");
             }
             // if valid, change email
@@ -42,6 +42,7 @@ namespace WeatherNode
             {
                 MailAddress userEmail = new MailAddress(EmailTxtBox.Text.ToLower());
                 form.setUserEmail(userEmail);
+                form.smtpPort = smtpCombo.SelectedItem.ToString();
                 MessageBox.Show("Email Changed Successfully.");
                 this.Close();
             }

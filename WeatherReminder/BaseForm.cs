@@ -25,7 +25,11 @@ namespace WeatherNode
     public partial class BaseForm : Form
     {
         private string userName; // holds user's name
+        [NonSerialized()]private string userPassword; // hold user password in memory ONLY
         private MailAddress userEmail; // holds user's email address
+        public string smtpServer; // hold email server
+        public string smtpPort; // hold email port
+        public int smtpAuthentication; // 0 - SSL, 1 - TLS
         private Location location; // user's location
         private List<Notification> notificationList = new List<Notification>(); // user's notification
         private int EXITCODE = 0; // EXITCODE used to facilitate form flow
@@ -107,6 +111,7 @@ namespace WeatherNode
             frm.TopMost = true;
             frm.ShowDialog();
             toolStripEmailTextBox.Text = userEmail.ToString();
+            SetEmailPort();
         }
 
         private void quitToolStripMenuItem_Click(object sender, EventArgs e)
@@ -170,7 +175,7 @@ namespace WeatherNode
                 { "sunny", "mostly sunny", "partly sunny","clear", "partly clear", "mostly clear", "clearing",
                 "partly cloudy", "mostly cloudy", "chance of rain", "chance of showers", "chance of t-storm",
                 "rain/snow showers",  "fog", "patchy fog","windy", "overcast", "hazy", "blowing widespread dust",
-                "rain and snow", "mist"};
+                "rain and snow", "mist", "lightning observed"};
             for (int i = 0; i < forecastList.Length; i++)
             {
                 if (str.ToLower().Contains(forecastList[i]))
@@ -218,6 +223,7 @@ namespace WeatherNode
                     image = new Bitmap(@"..\..\..\Icons\showers.bmp");
                     break;
                 case "chance of t-storm":
+                case "lightning observed":
                     image = new Bitmap(@"..\..\..\Icons\storm-showers.bmp");
                     break;
                 case "fog":
@@ -241,14 +247,25 @@ namespace WeatherNode
         {
             this.userName = userN;
         }
+        public void setUserPassword(string userP)
+        {
+            this.userPassword = userP;
+        }
         public void setUserEmail(MailAddress userE)
         {
             this.userEmail = userE;
         }
-        public void setEXITCODE(int code) { EXITCODE = code; }
+        public void setEXITCODE(int code)
+        { 
+            EXITCODE = code;
+        }
         public string getUserName()
         {
             return this.userName;
+        }
+        public string getUserPassword()
+        {
+            return this.userPassword;
         }
         public MailAddress getUserEmail()
         {
@@ -266,7 +283,10 @@ namespace WeatherNode
             return this.notificationList;
         }
 
-        public int getEXITCODE() { return EXITCODE; }
+        public int getEXITCODE() 
+        { 
+            return EXITCODE; 
+        }
 
         private void AddNotificationButton_Click(object sender, EventArgs e)
         {
@@ -319,6 +339,33 @@ namespace WeatherNode
             Show();
             this.WindowState = FormWindowState.Normal;
             trayNotifyIcon.Visible = false;
+        }
+
+        private void SetEmailPort()
+        {
+            switch(smtpServer)
+            {
+                case "smtp.gmail.com":
+                    smtpPort = "465";
+                    smtpAuthentication = 0;
+                    break;
+                case "smtp - mail.outlook.com":
+                    smtpPort = "587";
+                    smtpAuthentication = 1;
+                    break;
+                case "smtp.office365.com":
+                    smtpPort = "587";
+                    smtpAuthentication = 1;
+                    break;
+                case "smtp.mail.yahoo.com":
+                    smtpPort = "465";
+                    smtpAuthentication = 0;
+                    break;
+                case "smtp.aol.com":
+                    smtpPort = "587";
+                    smtpAuthentication = 1;
+                    break;
+            }
         }
     }
 }
