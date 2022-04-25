@@ -155,7 +155,9 @@ namespace WeatherNode
         {
             UserSaveStateHelper currentSaveState = new UserSaveStateHelper(this);
             currentSaveState.writeUserState("saveState.xml");
-
+            currentSaveState.readUserState("saveState.xml");
+            currentSaveState.writeUserState("saveState.xml");
+            currentSaveState.arrayToNotificationList();
             if (File.Exists(@"..\..\..\PythonScripts\htmlparse.txt"))
             {
                 File.Delete(@"..\..\..\PythonScripts\htmlparse.txt");
