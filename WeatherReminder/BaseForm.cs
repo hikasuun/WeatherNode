@@ -19,6 +19,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Globalization;
 using System.Runtime.Serialization.Formatters.Soap;
+using System.Net;
 
 namespace WeatherNode
 {
@@ -44,13 +45,25 @@ namespace WeatherNode
         private void BaseForm_Load(object sender, EventArgs e)
         {
             // TODO: Add first time check
-            FirstTimeUserForm frm = new FirstTimeUserForm(this);
-            frm.TopMost = true;
-            frm.ShowDialog();
-            WelcomeUserLabel.Text = "Welcome, " + userName;
-            toolStripEmailTextBox.Text = userEmail.ToString();
-            WeatherBox.Enabled = false;
-            LocationLabel.Visible = false;
+            if (!File.Exists(@"..\..\..\WeatherReminder\saveState.xml"))
+            {
+                FirstTimeUserForm frm = new FirstTimeUserForm(this);
+                frm.TopMost = true;
+                frm.ShowDialog();
+                SetEmailPort();
+                WelcomeUserLabel.Text = "Welcome, " + userName;
+                toolStripEmailTextBox.Text = userEmail.ToString();
+                WeatherBox.Enabled = false;
+                LocationLabel.Visible = false;
+            }
+            else
+            {
+                
+                WelcomeUserLabel.Text = "Welcome, " + userName;
+                toolStripEmailTextBox.Text = userEmail.ToString();
+                WeatherBox.Enabled = false;
+                LocationLabel.Visible = false;
+            }
         }
 
         // deploys the webscrapping routine
@@ -154,9 +167,9 @@ namespace WeatherNode
         private void BaseForm_Closing(object sender, FormClosingEventArgs e)
         {
             UserSaveStateHelper currentSaveState = new UserSaveStateHelper(this);
-            currentSaveState.writeUserState("saveState.xml");
-            currentSaveState.readUserState("saveState.xml");
-            currentSaveState.writeUserState("saveState.xml");
+            currentSaveState.writeUserState(@"..\..\..\WeatherReminder\saveState.xml");
+            currentSaveState.readUserState(@"..\..\..\WeatherReminder\saveState.xml");
+            currentSaveState.writeUserState(@"..\..\..\WeatherReminder\saveState.xml");
             currentSaveState.arrayToNotificationList();
             if (File.Exists(@"..\..\..\PythonScripts\htmlparse.txt"))
             {
@@ -177,7 +190,7 @@ namespace WeatherNode
                 { "sunny", "mostly sunny", "partly sunny","clear", "partly clear", "mostly clear", "clearing",
                 "partly cloudy", "mostly cloudy", "chance of rain", "chance of showers", "chance of t-storm",
                 "rain/snow showers",  "fog", "patchy fog","windy", "overcast", "hazy", "blowing widespread dust",
-                "rain and snow", "mist", "lightning observed"};
+                "rain and snow", "mist", "lightning observed","thunder storms" };
             for (int i = 0; i < forecastList.Length; i++)
             {
                 if (str.ToLower().Contains(forecastList[i]))
@@ -226,6 +239,7 @@ namespace WeatherNode
                     break;
                 case "chance of t-storm":
                 case "lightning observed":
+                case "thunder storms":
                     image = new Bitmap(@"..\..\..\Icons\storm-showers.bmp");
                     break;
                 case "fog":
@@ -368,6 +382,16 @@ namespace WeatherNode
                     smtpAuthentication = 1;
                     break;
             }
+        }
+
+        public void sendEmail()
+        {
+            NetworkCredential login = new NetworkCredential(userEmail.ToString(), userPassword);
+            SmtpClient client = new SmtpClient(smtpServer);
+            client.Port = Int32.Parse(smtpPort);
+            client.EnableSsl = true;
+            client.Credentials = login;
+            MailMessage msg = new MailMessage { }
         }
     }
 }

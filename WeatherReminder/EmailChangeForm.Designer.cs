@@ -77,16 +77,18 @@
             // 
             // smtpCombo
             // 
+            this.smtpCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.smtpCombo.FormattingEnabled = true;
             this.smtpCombo.Items.AddRange(new object[] {
-            "smtp.gmail.com",
             "smtp-mail.outlook.com",
-            "smtp.office365.com",
+            "smtp.aol.com",
+            "smtp.gmail.com",
             "smtp.mail.yahoo.com",
-            "smtp.aol.com"});
+            "smtp.office365.com"});
             this.smtpCombo.Location = new System.Drawing.Point(173, 49);
             this.smtpCombo.Name = "smtpCombo";
             this.smtpCombo.Size = new System.Drawing.Size(282, 21);
+            this.smtpCombo.Sorted = true;
             this.smtpCombo.TabIndex = 10;
             // 
             // label2

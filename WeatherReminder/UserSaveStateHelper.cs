@@ -70,8 +70,6 @@ namespace WeatherNode
             localStream.Close();
         }
 
-
-
         public void arrayToNotificationList()
         {
             foreach (Notification notification in currentSaveState.NotificationArrayList)
