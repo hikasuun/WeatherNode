@@ -2,7 +2,7 @@
  * Location.cs
  * Language : C#
  * Class for holding location data in objects
- * January 2022 -
+ * January 2022 - April 2022
  */
 using System;
 using System.Collections.Generic;
