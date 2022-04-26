@@ -29,14 +29,13 @@ namespace WeatherNode
         [NonSerialized()]private string userPassword; // hold user password in memory ONLY
         private MailAddress userEmail; // holds user's email address
         public string smtpServer; // hold email server
-        public string smtpPort; // hold email port
+        public int smtpPort; // hold email port
         public int smtpAuthentication; // 0 - SSL, 1 - TLS
         private Location location; // user's location
         private List<Notification> notificationList = new List<Notification>(); // user's notification
         private int EXITCODE = 0; // EXITCODE used to facilitate form flow
         private UserSaveStateHelper saveStateHelper = null;
         public int notificationListNumber = 0; // holds numbering for notification list, used for display purposes
-
 
         public BaseForm()
         {
@@ -58,6 +57,8 @@ namespace WeatherNode
                 toolStripEmailTextBox.Text = userEmail.ToString();
                 WeatherBox.Enabled = false;
                 LocationLabel.Visible = false;
+                EmailPasswordForm pfrm = new EmailPasswordForm(this);
+                pfrm.ShowDialog();
             }
             else
             {//end first time check
@@ -68,6 +69,8 @@ namespace WeatherNode
                 toolStripEmailTextBox.Text = userEmail.ToString();
                 WeatherBox.Enabled = false;
                 LocationLabel.Visible = false;
+                EmailPasswordForm pfrm = new EmailPasswordForm(this);
+                pfrm.ShowDialog();
             }
         }
 
@@ -128,8 +131,8 @@ namespace WeatherNode
             EmailChangeForm frm = new EmailChangeForm(this);
             frm.TopMost = true;
             frm.ShowDialog();
-            toolStripEmailTextBox.Text = userEmail.ToString();
             SetEmailPort();
+            toolStripEmailTextBox.Text = userEmail.ToString();
         }
 
         private void quitToolStripMenuItem_Click(object sender, EventArgs e)
@@ -233,7 +236,7 @@ namespace WeatherNode
                     image = new Bitmap(@"..\..\..\Icons\cloudy.bmp");
                     break;
                 case "chance of rain":
-                case "change of showers":
+                case "chance of showers":
                 case "rain/snow showers":
                 case "rain and snow":
                 case "mist":
@@ -364,23 +367,23 @@ namespace WeatherNode
             switch(smtpServer)
             {
                 case "smtp.gmail.com":
-                    smtpPort = "465";
+                    smtpPort = 587;
                     smtpAuthentication = 0;
                     break;
-                case "smtp - mail.outlook.com":
-                    smtpPort = "587";
+                case "smtp-mail.outlook.com":
+                    smtpPort = 587;
                     smtpAuthentication = 1;
                     break;
                 case "smtp.office365.com":
-                    smtpPort = "587";
+                    smtpPort = 587;
                     smtpAuthentication = 1;
                     break;
                 case "smtp.mail.yahoo.com":
-                    smtpPort = "465";
+                    smtpPort = 465;
                     smtpAuthentication = 0;
                     break;
                 case "smtp.aol.com":
-                    smtpPort = "587";
+                    smtpPort = 587;
                     smtpAuthentication = 1;
                     break;
             }
@@ -388,12 +391,72 @@ namespace WeatherNode
 
         public void sendEmail()
         {
-            NetworkCredential login = new NetworkCredential(userEmail.ToString(), userPassword);
-            SmtpClient client = new SmtpClient(smtpServer);
-            client.Port = Int32.Parse(smtpPort);
-            client.EnableSsl = true;
-            client.Credentials = login;
-            MailMessage msg = new MailMessage { }
+            var fromAddress = new MailAddress(userEmail.ToString(), "WeatherNode");
+            var toAddress = new MailAddress(userEmail.ToString(), userName);
+            string fromPassword = userPassword;
+            string subject = "Weather Forecast Notification";
+            string body = GenerateMessage();
+
+            var smtp = new SmtpClient
+            {
+                Host = smtpServer,
+                Port = smtpPort,
+                EnableSsl = true,
+                DeliveryMethod = SmtpDeliveryMethod.Network,
+                UseDefaultCredentials = false,
+                Credentials = new NetworkCredential(fromAddress.Address, fromPassword)
+            };
+            using (var message = new MailMessage(fromAddress,toAddress)
+            {
+                Subject = subject,
+                Body = body
+            })
+            {
+                smtp.Send(message);
+            }
+        }
+        public string GenerateMessage()
+        {
+            string msg;
+            msg = $"Hello {userName}! The current weather for {location.GetLocation()} is:\n" +
+                $"    {location.GetWeather()}\n" +
+                $"    {location.GetTemp()}\n" +
+                $"    {location.GetWindChill()}\n" +
+                $"    {location.GetHumidity()}%\n\n" +
+                $"The forecasted weather for later is: {ForecastTxtBox.Text}\n\n";
+            switch(ForecastTxtBox.Text.ToLower())
+            {
+                case "chance of rain":
+                case "chance of showers":
+                case "rain/snow showers":
+                case "rain and snow":
+                case "mist":
+                case "chance of t-storm":
+                case "lightning observed":
+                case "thunder storms":
+                    msg = msg + "Make sure to bring an umbrella so you dont get wet!";
+                    break;
+                default:
+                    // do nothing
+                    break;
+            }
+            return msg;
+        }
+
+        private static void SendCompletedCallback(object sender, AsyncCompletedEventArgs e)
+        {
+            if (e.Cancelled)
+                MessageBox.Show(string.Format("{0} send canceled.", e.UserState), "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            if (e.Error != null)
+                MessageBox.Show(string.Format("{0} {1}", e.UserState, e.Error), "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            else
+                MessageBox.Show("Notification was sent.", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            SetEmailPort();
+            sendEmail();
         }
     }
 }

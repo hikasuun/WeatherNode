@@ -42,7 +42,7 @@ namespace WeatherNode
             {
                 MailAddress userEmail = new MailAddress(EmailTxtBox.Text.ToLower());
                 form.setUserEmail(userEmail);
-                form.smtpPort = smtpCombo.SelectedItem.ToString();
+                form.smtpServer = smtpCombo.SelectedItem.ToString();
                 MessageBox.Show("Email Changed Successfully.");
                 this.Close();
             }
