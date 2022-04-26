@@ -339,7 +339,6 @@ namespace WeatherNode
 
         private void NotificationLoading()
         {
-            // TODO: INDEX SELECTED NOTIFICATION
             int i = NotificationComboBox.SelectedIndex;
             rainCheck.Checked = notificationList[i].getNotificationOptions()[0];
             windCheck.Checked = notificationList[i].getNotificationOptions()[1];
@@ -363,6 +362,7 @@ namespace WeatherNode
         private void NotificationComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             NotificationLoading();
+            NotificationCheck();
         }
 
         private void sendTrayIcon(object sender, EventArgs e) // send to tray
@@ -475,6 +475,19 @@ namespace WeatherNode
 
         private void everyFourHour(object src, EventArgs e) // every four hours send email
         {
+            RunPythonScript();
+            string[] lines = System.IO.File.ReadAllLines(@"..\..\..\PythonScripts\htmlparse.txt"); // read the file
+
+            // Add index checking for 3 digit temps
+            location = new Location(lines[0].Substring(12), lines[1].Substring(10), lines[2].Substring(5, lines[2].Length - 7) + "°F",
+                lines[3].Substring(9), lines[8].Substring(11, lines[8].Length - 13) + "°F", ExtractForecast(lines[11]), lines[10].Substring(4));
+
+            ReadList();
+            ChangeWeatherImage();
+            weatherPictureBox.Visible = true;
+            WeatherBox.Enabled = true;
+            LocationLabel.Visible = true;
+            NotificationCheck();
             SetEmailPort();
             SendEmail();
             MessageBox.Show("Email sent.");
@@ -492,41 +505,41 @@ namespace WeatherNode
         {
             for (int i = 0; i < notificationList.Count; i++)
             {
-                if ((notificationList[i].getNotificationOptions()[0] == true && ForecastTxtBox.Text == "chance of rain") ||
-                    (notificationList[i].getNotificationOptions()[0] == true && ForecastTxtBox.Text == "chance of showers") ||
-                    (notificationList[i].getNotificationOptions()[0] == true && ForecastTxtBox.Text == "rain/snow showers") ||
-                    (notificationList[i].getNotificationOptions()[0] == true && ForecastTxtBox.Text == "rain and snow") ||
-                    (notificationList[i].getNotificationOptions()[0] == true && ForecastTxtBox.Text == "mist") ||
-                    (notificationList[i].getNotificationOptions()[0] == true && ForecastTxtBox.Text == "chance of t-storm") ||
-                    (notificationList[i].getNotificationOptions()[0] == true && ForecastTxtBox.Text == "lightning observed") ||
-                    (notificationList[i].getNotificationOptions()[0] == true && ForecastTxtBox.Text == "thunder storms") ||
-                    (notificationList[i].getNotificationOptions()[0] == true && ForecastTxtBox.Text == "light rain") ||
-                    (notificationList[i].getNotificationOptions()[0] == true && location.GetWeather() == "chance of rain") ||
-                    (notificationList[i].getNotificationOptions()[0] == true && location.GetWeather() == "chance of showers") ||
-                    (notificationList[i].getNotificationOptions()[0] == true && location.GetWeather() == "rain/snow showers") ||
-                    (notificationList[i].getNotificationOptions()[0] == true && location.GetWeather() == "rain and snow") ||
-                    (notificationList[i].getNotificationOptions()[0] == true && location.GetWeather() == "mist") ||
-                    (notificationList[i].getNotificationOptions()[0] == true && location.GetWeather() == "chance of t-storm") ||
-                    (notificationList[i].getNotificationOptions()[0] == true && location.GetWeather() == "lightning observed") ||
-                    (notificationList[i].getNotificationOptions()[0] == true && location.GetWeather() == "thunder storms") ||
-                    (notificationList[i].getNotificationOptions()[0] == true && location.GetWeather() == "light rain"))
+                if ((notificationList[i].getNotificationOptions()[0] == true && ForecastTxtBox.Text.ToLower() == "chance of rain") ||
+                    (notificationList[i].getNotificationOptions()[0] == true && ForecastTxtBox.Text.ToLower() == "chance of showers") ||
+                    (notificationList[i].getNotificationOptions()[0] == true && ForecastTxtBox.Text.ToLower() == "rain/snow showers") ||
+                    (notificationList[i].getNotificationOptions()[0] == true && ForecastTxtBox.Text.ToLower() == "rain and snow") ||
+                    (notificationList[i].getNotificationOptions()[0] == true && ForecastTxtBox.Text.ToLower() == "mist") ||
+                    (notificationList[i].getNotificationOptions()[0] == true && ForecastTxtBox.Text.ToLower() == "chance of t-storm") ||
+                    (notificationList[i].getNotificationOptions()[0] == true && ForecastTxtBox.Text.ToLower() == "lightning observed") ||
+                    (notificationList[i].getNotificationOptions()[0] == true && ForecastTxtBox.Text.ToLower() == "thunder storms") ||
+                    (notificationList[i].getNotificationOptions()[0] == true && ForecastTxtBox.Text.ToLower() == "light rain") ||
+                    (notificationList[i].getNotificationOptions()[0] == true && location.GetWeather().ToLower() == "chance of rain") ||
+                    (notificationList[i].getNotificationOptions()[0] == true && location.GetWeather().ToLower() == "chance of showers") ||
+                    (notificationList[i].getNotificationOptions()[0] == true && location.GetWeather().ToLower() == "rain/snow showers") ||
+                    (notificationList[i].getNotificationOptions()[0] == true && location.GetWeather().ToLower() == "rain and snow") ||
+                    (notificationList[i].getNotificationOptions()[0] == true && location.GetWeather().ToLower() == "mist") ||
+                    (notificationList[i].getNotificationOptions()[0] == true && location.GetWeather().ToLower() == "chance of t-storm") ||
+                    (notificationList[i].getNotificationOptions()[0] == true && location.GetWeather().ToLower() == "lightning observed") ||
+                    (notificationList[i].getNotificationOptions()[0] == true && location.GetWeather().ToLower() == "thunder storms") ||
+                    (notificationList[i].getNotificationOptions()[0] == true && location.GetWeather().ToLower() == "light rain"))
                 {
                     SetEmailPort();
                     SendEmail();
                 }
-                if ((notificationList[i].getNotificationOptions()[1] == true && ForecastTxtBox.Text == "windy") ||
-                    (notificationList[i].getNotificationOptions()[1] == true && ForecastTxtBox.Text == "blowing widespread dust") ||
-                    (notificationList[i].getNotificationOptions()[1] == true && location.GetWeather() == "windy") ||
-                    (notificationList[i].getNotificationOptions()[1] == true && location.GetWeather() == "blowing widespread dust")) {
+                if ((notificationList[i].getNotificationOptions()[1] == true && ForecastTxtBox.Text.ToLower() == "windy") ||
+                    (notificationList[i].getNotificationOptions()[1] == true && ForecastTxtBox.Text.ToLower() == "blowing widespread dust") ||
+                    (notificationList[i].getNotificationOptions()[1] == true && location.GetWeather().ToLower() == "windy") ||
+                    (notificationList[i].getNotificationOptions()[1] == true && location.GetWeather().ToLower() == "blowing widespread dust")) {
                     SetEmailPort();
                     SendEmail();
                 }
-                if ((notificationList[i].getNotificationOptions()[2] == true && ForecastTxtBox.Text == "fog") ||
-                    (notificationList[i].getNotificationOptions()[2] == true && ForecastTxtBox.Text == "patchy fog") ||
-                    (notificationList[i].getNotificationOptions()[2] == true && ForecastTxtBox.Text == "hazy") ||
-                    (notificationList[i].getNotificationOptions()[2] == true && location.GetWeather() == "fog") ||
-                    (notificationList[i].getNotificationOptions()[2] == true && location.GetWeather() == "patchy fog") ||
-                    (notificationList[i].getNotificationOptions()[2] == true && location.GetWeather() == "hazy"))
+                if ((notificationList[i].getNotificationOptions()[2] == true && ForecastTxtBox.Text.ToLower() == "fog") ||
+                    (notificationList[i].getNotificationOptions()[2] == true && ForecastTxtBox.Text.ToLower() == "patchy fog") ||
+                    (notificationList[i].getNotificationOptions()[2] == true && ForecastTxtBox.Text.ToLower() == "hazy") ||
+                    (notificationList[i].getNotificationOptions()[2] == true && location.GetWeather().ToLower() == "fog") ||
+                    (notificationList[i].getNotificationOptions()[2] == true && location.GetWeather().ToLower() == "patchy fog") ||
+                    (notificationList[i].getNotificationOptions()[2] == true && location.GetWeather().ToLower() == "hazy"))
                 {
                     SetEmailPort();
                     SendEmail();
