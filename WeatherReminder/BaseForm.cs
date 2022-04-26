@@ -149,6 +149,8 @@ namespace WeatherNode
             frm.TopMost = true;
             frm.ShowDialog();
             SetEmailPort();
+            EmailPasswordForm pfrm = new EmailPasswordForm(this);
+            pfrm.ShowDialog();
             toolStripEmailTextBox.Text = userEmail.ToString();
         }
 
