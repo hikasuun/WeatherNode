@@ -27,12 +27,19 @@ namespace WeatherNode
         private String userEmail; // holds user's email address
         private string locationName;
         private ArrayList notificationArrayList = new ArrayList(); //to hold converted notification list, generic lists are not able to be used in soap (so notif list doesn't work)
+        private string smtpServer; // hold email server
+        private int smtpPort; // hold email port
+        private int smtpAuthentication; // 0 - SSL, 1 - TLS
+
 
         //utility fxns
         public string UserName { get => userName; set => userName = value; }
         public String UserEmail { get => userEmail; set => userEmail = value; }
         public ArrayList NotificationArrayList { get => notificationArrayList; set => notificationArrayList = value; }
         public string LocationName { get => locationName; set => locationName = value; }
+        public string SmtpServer { get => smtpServer; set => smtpServer = value; }
+        public int SmtpPort { get => smtpPort; set => smtpPort = value; }
+        public int SmtpAuthentication { get => smtpAuthentication; set => smtpAuthentication = value; }
     }
 
     public class UserSaveStateHelper
@@ -47,6 +54,9 @@ namespace WeatherNode
             currentSaveState.UserEmail = currentForm.getUserEmail().ToString();
             currentSaveState.NotificationArrayList.AddRange(currentForm.getNotificationList());
             currentSaveState.LocationName = currentForm.getLocationName();
+            currentSaveState.SmtpServer = currentForm.smtpServer;
+            currentSaveState.SmtpPort = currentForm.smtpPort;
+            currentSaveState.SmtpAuthentication = currentForm.smtpAuthentication;
         }
 
         public UserSaveStateHelper() { } //test to see if this creates a conflict
