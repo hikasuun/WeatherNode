@@ -51,24 +51,21 @@
             this.TemperatureLabel = new System.Windows.Forms.Label();
             this.LocationLabel = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.sendEmailBtn = new System.Windows.Forms.Button();
             this.AddLocationButton = new System.Windows.Forms.Button();
             this.NotificationFlowLayout = new System.Windows.Forms.FlowLayoutPanel();
             this.NotificationGroupBox = new System.Windows.Forms.GroupBox();
             this.NotificationComboBox = new System.Windows.Forms.ComboBox();
             this.NotificationLabel = new System.Windows.Forms.Label();
             this.NotificationInfoGroupBox = new System.Windows.Forms.GroupBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.timePicker = new System.Windows.Forms.DateTimePicker();
             this.coldNumeric = new System.Windows.Forms.NumericUpDown();
             this.label3 = new System.Windows.Forms.Label();
             this.hotNumeric = new System.Windows.Forms.NumericUpDown();
             this.label5 = new System.Windows.Forms.Label();
-            this.humidityCheck = new System.Windows.Forms.CheckBox();
             this.fogCheck = new System.Windows.Forms.CheckBox();
             this.windCheck = new System.Windows.Forms.CheckBox();
             this.rainCheck = new System.Windows.Forms.CheckBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
             this.DeleteNotificationButton = new System.Windows.Forms.Button();
             this.AddNotificationButton = new System.Windows.Forms.Button();
             this.WelcomeUserLabel = new System.Windows.Forms.Label();
@@ -147,7 +144,7 @@
             // 
             // splitContainer1
             // 
-            this.splitContainer1.Location = new System.Drawing.Point(3, 34);
+            this.splitContainer1.Location = new System.Drawing.Point(3, 33);
             this.splitContainer1.Name = "splitContainer1";
             this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
@@ -158,8 +155,8 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.NotificationFlowLayout);
-            this.splitContainer1.Size = new System.Drawing.Size(359, 489);
-            this.splitContainer1.SplitterDistance = 232;
+            this.splitContainer1.Size = new System.Drawing.Size(359, 471);
+            this.splitContainer1.SplitterDistance = 237;
             this.splitContainer1.TabIndex = 1;
             // 
             // WeatherFlowLayout
@@ -294,12 +291,23 @@
             // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.button1);
+            this.panel3.Controls.Add(this.sendEmailBtn);
             this.panel3.Controls.Add(this.AddLocationButton);
             this.panel3.Location = new System.Drawing.Point(3, 202);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(353, 31);
             this.panel3.TabIndex = 2;
+            // 
+            // sendEmailBtn
+            // 
+            this.sendEmailBtn.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.sendEmailBtn.Location = new System.Drawing.Point(7, 4);
+            this.sendEmailBtn.Name = "sendEmailBtn";
+            this.sendEmailBtn.Size = new System.Drawing.Size(77, 23);
+            this.sendEmailBtn.TabIndex = 2;
+            this.sendEmailBtn.Text = "Send Email";
+            this.sendEmailBtn.UseVisualStyleBackColor = true;
+            this.sendEmailBtn.Click += new System.EventHandler(this.SendEmailButton_Click);
             // 
             // AddLocationButton
             // 
@@ -355,44 +363,19 @@
             // 
             // NotificationInfoGroupBox
             // 
-            this.NotificationInfoGroupBox.Controls.Add(this.label4);
-            this.NotificationInfoGroupBox.Controls.Add(this.timePicker);
             this.NotificationInfoGroupBox.Controls.Add(this.coldNumeric);
             this.NotificationInfoGroupBox.Controls.Add(this.label3);
             this.NotificationInfoGroupBox.Controls.Add(this.hotNumeric);
             this.NotificationInfoGroupBox.Controls.Add(this.label5);
-            this.NotificationInfoGroupBox.Controls.Add(this.humidityCheck);
             this.NotificationInfoGroupBox.Controls.Add(this.fogCheck);
             this.NotificationInfoGroupBox.Controls.Add(this.windCheck);
             this.NotificationInfoGroupBox.Controls.Add(this.rainCheck);
             this.NotificationInfoGroupBox.Location = new System.Drawing.Point(3, 64);
             this.NotificationInfoGroupBox.Name = "NotificationInfoGroupBox";
-            this.NotificationInfoGroupBox.Size = new System.Drawing.Size(354, 134);
+            this.NotificationInfoGroupBox.Size = new System.Drawing.Size(354, 109);
             this.NotificationInfoGroupBox.TabIndex = 3;
             this.NotificationInfoGroupBox.TabStop = false;
             this.NotificationInfoGroupBox.Text = "Information";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Enabled = false;
-            this.label4.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(111, 107);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(131, 15);
-            this.label4.TabIndex = 36;
-            this.label4.Text = "TIME TO BE NOTIFIED:";
-            // 
-            // timePicker
-            // 
-            this.timePicker.CustomFormat = "";
-            this.timePicker.Enabled = false;
-            this.timePicker.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.timePicker.Location = new System.Drawing.Point(248, 102);
-            this.timePicker.Name = "timePicker";
-            this.timePicker.ShowUpDown = true;
-            this.timePicker.Size = new System.Drawing.Size(95, 22);
-            this.timePicker.TabIndex = 35;
             // 
             // coldNumeric
             // 
@@ -415,11 +398,11 @@
             this.label3.AutoSize = true;
             this.label3.Enabled = false;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(133, 71);
+            this.label3.Location = new System.Drawing.Point(131, 71);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(122, 15);
+            this.label3.Size = new System.Drawing.Size(126, 15);
             this.label3.TabIndex = 33;
-            this.label3.Text = "COLD NOTIFCATION:";
+            this.label3.Text = "COLD NOTIFICATION:";
             // 
             // hotNumeric
             // 
@@ -447,18 +430,6 @@
             this.label5.Size = new System.Drawing.Size(124, 15);
             this.label5.TabIndex = 31;
             this.label5.Text = "HEAT NOTIFICATION:";
-            // 
-            // humidityCheck
-            // 
-            this.humidityCheck.AutoSize = true;
-            this.humidityCheck.Enabled = false;
-            this.humidityCheck.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.humidityCheck.Location = new System.Drawing.Point(12, 105);
-            this.humidityCheck.Name = "humidityCheck";
-            this.humidityCheck.Size = new System.Drawing.Size(72, 17);
-            this.humidityCheck.TabIndex = 27;
-            this.humidityCheck.Text = "Humidity";
-            this.humidityCheck.UseVisualStyleBackColor = true;
             // 
             // fogCheck
             // 
@@ -500,21 +471,10 @@
             // 
             this.panel1.Controls.Add(this.DeleteNotificationButton);
             this.panel1.Controls.Add(this.AddNotificationButton);
-            this.panel1.Location = new System.Drawing.Point(3, 204);
+            this.panel1.Location = new System.Drawing.Point(3, 179);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(354, 30);
             this.panel1.TabIndex = 4;
-            // 
-            // button1
-            // 
-            this.button1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(7, 4);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(77, 23);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Send Email";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // DeleteNotificationButton
             // 
@@ -559,7 +519,7 @@
             this.BaseFormSplitLayout.RowCount = 2;
             this.BaseFormSplitLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.956113F));
             this.BaseFormSplitLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 94.04388F));
-            this.BaseFormSplitLayout.Size = new System.Drawing.Size(365, 526);
+            this.BaseFormSplitLayout.Size = new System.Drawing.Size(365, 507);
             this.BaseFormSplitLayout.TabIndex = 2;
             // 
             // trayNotifyIcon
@@ -572,7 +532,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(397, 561);
+            this.ClientSize = new System.Drawing.Size(397, 547);
             this.Controls.Add(this.BaseFormSplitLayout);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.BaseFormMenuStrip);
@@ -648,15 +608,12 @@
         private System.Windows.Forms.PictureBox weatherPictureBox;
         private System.Windows.Forms.CheckBox windCheck;
         private System.Windows.Forms.CheckBox rainCheck;
-        private System.Windows.Forms.CheckBox humidityCheck;
         private System.Windows.Forms.CheckBox fogCheck;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.DateTimePicker timePicker;
         private System.Windows.Forms.NumericUpDown coldNumeric;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.NumericUpDown hotNumeric;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.NotifyIcon trayNotifyIcon;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button sendEmailBtn;
     }
 }

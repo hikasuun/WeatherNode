@@ -35,13 +35,10 @@
             this.label2 = new System.Windows.Forms.Label();
             this.rainCheck = new System.Windows.Forms.CheckBox();
             this.windCheck = new System.Windows.Forms.CheckBox();
-            this.humidityCheck = new System.Windows.Forms.CheckBox();
             this.label1 = new System.Windows.Forms.Label();
             this.CancelButton = new System.Windows.Forms.Button();
             this.SaveButton = new System.Windows.Forms.Button();
             this.fogCheck = new System.Windows.Forms.CheckBox();
-            this.timePicker = new System.Windows.Forms.DateTimePicker();
-            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.coldNumeric)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.hotNumeric)).BeginInit();
             this.SuspendLayout();
@@ -118,17 +115,6 @@
             this.windCheck.Text = "Wind";
             this.windCheck.UseVisualStyleBackColor = true;
             // 
-            // humidityCheck
-            // 
-            this.humidityCheck.AutoSize = true;
-            this.humidityCheck.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.humidityCheck.Location = new System.Drawing.Point(21, 110);
-            this.humidityCheck.Name = "humidityCheck";
-            this.humidityCheck.Size = new System.Drawing.Size(72, 17);
-            this.humidityCheck.TabIndex = 17;
-            this.humidityCheck.Text = "Humidity";
-            this.humidityCheck.UseVisualStyleBackColor = true;
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -144,7 +130,7 @@
             this.CancelButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.CancelButton.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CancelButton.ForeColor = System.Drawing.Color.Black;
-            this.CancelButton.Location = new System.Drawing.Point(299, 144);
+            this.CancelButton.Location = new System.Drawing.Point(299, 126);
             this.CancelButton.Name = "CancelButton";
             this.CancelButton.Size = new System.Drawing.Size(114, 38);
             this.CancelButton.TabIndex = 15;
@@ -157,7 +143,7 @@
             this.SaveButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.SaveButton.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SaveButton.ForeColor = System.Drawing.Color.Black;
-            this.SaveButton.Location = new System.Drawing.Point(169, 144);
+            this.SaveButton.Location = new System.Drawing.Point(169, 126);
             this.SaveButton.Name = "SaveButton";
             this.SaveButton.Size = new System.Drawing.Size(114, 38);
             this.SaveButton.TabIndex = 14;
@@ -175,35 +161,12 @@
             this.fogCheck.Text = "Fog";
             this.fogCheck.UseVisualStyleBackColor = true;
             // 
-            // timePicker
-            // 
-            this.timePicker.CustomFormat = "";
-            this.timePicker.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.timePicker.Location = new System.Drawing.Point(318, 105);
-            this.timePicker.Name = "timePicker";
-            this.timePicker.ShowUpDown = true;
-            this.timePicker.Size = new System.Drawing.Size(95, 22);
-            this.timePicker.TabIndex = 29;
-            this.timePicker.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(181, 110);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(131, 15);
-            this.label4.TabIndex = 30;
-            this.label4.Text = "TIME TO BE NOTIFIED:";
-            // 
             // UserNotificationsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(425, 199);
+            this.ClientSize = new System.Drawing.Size(423, 176);
             this.ControlBox = false;
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.timePicker);
             this.Controls.Add(this.fogCheck);
             this.Controls.Add(this.coldNumeric);
             this.Controls.Add(this.label3);
@@ -211,7 +174,6 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.rainCheck);
             this.Controls.Add(this.windCheck);
-            this.Controls.Add(this.humidityCheck);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.CancelButton);
             this.Controls.Add(this.SaveButton);
@@ -236,12 +198,9 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.CheckBox rainCheck;
         private System.Windows.Forms.CheckBox windCheck;
-        private System.Windows.Forms.CheckBox humidityCheck;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button CancelButton;
         private System.Windows.Forms.Button SaveButton;
         private System.Windows.Forms.CheckBox fogCheck;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.DateTimePicker timePicker;
     }
 }
