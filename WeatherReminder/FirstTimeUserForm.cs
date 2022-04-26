@@ -45,7 +45,7 @@ namespace WeatherNode
             // check if txt boxes are empty or email is valid
             if (String.IsNullOrEmpty(NameTxtBox.Text) ||
                 String.IsNullOrEmpty(EmailTxtBox.Text) ||
-                !IsValidEmail(EmailTxtBox.Text))
+                !IsValidEmail(EmailTxtBox.Text) || smtpCombo.SelectedItem == null)
             {
                 MessageBox.Show("Please enter valid email / username.");
             }
@@ -57,6 +57,7 @@ namespace WeatherNode
 
                 form.setUserName(userName);
                 form.setUserEmail(userEmail);
+                form.smtpServer = smtpCombo.SelectedItem.ToString();
                 this.Close();
             }
         }

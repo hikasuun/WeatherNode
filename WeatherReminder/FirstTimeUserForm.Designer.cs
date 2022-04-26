@@ -35,6 +35,8 @@
             this.NameTxtBox = new System.Windows.Forms.TextBox();
             this.EmailTxtBox = new System.Windows.Forms.TextBox();
             this.InstructionLabel = new System.Windows.Forms.Label();
+            this.smtpCombo = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // UserNameLabel
@@ -51,7 +53,7 @@
             // 
             this.UserEmailLabel.AutoSize = true;
             this.UserEmailLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.UserEmailLabel.Location = new System.Drawing.Point(10, 72);
+            this.UserEmailLabel.Location = new System.Drawing.Point(7, 72);
             this.UserEmailLabel.Name = "UserEmailLabel";
             this.UserEmailLabel.Size = new System.Drawing.Size(65, 15);
             this.UserEmailLabel.TabIndex = 1;
@@ -60,7 +62,7 @@
             // ClearBtn
             // 
             this.ClearBtn.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ClearBtn.Location = new System.Drawing.Point(274, 107);
+            this.ClearBtn.Location = new System.Drawing.Point(274, 149);
             this.ClearBtn.Name = "ClearBtn";
             this.ClearBtn.Size = new System.Drawing.Size(75, 23);
             this.ClearBtn.TabIndex = 2;
@@ -71,7 +73,7 @@
             // EnterBtn
             // 
             this.EnterBtn.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.EnterBtn.Location = new System.Drawing.Point(355, 107);
+            this.EnterBtn.Location = new System.Drawing.Point(355, 149);
             this.EnterBtn.Name = "EnterBtn";
             this.EnterBtn.Size = new System.Drawing.Size(75, 23);
             this.EnterBtn.TabIndex = 3;
@@ -103,13 +105,40 @@
             this.InstructionLabel.TabIndex = 6;
             this.InstructionLabel.Text = "Please enter your information below :";
             // 
+            // smtpCombo
+            // 
+            this.smtpCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.smtpCombo.FormattingEnabled = true;
+            this.smtpCombo.Items.AddRange(new object[] {
+            "smtp-mail.outlook.com",
+            "smtp.aol.com",
+            "smtp.gmail.com",
+            "smtp.mail.yahoo.com",
+            "smtp.office365.com"});
+            this.smtpCombo.Location = new System.Drawing.Point(127, 108);
+            this.smtpCombo.Name = "smtpCombo";
+            this.smtpCombo.Size = new System.Drawing.Size(303, 21);
+            this.smtpCombo.Sorted = true;
+            this.smtpCombo.TabIndex = 8;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(7, 111);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(114, 13);
+            this.label2.TabIndex = 7;
+            this.label2.Text = "Choose SMTP Server:";
+            // 
             // FirstTimeUserForm
             // 
             this.AcceptButton = this.EnterBtn;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(442, 152);
+            this.ClientSize = new System.Drawing.Size(442, 184);
             this.ControlBox = false;
+            this.Controls.Add(this.smtpCombo);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.InstructionLabel);
             this.Controls.Add(this.EmailTxtBox);
             this.Controls.Add(this.NameTxtBox);
@@ -137,6 +166,8 @@
         private System.Windows.Forms.TextBox NameTxtBox;
         private System.Windows.Forms.TextBox EmailTxtBox;
         private System.Windows.Forms.Label InstructionLabel;
+        private System.Windows.Forms.ComboBox smtpCombo;
+        private System.Windows.Forms.Label label2;
     }
 }
 

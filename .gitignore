@@ -365,3 +365,4 @@ FodyWeavers.xsd
 # Location Files not needed
 /PythonScripts/location.txt
 /PythonScripts/htmlparse.txt
+/WeatherReminder/saveState.xml

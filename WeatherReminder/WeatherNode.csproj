@@ -12,6 +12,7 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -24,7 +25,6 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -69,6 +69,12 @@
     <Compile Include="BaseForm.Designer.cs">
       <DependentUpon>BaseForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="EmailPasswordForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EmailPasswordForm.Designer.cs">
+      <DependentUpon>EmailPasswordForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserSaveStateHelper.cs" />
     <Compile Include="EmailChangeForm.cs">
       <SubType>Form</SubType>
@@ -110,6 +116,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="EmailChangeForm.resx">
       <DependentUpon>EmailChangeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EmailPasswordForm.resx">
+      <DependentUpon>EmailPasswordForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FirstTimeUserForm.resx">
       <DependentUpon>FirstTimeUserForm.cs</DependentUpon>
