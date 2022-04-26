@@ -438,10 +438,10 @@ namespace WeatherNode
         {
             string msg;
             msg = $"Hello {userName}! The current weather for {location.GetLocation()} is:\n" +
-                $"    {location.GetWeather()}\n" +
-                $"    {location.GetTemp()}\n" +
-                $"    {location.GetWindChill()}\n" +
-                $"    {location.GetHumidity()}\n\n" +
+                $"    Current Weather: {location.GetWeather()}\n" +
+                $"    Current Temperature: {location.GetTemp()}\n" +
+                $"    Current Wind Chill: {location.GetWindChill()}\n" +
+                $"    Current Humidity: {location.GetHumidity()}\n\n" +
                 $"The forecasted weather for later is: {ForecastTxtBox.Text}\n\n";
             switch(ForecastTxtBox.Text.ToLower())
             {
