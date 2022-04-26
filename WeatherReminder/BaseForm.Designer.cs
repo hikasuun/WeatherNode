@@ -57,8 +57,6 @@
             this.NotificationComboBox = new System.Windows.Forms.ComboBox();
             this.NotificationLabel = new System.Windows.Forms.Label();
             this.NotificationInfoGroupBox = new System.Windows.Forms.GroupBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.timePicker = new System.Windows.Forms.DateTimePicker();
             this.coldNumeric = new System.Windows.Forms.NumericUpDown();
             this.label3 = new System.Windows.Forms.Label();
             this.hotNumeric = new System.Windows.Forms.NumericUpDown();
@@ -355,8 +353,6 @@
             // 
             // NotificationInfoGroupBox
             // 
-            this.NotificationInfoGroupBox.Controls.Add(this.label4);
-            this.NotificationInfoGroupBox.Controls.Add(this.timePicker);
             this.NotificationInfoGroupBox.Controls.Add(this.coldNumeric);
             this.NotificationInfoGroupBox.Controls.Add(this.label3);
             this.NotificationInfoGroupBox.Controls.Add(this.hotNumeric);
@@ -371,28 +367,6 @@
             this.NotificationInfoGroupBox.TabIndex = 3;
             this.NotificationInfoGroupBox.TabStop = false;
             this.NotificationInfoGroupBox.Text = "Information";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Enabled = false;
-            this.label4.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(111, 107);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(131, 15);
-            this.label4.TabIndex = 36;
-            this.label4.Text = "TIME TO BE NOTIFIED:";
-            // 
-            // timePicker
-            // 
-            this.timePicker.CustomFormat = "";
-            this.timePicker.Enabled = false;
-            this.timePicker.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.timePicker.Location = new System.Drawing.Point(248, 102);
-            this.timePicker.Name = "timePicker";
-            this.timePicker.ShowUpDown = true;
-            this.timePicker.Size = new System.Drawing.Size(95, 22);
-            this.timePicker.TabIndex = 35;
             // 
             // coldNumeric
             // 
@@ -650,8 +624,6 @@
         private System.Windows.Forms.CheckBox rainCheck;
         private System.Windows.Forms.CheckBox humidityCheck;
         private System.Windows.Forms.CheckBox fogCheck;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.DateTimePicker timePicker;
         private System.Windows.Forms.NumericUpDown coldNumeric;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.NumericUpDown hotNumeric;

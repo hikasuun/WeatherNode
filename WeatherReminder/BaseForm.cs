@@ -37,9 +37,13 @@ namespace WeatherNode
         private UserSaveStateHelper saveStateHelper = null;
         public int notificationListNumber = 0; // holds numbering for notification list, used for display purposes
 
+        System.Timers.Timer myTimer = new System.Timers.Timer(4 * 60 * 60 *1000); // 4 hours in milliseconds
+
         public BaseForm()
         {
             InitializeComponent();
+            myTimer.Elapsed += new System.Timers.ElapsedEventHandler(everyFourHour);
+            myTimer.Start();
         }
 
         private void BaseForm_Load(object sender, EventArgs e)
@@ -333,7 +337,6 @@ namespace WeatherNode
             humidityCheck.Checked = notificationList[i].getNotificationOptions()[3];
             hotNumeric.Value = notificationList[i].getNotificationHeat();
             coldNumeric.Value = notificationList[i].getNotificationCold();
-            timePicker.Value = (notificationList[i].getNotificationDate().Date + notificationList[i].getNotificationDate().TimeOfDay);
         }
         public void AddUserNotification(Notification notif)
         {
@@ -395,7 +398,7 @@ namespace WeatherNode
             }
         }
 
-        public void sendEmail()
+        public void SendEmail()
         {
             var fromAddress = new MailAddress(userEmail.ToString(), "WeatherNode");
             var toAddress = new MailAddress(userEmail.ToString(), userName);
@@ -462,7 +465,13 @@ namespace WeatherNode
         private void button1_Click(object sender, EventArgs e)
         {
             SetEmailPort();
-            sendEmail();
+            SendEmail();
+        }
+
+        private void everyFourHour(object src, EventArgs e)
+        {
+            SetEmailPort();
+            SendEmail();
         }
     }
 }

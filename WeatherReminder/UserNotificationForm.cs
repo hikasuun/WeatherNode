@@ -27,7 +27,6 @@ namespace WeatherNode
 
         private void UserSettingsForm_Load(object sender, EventArgs e)
         {
-
         }
 
         private void SaveButton_Click(object sender, EventArgs e)
@@ -43,9 +42,8 @@ namespace WeatherNode
                 {rainCheck.Checked, windCheck.Checked, fogCheck.Checked, humidityCheck.Checked};
             int hot = Convert.ToInt32(Math.Round(hotNumeric.Value, 0));
             int cold = Convert.ToInt32(Math.Round(coldNumeric.Value, 0));
-            DateTime myTime = timePicker.Value.Date + timePicker.Value.TimeOfDay;
 
-            Notification newNotification = new Notification(form.notificationListNumber,myTime,hot,cold,notificationOptions);
+            Notification newNotification = new Notification(form.notificationListNumber,hot,cold,notificationOptions);
             form.AddUserNotification(newNotification);
             this.Close();
         }

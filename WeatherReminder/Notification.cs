@@ -19,7 +19,6 @@ namespace WeatherNode
     public class Notification
     {
         private int id; // notification ID
-        private DateTime notificationDate; // store time the notification should be sent
         private int notificationHeat; // store notification hot temp
         private int notificationCold; // store notification cold temp
         private bool[] notificationOptions = new bool[4]; // store notifications as array of boolean val.
@@ -35,7 +34,6 @@ namespace WeatherNode
         public Notification(int notiID, DateTime notiTime, int notiHeat, int notiCold, bool[] notiOption)
         {
             setNotificationID(notiID);
-            setNotificationDate(notiTime);
             setNotificationHeat(notiHeat);
             setNotificationCold(notiCold);
             setNotificationOptions(notiOption);
@@ -61,10 +59,6 @@ namespace WeatherNode
         {
             return notificationCold;
         }
-        public DateTime getNotificationDate()
-        {
-            return notificationDate;
-        }
         public bool[] getNotificationOptions()
         {
             return notificationOptions;
@@ -80,10 +74,6 @@ namespace WeatherNode
         public void setNotificationCold(int notiCold)
         {
             this.notificationCold = notiCold;
-        }
-        public void setNotificationDate(DateTime notiTime)
-        {
-            this.notificationDate = notiTime;
         }
         public void setNotificationOptions (bool[] notiOptions)
         {
