@@ -36,10 +36,9 @@ namespace WeatherNode
             *           0      RAIN
             *           1      WIND
             *           2      FOG
-            *           3      HUMIDITY
             */
             bool[] notificationOptions =
-                {rainCheck.Checked, windCheck.Checked, fogCheck.Checked, humidityCheck.Checked};
+                {rainCheck.Checked, windCheck.Checked, fogCheck.Checked};
             int hot = Convert.ToInt32(Math.Round(hotNumeric.Value, 0));
             int cold = Convert.ToInt32(Math.Round(coldNumeric.Value, 0));
 

@@ -128,6 +128,12 @@ namespace WeatherNode
             {
                 // Delete Entry in combo box
                 DeleteUserNotification(NotificationComboBox.SelectedIndex);
+                rainCheck.Checked = false;
+                windCheck.Checked = false;
+                fogCheck.Checked  = false;
+                hotNumeric.Value = 0;
+                coldNumeric.Value = 0;
+
                 MessageBox.Show("Notification deleted.");
             }
             else
@@ -179,6 +185,7 @@ namespace WeatherNode
                 weatherPictureBox.Visible = true;
                 WeatherBox.Enabled = true;
                 LocationLabel.Visible = true;
+                NotificationCheck();
             }
         }
 
@@ -206,7 +213,7 @@ namespace WeatherNode
                 { "sunny", "mostly sunny", "partly sunny","clear", "partly clear", "mostly clear", "clearing",
                 "partly cloudy", "mostly cloudy", "chance of rain", "chance of showers", "chance of t-storm",
                 "rain/snow showers",  "fog", "patchy fog","windy", "overcast", "hazy", "blowing widespread dust",
-                "rain and snow", "mist", "lightning observed","thunder storms" };
+                "rain and snow", "mist", "lightning observed","thunder storms", "light rain"};
             for (int i = 0; i < forecastList.Length; i++)
             {
                 if (str.ToLower().Contains(forecastList[i]))
@@ -246,6 +253,7 @@ namespace WeatherNode
                 case "overcast":
                     image = new Bitmap(@"..\..\..\Icons\cloudy.bmp");
                     break;
+                case "light rain":
                 case "chance of rain":
                 case "chance of showers":
                 case "rain/snow showers":
@@ -334,9 +342,9 @@ namespace WeatherNode
             rainCheck.Checked = notificationList[i].getNotificationOptions()[0];
             windCheck.Checked = notificationList[i].getNotificationOptions()[1];
             fogCheck.Checked = notificationList[i].getNotificationOptions()[2];
-            humidityCheck.Checked = notificationList[i].getNotificationOptions()[3];
             hotNumeric.Value = notificationList[i].getNotificationHeat();
             coldNumeric.Value = notificationList[i].getNotificationCold();
+            NotificationCheck();
         }
         public void AddUserNotification(Notification notif)
         {
@@ -355,7 +363,7 @@ namespace WeatherNode
             NotificationLoading();
         }
 
-        private void sendTrayIcon(object sender, EventArgs e)
+        private void sendTrayIcon(object sender, EventArgs e) // send to tray
         {
             if (this.WindowState == FormWindowState.Minimized)
             {
@@ -364,14 +372,14 @@ namespace WeatherNode
             }
         }
 
-        private void trayNotifyIcon_MouseDoubleClick(object sender, MouseEventArgs e)
+        private void trayNotifyIcon_MouseDoubleClick(object sender, MouseEventArgs e) // restore from tray
         {
             Show();
             this.WindowState = FormWindowState.Normal;
             trayNotifyIcon.Visible = false;
         }
 
-        private void SetEmailPort()
+        private void SetEmailPort() // selects email port according to server
         {
             switch(smtpServer)
             {
@@ -398,7 +406,7 @@ namespace WeatherNode
             }
         }
 
-        public void SendEmail()
+        public void SendEmail() // generates email and sends
         {
             var fromAddress = new MailAddress(userEmail.ToString(), "WeatherNode");
             var toAddress = new MailAddress(userEmail.ToString(), userName);
@@ -424,18 +432,19 @@ namespace WeatherNode
                 smtp.Send(message);
             }
         }
-        public string GenerateMessage()
+        public string GenerateMessage() // generates body of email
         {
             string msg;
             msg = $"Hello {userName}! The current weather for {location.GetLocation()} is:\n" +
                 $"    {location.GetWeather()}\n" +
                 $"    {location.GetTemp()}\n" +
                 $"    {location.GetWindChill()}\n" +
-                $"    {location.GetHumidity()}%\n\n" +
+                $"    {location.GetHumidity()}\n\n" +
                 $"The forecasted weather for later is: {ForecastTxtBox.Text}\n\n";
             switch(ForecastTxtBox.Text.ToLower())
             {
                 case "chance of rain":
+                case "light rain":
                 case "chance of showers":
                 case "rain/snow showers":
                 case "rain and snow":
@@ -462,16 +471,73 @@ namespace WeatherNode
                 MessageBox.Show("Notification was sent.", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void everyFourHour(object src, EventArgs e) // every four hours send email
         {
             SetEmailPort();
             SendEmail();
+            MessageBox.Show("Email sent.");
         }
 
-        private void everyFourHour(object src, EventArgs e)
+        private void SendEmailButton_Click(object sender, EventArgs e)
         {
             SetEmailPort();
             SendEmail();
+            MessageBox.Show("Email sent.");
+        }
+
+        // check notification flags against weather
+        private void NotificationCheck()
+        {
+            for (int i = 0; i < notificationList.Count; i++)
+            {
+                if ((notificationList[i].getNotificationOptions()[0] == true && ForecastTxtBox.Text == "chance of rain") ||
+                    (notificationList[i].getNotificationOptions()[0] == true && ForecastTxtBox.Text == "chance of showers") ||
+                    (notificationList[i].getNotificationOptions()[0] == true && ForecastTxtBox.Text == "rain/snow showers") ||
+                    (notificationList[i].getNotificationOptions()[0] == true && ForecastTxtBox.Text == "rain and snow") ||
+                    (notificationList[i].getNotificationOptions()[0] == true && ForecastTxtBox.Text == "mist") ||
+                    (notificationList[i].getNotificationOptions()[0] == true && ForecastTxtBox.Text == "chance of t-storm") ||
+                    (notificationList[i].getNotificationOptions()[0] == true && ForecastTxtBox.Text == "lightning observed") ||
+                    (notificationList[i].getNotificationOptions()[0] == true && ForecastTxtBox.Text == "thunder storms") ||
+                    (notificationList[i].getNotificationOptions()[0] == true && ForecastTxtBox.Text == "light rain") ||
+                    (notificationList[i].getNotificationOptions()[0] == true && location.GetWeather() == "chance of rain") ||
+                    (notificationList[i].getNotificationOptions()[0] == true && location.GetWeather() == "chance of showers") ||
+                    (notificationList[i].getNotificationOptions()[0] == true && location.GetWeather() == "rain/snow showers") ||
+                    (notificationList[i].getNotificationOptions()[0] == true && location.GetWeather() == "rain and snow") ||
+                    (notificationList[i].getNotificationOptions()[0] == true && location.GetWeather() == "mist") ||
+                    (notificationList[i].getNotificationOptions()[0] == true && location.GetWeather() == "chance of t-storm") ||
+                    (notificationList[i].getNotificationOptions()[0] == true && location.GetWeather() == "lightning observed") ||
+                    (notificationList[i].getNotificationOptions()[0] == true && location.GetWeather() == "thunder storms") ||
+                    (notificationList[i].getNotificationOptions()[0] == true && location.GetWeather() == "light rain"))
+                {
+                    SetEmailPort();
+                    SendEmail();
+                }
+                if ((notificationList[i].getNotificationOptions()[1] == true && ForecastTxtBox.Text == "windy") ||
+                    (notificationList[i].getNotificationOptions()[1] == true && ForecastTxtBox.Text == "blowing widespread dust") ||
+                    (notificationList[i].getNotificationOptions()[1] == true && location.GetWeather() == "windy") ||
+                    (notificationList[i].getNotificationOptions()[1] == true && location.GetWeather() == "blowing widespread dust")) {
+                    SetEmailPort();
+                    SendEmail();
+                }
+                if ((notificationList[i].getNotificationOptions()[2] == true && ForecastTxtBox.Text == "fog") ||
+                    (notificationList[i].getNotificationOptions()[2] == true && ForecastTxtBox.Text == "patchy fog") ||
+                    (notificationList[i].getNotificationOptions()[2] == true && ForecastTxtBox.Text == "hazy") ||
+                    (notificationList[i].getNotificationOptions()[2] == true && location.GetWeather() == "fog") ||
+                    (notificationList[i].getNotificationOptions()[2] == true && location.GetWeather() == "patchy fog") ||
+                    (notificationList[i].getNotificationOptions()[2] == true && location.GetWeather() == "hazy"))
+                {
+                    SetEmailPort();
+                    SendEmail();
+                }
+
+                if (Int32.Parse(location.GetTemp().Substring(0,2)) <= notificationList[i].getNotificationCold() || 
+                    Int32.Parse(location.GetTemp().Substring(0,2)) >= notificationList[i].getNotificationHeat())
+                {
+                    SetEmailPort();
+                    SendEmail();
+                }
+            }
+            
         }
     }
 }

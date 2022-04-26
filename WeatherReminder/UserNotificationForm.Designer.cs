@@ -35,7 +35,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.rainCheck = new System.Windows.Forms.CheckBox();
             this.windCheck = new System.Windows.Forms.CheckBox();
-            this.humidityCheck = new System.Windows.Forms.CheckBox();
             this.label1 = new System.Windows.Forms.Label();
             this.CancelButton = new System.Windows.Forms.Button();
             this.SaveButton = new System.Windows.Forms.Button();
@@ -116,17 +115,6 @@
             this.windCheck.Text = "Wind";
             this.windCheck.UseVisualStyleBackColor = true;
             // 
-            // humidityCheck
-            // 
-            this.humidityCheck.AutoSize = true;
-            this.humidityCheck.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.humidityCheck.Location = new System.Drawing.Point(21, 110);
-            this.humidityCheck.Name = "humidityCheck";
-            this.humidityCheck.Size = new System.Drawing.Size(72, 17);
-            this.humidityCheck.TabIndex = 17;
-            this.humidityCheck.Text = "Humidity";
-            this.humidityCheck.UseVisualStyleBackColor = true;
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -142,7 +130,7 @@
             this.CancelButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.CancelButton.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CancelButton.ForeColor = System.Drawing.Color.Black;
-            this.CancelButton.Location = new System.Drawing.Point(299, 140);
+            this.CancelButton.Location = new System.Drawing.Point(299, 126);
             this.CancelButton.Name = "CancelButton";
             this.CancelButton.Size = new System.Drawing.Size(114, 38);
             this.CancelButton.TabIndex = 15;
@@ -155,7 +143,7 @@
             this.SaveButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.SaveButton.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SaveButton.ForeColor = System.Drawing.Color.Black;
-            this.SaveButton.Location = new System.Drawing.Point(169, 140);
+            this.SaveButton.Location = new System.Drawing.Point(169, 126);
             this.SaveButton.Name = "SaveButton";
             this.SaveButton.Size = new System.Drawing.Size(114, 38);
             this.SaveButton.TabIndex = 14;
@@ -177,7 +165,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(425, 190);
+            this.ClientSize = new System.Drawing.Size(423, 176);
             this.ControlBox = false;
             this.Controls.Add(this.fogCheck);
             this.Controls.Add(this.coldNumeric);
@@ -186,7 +174,6 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.rainCheck);
             this.Controls.Add(this.windCheck);
-            this.Controls.Add(this.humidityCheck);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.CancelButton);
             this.Controls.Add(this.SaveButton);
@@ -211,7 +198,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.CheckBox rainCheck;
         private System.Windows.Forms.CheckBox windCheck;
-        private System.Windows.Forms.CheckBox humidityCheck;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button CancelButton;
         private System.Windows.Forms.Button SaveButton;

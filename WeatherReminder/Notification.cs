@@ -21,17 +21,16 @@ namespace WeatherNode
         private int id; // notification ID
         private int notificationHeat; // store notification hot temp
         private int notificationCold; // store notification cold temp
-        private bool[] notificationOptions = new bool[4]; // store notifications as array of boolean val.
+        private bool[] notificationOptions = new bool[3]; // store notifications as array of boolean val.
         /*
          * ARRAY SPACE      NOTIFICATION
          *           0      RAIN
          *           1      WIND
          *           2      FOG
-         *           3      HUMIDITY
          */
 
         // Constructor
-        public Notification(int notiID, DateTime notiTime, int notiHeat, int notiCold, bool[] notiOption)
+        public Notification(int notiID, int notiHeat, int notiCold, bool[] notiOption)
         {
             setNotificationID(notiID);
             setNotificationHeat(notiHeat);
