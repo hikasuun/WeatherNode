@@ -1,4 +1,10 @@
-﻿using System;
+﻿/*
+ * EmailPasswordForm.cs
+ * Language : C#
+ * Form for inputing user password / app password
+ * January 2022 - April 2022
+ */
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;

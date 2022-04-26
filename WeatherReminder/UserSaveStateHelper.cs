@@ -2,7 +2,6 @@
  * SaveState.cs
  * Language: C# 
  * allows the serialization of user configuration on exit
- * 
  * April 2022
  */
 using System;
