@@ -344,6 +344,7 @@
             // 
             // NotificationComboBox
             // 
+            this.NotificationComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.NotificationComboBox.FormattingEnabled = true;
             this.NotificationComboBox.Location = new System.Drawing.Point(122, 17);
             this.NotificationComboBox.Name = "NotificationComboBox";
