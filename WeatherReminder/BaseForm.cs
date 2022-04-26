@@ -48,7 +48,14 @@ namespace WeatherNode
                 //load vars from save
                 userName = saveStateHelper.currentSaveState.UserName;
                 userEmail = saveStateHelper.deserializedEmail;
-                notificationList = saveStateHelper.deserializedNotifications;
+                // restoring the state of the notification list requires the use of the addNotification Fxn 
+                //notificationList = saveStateHelper.deserializedNotifications;
+                foreach(Notification notification in saveStateHelper.deserializedNotifications)
+                {
+                    AddUserNotification(notification);
+                }
+                // this code is being tested
+
                 WelcomeUserLabel.Text = "Welcome, " + userName;
                 toolStripEmailTextBox.Text = userEmail.ToString();
                 WeatherBox.Enabled = false;
@@ -271,10 +278,9 @@ namespace WeatherNode
             return this.userEmail;
         }
 
-        public string[] getBasicLocationData()
+        public string getLocationName()
         {
-            String[] basicLocationData = new String[2] { location.GetLocation(), location.GetUrl() };
-            return basicLocationData;
+            return location.GetLocation();
         }
 
         public List<Notification> getNotificationList()
