@@ -25,13 +25,14 @@ namespace WeatherNode
     {
         private string userName; // holds user's name
         private String userEmail; // holds user's email address
-        //private string locationName, locationURL; no longer needed
+        private string locationName;
         private ArrayList notificationArrayList = new ArrayList(); //to hold converted notification list, generic lists are not able to be used in soap (so notif list doesn't work)
 
         //utility fxns
         public string UserName { get => userName; set => userName = value; }
         public String UserEmail { get => userEmail; set => userEmail = value; }
         public ArrayList NotificationArrayList { get => notificationArrayList; set => notificationArrayList = value; }
+        public string LocationName { get => locationName; set => locationName = value; }
     }
 
     public class UserSaveStateHelper
@@ -45,6 +46,7 @@ namespace WeatherNode
             currentSaveState.UserName = currentForm.getUserName();
             currentSaveState.UserEmail = currentForm.getUserEmail().ToString();
             currentSaveState.NotificationArrayList.AddRange(currentForm.getNotificationList());
+            currentSaveState.LocationName = currentForm.getLocationName();
         }
 
         public UserSaveStateHelper() { } //test to see if this creates a conflict
