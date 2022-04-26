@@ -52,14 +52,14 @@ namespace WeatherNode
                 //load vars from save
                 userName = saveStateHelper.currentSaveState.UserName;
                 userEmail = saveStateHelper.deserializedEmail;
+                smtpServer = saveStateHelper.currentSaveState.SmtpServer;
+                smtpPort = saveStateHelper.currentSaveState.SmtpPort;
+                smtpAuthentication = saveStateHelper.currentSaveState.SmtpAuthentication;
                 // restoring the state of the notification list requires the use of the addNotification Fxn 
-                //notificationList = saveStateHelper.deserializedNotifications;
                 foreach(Notification notification in saveStateHelper.deserializedNotifications)
                 {
                     AddUserNotification(notification);
                 }
-                // this code is being tested
-
                 WelcomeUserLabel.Text = "Welcome, " + userName;
                 toolStripEmailTextBox.Text = userEmail.ToString();
                 WeatherBox.Enabled = false;
