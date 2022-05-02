@@ -29,13 +29,13 @@ namespace WeatherNode
         {
         }
 
-        private void SaveButton_Click(object sender, EventArgs e)
+        private void SaveButton_Click(object sender, EventArgs e) // save notification to object
         {
             /*
-            * ARRAY SPACE      NOTIFICATION
-            *           0      RAIN
-            *           1      WIND
-            *           2      FOG
+            * ARRAY SPACE  TYPE      NOTIFICATION
+            *           0  BOOLEAN   RAIN
+            *           1  BOOLEAN   WIND
+            *           2  BOOLEAN   FOG
             */
             bool[] notificationOptions =
                 {rainCheck.Checked, windCheck.Checked, fogCheck.Checked};
@@ -50,11 +50,6 @@ namespace WeatherNode
         private void CancelButton_Click(object sender, EventArgs e)
         {
             this.Close();
-        }
-
-        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }
