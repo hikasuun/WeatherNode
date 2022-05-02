@@ -8,7 +8,7 @@ via the user's email about the weather.
 ### To Install:
   1. Download the source code
   2. Zip to location of your choice
-  3. Open "Installer" folder
+  3. Open "WeatherReminder/installer" folder
   4. Launch "setup.exe"
   5. Follow prompts
   6. Application will now be accessible from Start Menu
