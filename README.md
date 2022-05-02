@@ -6,9 +6,5 @@ set up custom user notifications which will trigger the application to notify th
 via the user's email about the weather.
 
 ### To Install:
-  1. Download the source code
-  2. Zip to location of your choice
-  3. Open "WeatherReminder/installer" folder
-  4. Launch "setup.exe"
-  5. Follow prompts
-  6. Application will now be accessible from Start Menu
+  1. Download release binary
+  2. Follow prompts
