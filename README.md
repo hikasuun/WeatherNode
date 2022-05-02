@@ -6,5 +6,7 @@ set up custom user notifications which will trigger the application to notify th
 via the user's email about the weather.
 
 ### To Install:
-  1. Download release binary
-  2. Follow prompts
+  1. Download source code
+  2. Extract zip file to user preferred location
+  3. Run in the solution to generate executable
+  4. Make shortcut to executable for future running
