@@ -162,7 +162,7 @@ namespace WeatherNode
         // changes location
         private void AddLocationButton_Click(object sender, EventArgs e)
         {
-            // window to cahnge to new location
+            // window to change to new location
             NewLocationForm frm = new NewLocationForm(this);
             frm.TopMost = true;
             frm.ShowDialog();
@@ -196,11 +196,11 @@ namespace WeatherNode
         {
             saveStateHelper = new UserSaveStateHelper(this);
             saveStateHelper.writeUserState(@"..\..\..\WeatherReminder\saveState.xml");
-            if (File.Exists(@"..\..\..\PythonScripts\htmlparse.txt"))
+            if (File.Exists(@"..\..\..\PythonScripts\htmlparse.txt")) // delete htmlparse.txt
             {
                 File.Delete(@"..\..\..\PythonScripts\htmlparse.txt");
             }
-            if (File.Exists(@"..\..\..\PythonScripts\location.txt"))
+            if (File.Exists(@"..\..\..\PythonScripts\location.txt")) // delete location.txt
             {
                 File.Delete(@"..\..\..\PythonScripts\location.txt");
             }
@@ -284,59 +284,14 @@ namespace WeatherNode
             weatherPictureBox.Image = image; // display image
         }
 
-        // UTILITY FUNCTIONS
-        public void setUserName(string userN)
-        {
-            this.userName = userN;
-        }
-        public void setUserPassword(string userP)
-        {
-            this.userPassword = userP;
-        }
-        public void setUserEmail(MailAddress userE)
-        {
-            this.userEmail = userE;
-        }
-        public void setEXITCODE(int code)
-        { 
-            EXITCODE = code;
-        }
-        public string getUserName()
-        {
-            return this.userName;
-        }
-        public string getUserPassword()
-        {
-            return this.userPassword;
-        }
-        public MailAddress getUserEmail()
-        {
-            return this.userEmail;
-        }
-
-        public string getLocationName()
-        {
-            return location.GetLocation();
-        }
-
-        public List<Notification> getNotificationList()
-        {
-            return this.notificationList;
-        }
-
-        public int getEXITCODE() 
-        { 
-            return EXITCODE; 
-        }
-
         private void AddNotificationButton_Click(object sender, EventArgs e)
         {
             UserNotificationsForm frm = new UserNotificationsForm(this);
             frm.TopMost = true;
             frm.ShowDialog();
-            //NotificationLoading();
         }
 
+        // loads notifcation info into controls
         private void NotificationLoading()
         {
             int i = NotificationComboBox.SelectedIndex;
@@ -347,22 +302,26 @@ namespace WeatherNode
             coldNumeric.Value = notificationList[i].getNotificationCold();
             NotificationCheck();
         }
+
+        // add new notification to list
         public void AddUserNotification(Notification notif)
         {
             notificationList.Add(notif);
             NotificationComboBox.Items.Add("Notification " + notif.getNotificationID());
             notificationListNumber++;
         }
+
+        // deletes selected notification
         public void DeleteUserNotification(int index)
         {
             notificationList.RemoveAt(index);
             NotificationComboBox.Items.RemoveAt(index);
         }
 
-        private void NotificationComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        // when notification index changes, load info
+        private void NotificationComboBox_SelectedIndexChanged(object sender, EventArgs e) 
         {
             NotificationLoading();
-            NotificationCheck();
         }
 
         private void sendTrayIcon(object sender, EventArgs e) // send to tray
@@ -387,23 +346,18 @@ namespace WeatherNode
             {
                 case "smtp.gmail.com":
                     smtpPort = 587;
-                    smtpAuthentication = 0;
                     break;
                 case "smtp-mail.outlook.com":
                     smtpPort = 587;
-                    smtpAuthentication = 1;
                     break;
                 case "smtp.office365.com":
                     smtpPort = 587;
-                    smtpAuthentication = 1;
                     break;
                 case "smtp.mail.yahoo.com":
                     smtpPort = 465;
-                    smtpAuthentication = 0;
                     break;
                 case "smtp.aol.com":
                     smtpPort = 587;
-                    smtpAuthentication = 1;
                     break;
             }
         }
@@ -463,17 +417,7 @@ namespace WeatherNode
             return msg;
         }
 
-        private static void SendCompletedCallback(object sender, AsyncCompletedEventArgs e)
-        {
-            if (e.Cancelled)
-                MessageBox.Show(string.Format("{0} send canceled.", e.UserState), "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            if (e.Error != null)
-                MessageBox.Show(string.Format("{0} {1}", e.UserState, e.Error), "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            else
-                MessageBox.Show("Notification was sent.", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
-
-        private void everyFourHour(object src, EventArgs e) // every four hours send email
+        private void everyFourHour(object src, EventArgs e) // every four hours: send email
         {
             RunPythonScript();
             string[] lines = System.IO.File.ReadAllLines(@"..\..\..\PythonScripts\htmlparse.txt"); // read the file
@@ -493,6 +437,7 @@ namespace WeatherNode
             MessageBox.Show("Email sent.");
         }
 
+        // button to send email
         private void SendEmailButton_Click(object sender, EventArgs e)
         {
             SetEmailPort();
@@ -553,6 +498,51 @@ namespace WeatherNode
                 }
             }
             
+        }
+
+        // UTILITY FUNCTIONS
+        public void setUserName(string userN)
+        {
+            this.userName = userN;
+        }
+        public void setUserPassword(string userP)
+        {
+            this.userPassword = userP;
+        }
+        public void setUserEmail(MailAddress userE)
+        {
+            this.userEmail = userE;
+        }
+        public void setEXITCODE(int code)
+        {
+            EXITCODE = code;
+        }
+        public string getUserName()
+        {
+            return this.userName;
+        }
+        public string getUserPassword()
+        {
+            return this.userPassword;
+        }
+        public MailAddress getUserEmail()
+        {
+            return this.userEmail;
+        }
+
+        public string getLocationName()
+        {
+            return location.GetLocation();
+        }
+
+        public List<Notification> getNotificationList()
+        {
+            return this.notificationList;
+        }
+
+        public int getEXITCODE()
+        {
+            return EXITCODE;
         }
     }
 }

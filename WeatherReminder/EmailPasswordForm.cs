@@ -25,12 +25,12 @@ namespace WeatherNode
             form = frm;
         }
 
-        private void ClearBtn_Click(object sender, EventArgs e)
+        private void ClearBtn_Click(object sender, EventArgs e) // clear password txt field
         {
             passwordTxtBox.Text = "";
         }
 
-        private void EnterBtn_Click(object sender, EventArgs e)
+        private void EnterBtn_Click(object sender, EventArgs e) // set password for session
         {
             form.setUserPassword(passwordTxtBox.Text);
             this.Close();
